@@ -11,7 +11,10 @@ import java.sql.*;
  * @author olivier
  */
 public class Database {
-    private final String url = "jdbc:postgresql://localhost/postgres";
+    /**
+     * TODO: update these privates variable to match your configuration
+     */
+    private final String url = "jdbc:postgresql://localhost/posting_management_db";
     private final String user = "postgres";
     private final String password = "postgres";
     

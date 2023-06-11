@@ -4,17 +4,29 @@
  */
 package app;
 
+import javax.swing.JFrame;
+import views.EmployeeView;
+import views.PlaceView;
+import views.PostingView;
+import java.sql.Connection;
+import utils.Database;
+
 /**
  *
  * @author olivier
  */
 public class App extends javax.swing.JFrame {
-
+     Connection connection ;
     /**
      * Creates new form NewJFrame
      */
     public App() {
         initComponents();
+        
+        connection = new Database().connect();
+        
+        EmployeeView home = new EmployeeView(connection);
+        mainContent.add(home);
     }
 
     /**
@@ -26,21 +38,96 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        sidebar = new javax.swing.JPanel();
+        employeeBtn = new javax.swing.JLabel();
+        placeBtn = new javax.swing.JLabel();
+        postingBtn = new javax.swing.JLabel();
+        mainContent = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestion d'afféctation");
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(new java.awt.BorderLayout(8, 0));
+
+        sidebar.setBackground(new java.awt.Color(153, 153, 153));
+        sidebar.setPreferredSize(new java.awt.Dimension(150, 639));
+
+        employeeBtn.setText("Employées");
+        employeeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeBtnMouseClicked(evt);
+            }
+        });
+
+        placeBtn.setText("Lieux");
+        placeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeBtnMouseClicked(evt);
+            }
+        });
+
+        postingBtn.setText("Afféctations");
+        postingBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postingBtnMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
+        sidebar.setLayout(sidebarLayout);
+        sidebarLayout.setHorizontalGroup(
+            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(employeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(placeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(postingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        sidebarLayout.setVerticalGroup(
+            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarLayout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(employeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(placeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(postingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(357, Short.MAX_VALUE))
         );
+
+        getContentPane().add(sidebar, java.awt.BorderLayout.LINE_START);
+
+        mainContent.setBackground(new java.awt.Color(153, 153, 153));
+        mainContent.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(mainContent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void employeeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeBtnMouseClicked
+        // Remove existing component to render a new one
+        mainContent.removeAll();
+        
+        System.out.println("hey");
+        // Add the employeeView panel to the mainContent panel
+        EmployeeView employeeView = new EmployeeView(connection);
+        mainContent.add(employeeView);
+        mainContent.updateUI();
+    }//GEN-LAST:event_employeeBtnMouseClicked
+
+    private void placeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeBtnMouseClicked
+        mainContent.removeAll();
+     
+        PlaceView placeView = new PlaceView(connection);
+        mainContent.add(placeView);
+        mainContent.updateUI();
+    }//GEN-LAST:event_placeBtnMouseClicked
+
+    private void postingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingBtnMouseClicked
+        mainContent.removeAll();
+     
+        PostingView postingView = new PostingView();
+        mainContent.add(postingView);
+        mainContent.updateUI();
+    }//GEN-LAST:event_postingBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -73,11 +160,19 @@ public class App extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new App().setVisible(true);
+                App app = new App();
+                
+                app.setVisible(true);
+                app.setExtendedState(JFrame.MAXIMIZED_BOTH);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel employeeBtn;
+    private javax.swing.JPanel mainContent;
+    private javax.swing.JLabel placeBtn;
+    private javax.swing.JLabel postingBtn;
+    private javax.swing.JPanel sidebar;
     // End of variables declaration//GEN-END:variables
 }

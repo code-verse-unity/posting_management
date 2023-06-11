@@ -4,18 +4,36 @@
  */
 package views;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import model.Place;
+
 /**
  *
  * @author olivier
  */
 public class PlaceView extends javax.swing.JPanel {
-
+    ArrayList<Place> places;
     /**
      * Creates new form PlaceView
      */
-    public PlaceView() {
+    public PlaceView(Connection connection) {
         initComponents();
+        this.places =  new Place().getAll(connection);
+        
+         DefaultTableModel model = (DefaultTableModel) placeTable.getModel();
+            for (Place place : places) {
+
+                Object[] row = new Object[4];
+                row[0] = place.getId();
+                row[1] = place.getName();
+                row[2] = place.getProvince();
+
+                model.addRow(row);
+            }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +44,85 @@ public class PlaceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        placeForm = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        placeTable = new javax.swing.JTable();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 815, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        placeForm.setPreferredSize(new java.awt.Dimension(500, 382));
+
+        jLabel1.setText("form");
+
+        javax.swing.GroupLayout placeFormLayout = new javax.swing.GroupLayout(placeForm);
+        placeForm.setLayout(placeFormLayout);
+        placeFormLayout.setHorizontalGroup(
+            placeFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(placeFormLayout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(jLabel1)
+                .addContainerGap(327, Short.MAX_VALUE))
+        );
+        placeFormLayout.setVerticalGroup(
+            placeFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(placeFormLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jLabel1)
+                .addContainerGap(265, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(placeForm, java.awt.BorderLayout.LINE_END);
+
+        placeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Désignation", "Province"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(placeTable);
+
+        jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel placeForm;
+    private javax.swing.JTable placeTable;
     // End of variables declaration//GEN-END:variables
 }
