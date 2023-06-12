@@ -20,7 +20,7 @@ public class PlaceView extends javax.swing.JPanel {
      */
     public PlaceView(Connection connection) {
         initComponents();
-        this.places =  new Place().getAll(connection);
+        this.places =  Place.getAll(connection);
         
          DefaultTableModel model = (DefaultTableModel) placeTable.getModel();
             for (Place place : places) {

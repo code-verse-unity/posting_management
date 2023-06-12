@@ -38,8 +38,21 @@ public class EmployeeView extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         employeeFormContainer = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        addEmployeeTab = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        employeeLastNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        employeeFirstNameTextField = new javax.swing.JTextField();
+        employeeEmailTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        employeeCivilityComboBox = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        updateEmployeeTab = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         employeeTable = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -55,7 +68,7 @@ public class EmployeeView extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(210, 210, 210)
                 .addComponent(jLabel1)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(584, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,29 +84,142 @@ public class EmployeeView extends javax.swing.JPanel {
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         employeeFormContainer.setPreferredSize(new java.awt.Dimension(500, 477));
-        employeeFormContainer.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setText("jLabel2");
-        jTabbedPane1.addTab("tab1", jLabel2);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(500, 450));
 
-        jLabel3.setText("jLabel3");
-        jTabbedPane1.addTab("tab2", jLabel3);
+        jLabel2.setText("Nom");
 
-        employeeFormContainer.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+        employeeLastNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeLastNameTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Prénom(s)*");
+
+        jLabel4.setText("Email*");
+
+        jLabel5.setText("Civilité*");
+
+        employeeCivilityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton1.setText("Ajouter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addEmployeeTabLayout = new javax.swing.GroupLayout(addEmployeeTab);
+        addEmployeeTab.setLayout(addEmployeeTabLayout);
+        addEmployeeTabLayout.setHorizontalGroup(
+            addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addEmployeeTabLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(employeeLastNameTextField)
+                    .addComponent(jLabel3)
+                    .addComponent(employeeFirstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(employeeEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(employeeCivilityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        addEmployeeTabLayout.setVerticalGroup(
+            addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addEmployeeTabLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(employeeLastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(employeeFirstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(employeeEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(employeeCivilityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Ajouter un employé", addEmployeeTab);
+
+        javax.swing.GroupLayout updateEmployeeTabLayout = new javax.swing.GroupLayout(updateEmployeeTab);
+        updateEmployeeTab.setLayout(updateEmployeeTabLayout);
+        updateEmployeeTabLayout.setHorizontalGroup(
+            updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        updateEmployeeTabLayout.setVerticalGroup(
+            updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 419, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Mettre à jour un employé", updateEmployeeTab);
+
+        employeeFormContainer.add(jTabbedPane1);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 300));
+
+        jLabel6.setText("Supprimer l'employé selectioné");
+
+        jButton2.setText("Supprimer");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(201, Short.MAX_VALUE))
+        );
+
+        employeeFormContainer.add(jPanel1);
 
         jPanel4.add(employeeFormContainer, java.awt.BorderLayout.LINE_END);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nom", "Prénoms", "Email", "Civilité"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         employeeTable.setViewportView(jTable1);
 
         jPanel4.add(employeeTable, java.awt.BorderLayout.CENTER);
@@ -101,16 +227,37 @@ public class EmployeeView extends javax.swing.JPanel {
         add(jPanel4, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void employeeLastNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeLastNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeeLastNameTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addEmployeeTab;
+    private javax.swing.JComboBox<String> employeeCivilityComboBox;
+    private javax.swing.JTextField employeeEmailTextField;
+    private javax.swing.JTextField employeeFirstNameTextField;
     private javax.swing.JPanel employeeFormContainer;
+    private javax.swing.JTextField employeeLastNameTextField;
     private javax.swing.JScrollPane employeeTable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPanel updateEmployeeTab;
     // End of variables declaration//GEN-END:variables
 }

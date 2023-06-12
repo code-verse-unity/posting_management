@@ -7,11 +7,38 @@
  * Created: Jun 11, 2023
  */
 
-CREATE DATABASE posting_management_db;
+create database posting_management_db;
 
-INSERT INTO "place"(name, province) 
-    VALUES
-        ('test','test'),
-        ('test1','test'),
-        ('test2','test')
-;
+drop  database posting_management_db;
+
+create table "place"(
+	id serial primary key,
+	name varchar(255) not null,
+	province varchar() not null
+);
+
+create table "employee"(
+	id serial primary key,
+	civility varchar(4) not null,
+	last_name varchar(255) not null,
+	first_name varchar(255) not null,
+	email  varchar(255) not null
+);
+
+create table posting(
+	id serial primary key,
+	place_id int,
+	employee_id int,
+	old_place_id int not null,
+	posting_date Date not null,
+	service_date Date not null,
+	CONSTRAINT fk_place
+		foreign key(place_id)
+			references "place"(id),
+	CONSTRAINT fk_employee
+		foreign key(employee_id)
+			references "employee"(id),
+	CONSTRAINT fk_old_place
+		foreign key(old_place_id)
+			references "place"(id)
+);

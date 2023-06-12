@@ -37,7 +37,7 @@ public class Place {
         return province;
     }
     
-    public ArrayList<Place> getAll(Connection connection) {
+    public static ArrayList<Place> getAll(Connection connection) {
         String query = "select * from place";
         try {
             ResultSet result = connection.createStatement().executeQuery(query);
