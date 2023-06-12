@@ -16,12 +16,28 @@ import model.*;
 public class EmployeeView extends javax.swing.JPanel {
 
     Connection connection;
+    ArrayList<Employee> employees;
     
     /**
      * Creates new form EmployeeView
      */
     public EmployeeView(Connection connection) {
         initComponents();
+        
+        this.employees =  Employee.getAll(connection);
+        
+         DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
+            for (Employee employee : employees) {
+
+                Object[] row = new Object[5];
+                row[0] = employee.getId();
+                row[1] = employee.getFirstName();
+                row[2] = employee.getLastName();
+                row[3] = employee.getEmail();
+                row[4] = employee.getCivility();
+
+                model.addRow(row);
+            }
     }
 
     /**
@@ -53,8 +69,8 @@ public class EmployeeView extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        employeeTable = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JScrollPane = new javax.swing.JScrollPane();
+        employeeTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -203,7 +219,7 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jPanel4.add(employeeFormContainer, java.awt.BorderLayout.LINE_END);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        employeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -212,17 +228,17 @@ public class EmployeeView extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        employeeTable.setViewportView(jTable1);
+        employeeTable.getTableHeader().setReorderingAllowed(false);
+        JScrollPane.setViewportView(employeeTable);
 
-        jPanel4.add(employeeTable, java.awt.BorderLayout.CENTER);
+        jPanel4.add(JScrollPane, java.awt.BorderLayout.CENTER);
 
         add(jPanel4, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -237,13 +253,14 @@ public class EmployeeView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JScrollPane;
     private javax.swing.JPanel addEmployeeTab;
     private javax.swing.JComboBox<String> employeeCivilityComboBox;
     private javax.swing.JTextField employeeEmailTextField;
     private javax.swing.JTextField employeeFirstNameTextField;
     private javax.swing.JPanel employeeFormContainer;
     private javax.swing.JTextField employeeLastNameTextField;
-    private javax.swing.JScrollPane employeeTable;
+    private javax.swing.JTable employeeTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -257,7 +274,6 @@ public class EmployeeView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel updateEmployeeTab;
     // End of variables declaration//GEN-END:variables
 }
