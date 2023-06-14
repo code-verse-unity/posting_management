@@ -71,6 +71,32 @@ public class Employee {
         return null;
     }
     
+    public static ArrayList<Employee> getByName(Connection connection, String name) {
+        
+        String query = "select * from employee where last_name ilike '%"+ name + "%' or first_name ilike '%"+ name +"%' order by id";
+        
+        try {
+            ResultSet result  = connection.createStatement().executeQuery(query);
+
+            ArrayList<Employee> employees = new ArrayList<Employee>();
+            while (result.next()) {
+                employees.add(new Employee(
+                        result.getString("id"),
+                        result.getString("last_name"),
+                        result.getString("first_name"),
+                        result.getString("email"),
+                        result.getString("civility")
+                ));
+            }
+
+            return employees;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    
     public static void create(Connection connection, String lastName, String firstName, String civility, String email) {
         String sql = "INSERT INTO \"employee\"(last_name, first_name, civility, email) VALUES(?,?,?,?)";
         
