@@ -49,7 +49,7 @@ public class Employee {
     
     
     public static ArrayList<Employee> getAll(Connection connection) {
-        String query = "select * from employee";
+        String query = "select * from employee order by id";
         try {
             ResultSet result = connection.createStatement().executeQuery(query);
             
@@ -84,6 +84,26 @@ public class Employee {
             statement.executeUpdate();
             
             System.out.println("Employee added");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+        public static void update(Connection connection,String id, String lastName, String firstName, String civility, String email) {
+        String sql = "UPDATE \"employee\" SET last_name = ? ,  first_name = ?, civility = ? , email = ? WHERE id = ?";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, lastName);
+            statement.setString(2, firstName);
+            statement.setString(3, civility);
+            statement.setString(4, email);
+            statement.setInt(5, Integer.parseInt(id) );
+            
+            statement.executeUpdate();
+            
+            System.out.println("Employee updated");
             
         } catch (Exception e) {
             e.printStackTrace();
