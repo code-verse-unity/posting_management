@@ -89,4 +89,19 @@ public class Employee {
             e.printStackTrace();
         }
     }
+    
+    public static void destroy(Connection connection, String id) {
+        String sql = "DELETE FROM \"employee\" WHERE id = "+ id;
+
+        try {
+            Statement statement = connection.createStatement();
+
+            statement.execute(sql);
+
+            System.out.println("Employee deleted");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
