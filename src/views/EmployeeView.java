@@ -4,9 +4,13 @@
  */
 package views;
 
+import app.App;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import model.*;
 
 /**
@@ -14,16 +18,20 @@ import model.*;
  * @author olivier
  */
 public class EmployeeView extends javax.swing.JPanel {
-
+    /**
+     * We need this parent to show dialog box
+     */
+    JFrame parent;
     Connection connection;
     ArrayList<Employee> employees;
     
     /**
      * Creates new form EmployeeView
      */
-    public EmployeeView(Connection connection) {
+    public EmployeeView(Connection connection, JFrame parent) {
         initComponents();
         this.connection = connection;
+        this.parent = parent;
         
         loadEmployee();
     }
@@ -87,7 +95,7 @@ public class EmployeeView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        deleteEmployeeBtn = new javax.swing.JButton();
         JScrollPane = new javax.swing.JScrollPane();
         employeeTable = new javax.swing.JTable();
 
@@ -213,7 +221,12 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jLabel6.setText("Supprimer l'employé selectioné");
 
-        jButton2.setText("Supprimer");
+        deleteEmployeeBtn.setText("Supprimer");
+        deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEmployeeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -224,7 +237,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -235,7 +248,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(deleteEmployeeBtn)
                 .addContainerGap(201, Short.MAX_VALUE))
         );
 
@@ -285,18 +298,35 @@ public class EmployeeView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_employeeCivilityComboBoxActionPerformed
 
+    private void deleteEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeBtnActionPerformed
+        if(employeeTable.getSelectedRows().length == 0) {
+            JOptionPane.showMessageDialog(parent, "Vous devez selectionner au moins une ligne de la table", "Aucune ligne selectionnée", JOptionPane.ERROR_MESSAGE);
+        }else{
+            int row = employeeTable.getSelectedRow();
+
+            TableModel jtable = employeeTable.getModel();
+
+            if (employeeTable.getSelectedRows().length == 1) {
+                String id = jtable.getValueAt(row, 0).toString();
+
+                Employee.destroy(this.connection, id);
+                loadEmployee();
+            }
+        }
+    }//GEN-LAST:event_deleteEmployeeBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JScrollPane;
     private javax.swing.JButton addEmployeeBtn;
     private javax.swing.JPanel addEmployeeTab;
+    private javax.swing.JButton deleteEmployeeBtn;
     private javax.swing.JComboBox<String> employeeCivilityComboBox;
     private javax.swing.JTextField employeeEmailTextField;
     private javax.swing.JTextField employeeFirstNameTextField;
     private javax.swing.JPanel employeeFormContainer;
     private javax.swing.JTextField employeeLastNameTextField;
     private javax.swing.JTable employeeTable;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

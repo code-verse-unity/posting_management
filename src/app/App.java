@@ -25,7 +25,7 @@ public class App extends javax.swing.JFrame {
         
         connection = new Database().connect();
         
-        EmployeeView home = new EmployeeView(connection);
+        EmployeeView home = new EmployeeView(connection,this);
         mainContent.add(home);
     }
 
@@ -108,7 +108,7 @@ public class App extends javax.swing.JFrame {
         
         System.out.println("hey");
         // Add the employeeView panel to the mainContent panel
-        EmployeeView employeeView = new EmployeeView(connection);
+        EmployeeView employeeView = new EmployeeView(connection,this);
         mainContent.add(employeeView);
         mainContent.updateUI();
     }//GEN-LAST:event_employeeBtnMouseClicked
