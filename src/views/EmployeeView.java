@@ -23,21 +23,40 @@ public class EmployeeView extends javax.swing.JPanel {
      */
     public EmployeeView(Connection connection) {
         initComponents();
+        this.connection = connection;
         
-        this.employees =  Employee.getAll(connection);
+        loadEmployee();
+    }
+    
+    private void loadEmployee() {
+        if (this.employees != null)
+            this.employees.clear();
         
-         DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
-            for (Employee employee : employees) {
+        this.employees =  Employee.getAll(this.connection);
+        
+        DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
+        
+        // Reset the row table
+        model.setRowCount(0);
+        
+        // Add the new rows
+        for (Employee employee : employees) {
 
-                Object[] row = new Object[5];
-                row[0] = employee.getId();
-                row[1] = employee.getFirstName();
-                row[2] = employee.getLastName();
-                row[3] = employee.getEmail();
-                row[4] = employee.getCivility();
+            Object[] row = new Object[5];
+            row[0] = employee.getId();
+            row[1] = employee.getFirstName();
+            row[2] = employee.getLastName();
+            row[3] = employee.getEmail();
+            row[4] = employee.getCivility();
 
-                model.addRow(row);
-            }
+            model.addRow(row);
+        }
+    }
+    
+    private void resetAddForm() {
+        employeeLastNameTextField.setText("");
+        employeeFirstNameTextField.setText("");
+        employeeEmailTextField.setText("");
     }
 
     /**
@@ -63,7 +82,7 @@ public class EmployeeView extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         employeeCivilityComboBox = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        addEmployeeBtn = new javax.swing.JButton();
         updateEmployeeTab = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -117,12 +136,17 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jLabel5.setText("Civilité*");
 
-        employeeCivilityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setText("Ajouter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        employeeCivilityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mlle", "Mme" }));
+        employeeCivilityComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                employeeCivilityComboBoxActionPerformed(evt);
+            }
+        });
+
+        addEmployeeBtn.setText("Ajouter");
+        addEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEmployeeBtnActionPerformed(evt);
             }
         });
 
@@ -141,7 +165,7 @@ public class EmployeeView extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(employeeCivilityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addEmployeeTabLayout.setVerticalGroup(
@@ -164,7 +188,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(employeeCivilityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(addEmployeeBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -243,17 +267,28 @@ public class EmployeeView extends javax.swing.JPanel {
         add(jPanel4, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void addEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeBtnActionPerformed
+        String lastName = employeeLastNameTextField.getText();
+        String firstName = employeeFirstNameTextField.getText();
+        String email = employeeEmailTextField.getText();
+        String civility = employeeCivilityComboBox.getSelectedItem().toString();
+        
+        Employee.create(this.connection, lastName, firstName, civility, email);
+        loadEmployee();
+    }//GEN-LAST:event_addEmployeeBtnActionPerformed
 
     private void employeeLastNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeLastNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_employeeLastNameTextFieldActionPerformed
 
+    private void employeeCivilityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeCivilityComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeeCivilityComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JScrollPane;
+    private javax.swing.JButton addEmployeeBtn;
     private javax.swing.JPanel addEmployeeTab;
     private javax.swing.JComboBox<String> employeeCivilityComboBox;
     private javax.swing.JTextField employeeEmailTextField;
@@ -261,7 +296,6 @@ public class EmployeeView extends javax.swing.JPanel {
     private javax.swing.JPanel employeeFormContainer;
     private javax.swing.JTextField employeeLastNameTextField;
     private javax.swing.JTable employeeTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

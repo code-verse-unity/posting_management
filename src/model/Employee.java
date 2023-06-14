@@ -4,12 +4,8 @@
  */
 package model;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.*;
+import java.util.*;
 
 /**
  *
@@ -70,8 +66,27 @@ public class Employee {
             
             return employees;
         } catch (SQLException ex) {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return null;
+    }
+    
+    public static void create(Connection connection, String lastName, String firstName, String civility, String email) {
+        String sql = "INSERT INTO \"employee\"(last_name, first_name, civility, email) VALUES(?,?,?,?)";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, lastName);
+            statement.setString(2, firstName);
+            statement.setString(3, civility);
+            statement.setString(4, email);
+            
+            statement.executeUpdate();
+            
+            System.out.println("Employee added");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
