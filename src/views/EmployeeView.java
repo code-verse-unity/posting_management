@@ -373,6 +373,7 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jPanel4.add(employeeFormContainer, java.awt.BorderLayout.LINE_END);
 
+        employeeTable.setAutoCreateRowSorter(true);
         employeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
