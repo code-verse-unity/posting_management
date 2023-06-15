@@ -98,6 +98,9 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        searchTextField = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
+        searchBtn1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         employeeFormContainer = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -133,21 +136,47 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jLabel1.setText("Liste des employés");
 
+        searchBtn.setText("Rechercher");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        searchBtn1.setText("Effacer");
+        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(jLabel1)
-                .addContainerGap(584, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn1)))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn)
+                    .addComponent(searchBtn1))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -443,6 +472,33 @@ public class EmployeeView extends javax.swing.JPanel {
         addInitialValuesToUpdateForm();
     }//GEN-LAST:event_employeeTableMouseClicked
 
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        ArrayList<Employee> employees = Employee.getByName(this.connection, searchTextField.getText());
+        
+        DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
+        
+        // Reset the row table
+        model.setRowCount(0);
+        
+        // Add the new rows
+        for (Employee employee : employees) {
+
+            Object[] row = new Object[5];
+            row[0] = employee.getId();
+            row[1] = employee.getFirstName();
+            row[2] = employee.getLastName();
+            row[3] = employee.getEmail();
+            row[4] = employee.getCivility();
+
+            model.addRow(row);
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
+        searchTextField.setText("");
+        loadEmployee();
+    }//GEN-LAST:event_searchBtn1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JScrollPane;
@@ -474,6 +530,9 @@ public class EmployeeView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JButton searchBtn1;
+    private javax.swing.JTextField searchTextField;
     private javax.swing.JButton updateEmployeeBtn;
     private javax.swing.JPanel updateEmployeeTab;
     // End of variables declaration//GEN-END:variables
