@@ -13,19 +13,22 @@ import java.util.logging.Logger;
  * @author olivier
  */
 public class Place {
-    String id, name, province;
-    
+    public static String TABLE_NAME = "place";
+
+    Integer id;
+    String name, province;
+
     public Place(){
         
     }
     
-    public Place(String id,String name, String province) {
+    public Place(Integer id,String name, String province) {
         this.id = id;
         this.name = name;
         this.province = province;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -45,7 +48,7 @@ public class Place {
             ArrayList<Place> places = new ArrayList<Place>();
             while(result.next()){
                 places.add(new Place(
-                        result.getString("id"),
+                        result.getInt("id"),
                         result.getString("name"),
                         result.getString("province")
                 ));

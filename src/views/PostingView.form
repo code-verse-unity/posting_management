@@ -62,11 +62,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="addPostingFormJPanel" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="postingListJScrollPane" min="-2" pref="1000" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="postingListJScrollPane" pref="1152" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="postingOptionsJPanel" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -197,16 +197,18 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="0">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="6" rowCount="0">
+                        <Column editable="false" title="Id" type="java.lang.Integer"/>
+                        <Column editable="false" title="Employ&#xe9;" type="java.lang.String"/>
+                        <Column editable="false" title="De" type="java.lang.String"/>
+                        <Column editable="false" title="Affect&#xe9; &#xe0;" type="java.lang.String"/>
+                        <Column editable="false" title="Afffect&#xe9; le" type="java.lang.String"/>
+                        <Column editable="false" title="Prise de Service le" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="50" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -222,6 +224,16 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="150" minWidth="-1" prefWidth="150" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="150" minWidth="-1" prefWidth="150" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -282,7 +294,7 @@
                           <Component id="generatePDFJLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="generatePDFJButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -413,6 +425,9 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Ajouter"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPostingJButtonActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -452,7 +467,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="789" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -597,14 +612,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="postingEmpoyeeListJLabel" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="postingEmployeeScrollPane" min="-2" pref="933" max="-2" attributes="0"/>
+                                      <Component id="postingEmployeeScrollPane" min="-2" pref="1208" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="postingEmployeeOptionsJPanel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="911" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -635,17 +650,18 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="postingEmployeeJComboBox">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultComboBoxModel&lt;Employee&gt;()" type="code"/>
+                </Property>
+                <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postingEmployeeJComboBoxActionPerformed"/>
+              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Employee&gt;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="postingEmpoyeeListJLabel">
@@ -664,19 +680,21 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable2">
+                    <Component class="javax.swing.JTable" name="postingEmployeeListJTable">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
-                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          <Table columnCount="6" rowCount="4">
+                            <Column editable="false" title="Id" type="java.lang.Integer"/>
+                            <Column editable="false" title="Employ&#xe9;" type="java.lang.String"/>
+                            <Column editable="false" title="De" type="java.lang.String"/>
+                            <Column editable="false" title="Affect&#xe9; &#xe0;" type="java.lang.String"/>
+                            <Column editable="false" title="Affect&#xe9; le" type="java.lang.String"/>
+                            <Column editable="false" title="Prise de service le" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="50" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -692,6 +710,16 @@
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="150" minWidth="-1" prefWidth="150" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="150" minWidth="-1" prefWidth="150" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -708,6 +736,11 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="postingEmployeeOptionsJPanel">
+              <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[500, 32767]"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -749,6 +782,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="G&#xe9;nerer en PDF"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postingEmployeeGeneratePDFJButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -769,7 +805,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="unpostedListJScrollPane" alignment="0" pref="2183" max="32767" attributes="0"/>
+                          <Component id="unpostedListJScrollPane" alignment="0" pref="1553" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="unpostedListJLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

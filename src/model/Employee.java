@@ -12,21 +12,35 @@ import java.util.*;
  * @author olivier
  */
 public class Employee {
-    String id, lastName, firstName,email, civility;
-    
+    Integer id;
+    String lastName, firstName,email, civility, job;
+    Place place;
+
+    public static String TABLE_NAME = "employee";
+
     public Employee(){
         
     }
     
-    public Employee(String id,String lastName,String firstName,String email, String civility) {
+    public Employee(Integer id,String lastName,String firstName,String email, String civility, String job) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.civility = civility;
         this.email = email;
+        this.job = job;
     }
 
-    public String getId() {
+    public Employee(Integer id,String lastName,String firstName,String email, String civility, Place place) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.civility = civility;
+        this.email = email;
+        this.place = place;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -45,8 +59,18 @@ public class Employee {
     public String getEmail() {
         return email;
     }
+
+    public String getJob() {
+        return job;
+    }
     
-    
+    public Place getPlace() {
+        return this.place;
+    }
+
+    public String getFullName() {
+        return this.lastName + " " + this.firstName;
+    }
     
     public static ArrayList<Employee> getAll(Connection connection) {
         String query = "select * from employee order by id";
@@ -56,11 +80,12 @@ public class Employee {
             ArrayList<Employee> employees = new ArrayList<Employee>();
             while(result.next()){
                 employees.add(new Employee(
-                        result.getString("id"),
+                        result.getInt("id"),
                         result.getString("last_name"),
                         result.getString("first_name"),
                         result.getString("email"),
-                        result.getString("civility")
+                        result.getString("civility"),
+                        result.getString("job")
                 ));
             }
             
@@ -81,11 +106,12 @@ public class Employee {
             ArrayList<Employee> employees = new ArrayList<Employee>();
             while (result.next()) {
                 employees.add(new Employee(
-                        result.getString("id"),
+                        result.getInt("id"),
                         result.getString("last_name"),
                         result.getString("first_name"),
                         result.getString("email"),
-                        result.getString("civility")
+                        result.getString("civility"),
+                        result.getString("job")
                 ));
             }
 
