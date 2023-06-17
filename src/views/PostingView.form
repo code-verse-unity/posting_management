@@ -244,6 +244,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="postingListJTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -381,17 +384,15 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="addPostingEmployeeJComboBox">
                           <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                              </StringArray>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultComboBoxModel&lt;Employee&gt;()" type="code"/>
+                            </Property>
+                            <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
                             </Property>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Employee&gt;"/>
                           </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="addPostingPlaceJLabel">
@@ -401,17 +402,15 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="addPostingPlaceJComboBox">
                           <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                              </StringArray>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultComboBoxModel&lt;Place&gt;()" type="code"/>
+                            </Property>
+                            <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Place) {&#xa;                    Place place = (Place) value;&#xa;                    setText(place.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
                             </Property>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Place&gt;"/>
                           </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="addPostingStartDateJLabel">
@@ -508,17 +507,18 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="editPostingEmployeeJComboBox">
                           <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                              </StringArray>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultComboBoxModel&lt;Employee&gt;()" type="code"/>
+                            </Property>
+                            <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editPostingEmployeeJComboBoxActionPerformed"/>
+                          </Events>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Employee&gt;"/>
                           </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="editPostingPlaceJLabel">
@@ -528,17 +528,15 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="editPostingPlaceJComboBox">
                           <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                              </StringArray>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultComboBoxModel&lt;Place&gt;()" type="code"/>
+                            </Property>
+                            <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Place) {&#xa;                    Place place = (Place) value;&#xa;                    setText(place.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
                             </Property>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Place&gt;"/>
                           </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="editPostingStartDateJLabel">

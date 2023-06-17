@@ -39,6 +39,10 @@ public class Place {
     public String getProvince() {
         return province;
     }
+
+    public String getFullName() {
+        return this.name + ", " + this.province;
+    }
     
     public static ArrayList<Place> getAll(Connection connection) {
         String query = "select * from place";

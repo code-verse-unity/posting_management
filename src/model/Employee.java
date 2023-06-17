@@ -31,12 +31,13 @@ public class Employee {
         this.job = job;
     }
 
-    public Employee(Integer id,String lastName,String firstName,String email, String civility, Place place) {
+    public Employee(Integer id,String lastName,String firstName,String email, String civility, String job, Place place) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.civility = civility;
         this.email = email;
+        this.job = job;
         this.place = place;
     }
 

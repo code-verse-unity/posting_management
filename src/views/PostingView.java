@@ -46,6 +46,7 @@ public class PostingView extends javax.swing.JPanel {
 
         this.refillPostingListJTable();
         this.refillPostingEmployeeJComboBox();
+        this.refillAddPostingForm();
     }
 
     public void reloadPostings() {
@@ -90,6 +91,16 @@ public class PostingView extends javax.swing.JPanel {
         }
     }
 
+    private Posting postingSelected = null;
+
+    public void setPostingSelected(Posting postingSelected) {
+        this.postingSelected = postingSelected;
+    }
+
+    public Posting getPostingSelected() {
+        return this.postingSelected;
+    }
+
     public void refillPostingEmployeeListJTable() {
         DefaultTableModel postingEmployeeModel = (DefaultTableModel) postingEmployeeListJTable.getModel();
 
@@ -109,6 +120,64 @@ public class PostingView extends javax.swing.JPanel {
 
             postingEmployeeModel.addRow(row);
         }
+    }
+
+    public void refillEditPostingEmployeeJComboBox() {
+        DefaultComboBoxModel<Employee> comboBoxModel = (DefaultComboBoxModel<Employee>) editPostingEmployeeJComboBox.getModel();
+    
+        comboBoxModel.removeAllElements();
+    
+        for (Employee employee : this.employees) {
+            comboBoxModel.addElement(employee);
+    
+            if (employee.getId() == this.getPostingSelected().getEmployee().getId()) {
+                comboBoxModel.setSelectedItem(employee);
+            }
+        }
+    }
+
+    public void refillEditPostingPlaceJComboBox() {
+        DefaultComboBoxModel<Place> comboBoxModel = (DefaultComboBoxModel<Place>) editPostingPlaceJComboBox.getModel();
+    
+        comboBoxModel.removeAllElements();
+    
+        for (Place place : this.places) {
+            comboBoxModel.addElement(place);
+    
+            if (place.getId() == this.getPostingSelected().getPlace().getId()) {
+                comboBoxModel.setSelectedItem(place);
+            }
+        }
+    }
+
+    public void refillEditPostingForm() {
+        this.refillEditPostingEmployeeJComboBox();
+        this.refillEditPostingPlaceJComboBox();
+    }
+
+    public void refillAddPostingEmployeeJComboBox() {
+        DefaultComboBoxModel<Employee> comboBoxModel = (DefaultComboBoxModel<Employee>) addPostingEmployeeJComboBox.getModel();
+    
+        comboBoxModel.removeAllElements();
+    
+        for (Employee employee : this.employees) {
+            comboBoxModel.addElement(employee);
+        }
+    }
+
+    public void refillAddPostingPlaceJComboBox() {
+        DefaultComboBoxModel<Place> comboBoxModel = (DefaultComboBoxModel<Place>) addPostingPlaceJComboBox.getModel();
+    
+        comboBoxModel.removeAllElements();
+    
+        for (Place place : this.places) {
+            comboBoxModel.addElement(place);
+        }
+    }
+
+    public void refillAddPostingForm() {
+        this.refillAddPostingEmployeeJComboBox();
+        this.refillAddPostingPlaceJComboBox();
     }
 
     /**
@@ -270,6 +339,11 @@ public class PostingView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        postingListJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postingListJTableMouseClicked(evt);
+            }
+        });
         postingListJScrollPane.setViewportView(postingListJTable);
         if (postingListJTable.getColumnModel().getColumnCount() > 0) {
             postingListJTable.getColumnModel().getColumn(0).setMaxWidth(50);
@@ -283,11 +357,35 @@ public class PostingView extends javax.swing.JPanel {
 
         addPostingEmployeeJLabel.setText("Employé :");
 
-        addPostingEmployeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        addPostingEmployeeJComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        addPostingEmployeeJComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Employee) {
+                    Employee employee = (Employee) value;
+                    setText(employee.getId() + ". " + employee.getFullName());
+                }
+                return this;
+            }
+        });
 
         addPostingPlaceJLabel.setText("Lieu d'afféctation :");
 
-        addPostingPlaceJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        addPostingPlaceJComboBox.setModel(new DefaultComboBoxModel<Place>());
+        addPostingPlaceJComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Place) {
+                    Place place = (Place) value;
+                    setText(place.getFullName());
+                }
+                return this;
+            }
+        });
 
         addPostingStartDateJLabel.setText("Date de prise de service :");
 
@@ -350,11 +448,40 @@ public class PostingView extends javax.swing.JPanel {
 
         editPostingEmployeeJLabel.setText("Employé :");
 
-        editPostingEmployeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        editPostingEmployeeJComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        editPostingEmployeeJComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Employee) {
+                    Employee employee = (Employee) value;
+                    setText(employee.getId() + ". " + employee.getFullName());
+                }
+                return this;
+            }
+        });
+        editPostingEmployeeJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPostingEmployeeJComboBoxActionPerformed(evt);
+            }
+        });
 
         editPostingPlaceJLabel.setText("Lieu d'affectation :");
 
-        editPostingPlaceJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        editPostingPlaceJComboBox.setModel(new DefaultComboBoxModel<Place>());
+        editPostingPlaceJComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Place) {
+                    Place place = (Place) value;
+                    setText(place.getFullName());
+                }
+                return this;
+            }
+        });
 
         editPostingStartDateJLabel.setText("Date de prise de service :");
 
@@ -687,6 +814,19 @@ public class PostingView extends javax.swing.JPanel {
         System.out.println("TODO create PDF for posting where employee_id = : " + this.getPostingEmployeeIdSelected() + " but we don't know which one.");
     }//GEN-LAST:event_postingEmployeeGeneratePDFJButtonActionPerformed
 
+    private void postingListJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingListJTableMouseClicked
+        int selectedRow = postingListJTable.getSelectedRow();
+        if (selectedRow != -1) {
+            Integer selectedId = (Integer) postingListJTable.getValueAt(selectedRow, 0);
+            this.setPostingSelected(Posting.getById(this.connection, selectedId));
+            this.refillEditPostingForm();
+        }
+    }//GEN-LAST:event_postingListJTableMouseClicked
+
+    private void editPostingEmployeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPostingEmployeeJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editPostingEmployeeJComboBoxActionPerformed
+
     private void addPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addPostingJButtonActionPerformed
         Posting.create(this.connection, 1, 1, new Date());
     }// GEN-LAST:event_addPostingJButtonActionPerformed
@@ -696,25 +836,25 @@ public class PostingView extends javax.swing.JPanel {
     }// GEN-LAST:event_searchPostingJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> addPostingEmployeeJComboBox;
+    private javax.swing.JComboBox<Employee> addPostingEmployeeJComboBox;
     private javax.swing.JLabel addPostingEmployeeJLabel;
     private javax.swing.JLabel addPostingFormJLabel;
     private javax.swing.JPanel addPostingFormJPanel;
     private javax.swing.JButton addPostingJButton;
     private javax.swing.JPanel addPostingJPanel;
-    private javax.swing.JComboBox<String> addPostingPlaceJComboBox;
+    private javax.swing.JComboBox<Place> addPostingPlaceJComboBox;
     private javax.swing.JLabel addPostingPlaceJLabel;
     private com.toedter.calendar.JDateChooser addPostingStartDateJDateChooser;
     private javax.swing.JLabel addPostingStartDateJLabel;
     private javax.swing.JButton clearSeachPostingJButton;
     private javax.swing.JButton deletePostingJButton;
     private javax.swing.JLabel deletePostingJLabel;
-    private javax.swing.JComboBox<String> editPostingEmployeeJComboBox;
+    private javax.swing.JComboBox<Employee> editPostingEmployeeJComboBox;
     private javax.swing.JLabel editPostingEmployeeJLabel;
     private javax.swing.JLabel editPostingFormJLabel;
     private javax.swing.JButton editPostingJButton;
     private javax.swing.JPanel editPostingJPanel;
-    private javax.swing.JComboBox<String> editPostingPlaceJComboBox;
+    private javax.swing.JComboBox<Place> editPostingPlaceJComboBox;
     private javax.swing.JLabel editPostingPlaceJLabel;
     private com.toedter.calendar.JDateChooser editPostingStartDateJDateChooser;
     private javax.swing.JLabel editPostingStartDateJLabel;
