@@ -283,4 +283,36 @@ public class Posting {
         }
         return posting;
     }
+
+    public static void update(Connection connection, Integer id, Integer employeeId, Integer placeId,
+            Date serviceDate) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE posting SET " +
+                            "employee_id = ?, " +
+                            "place_id = ?, " +
+                            "service_date = ? " +
+                            "WHERE id = ?;");
+            statement.setObject(0, employeeId);
+            statement.setObject(1, placeId);
+            statement.setObject(2, serviceDate);
+            statement.setObject(3, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void destroy(Connection connection, Integer id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM " +
+                            Posting.TABLE_NAME +
+                            " WHERE id = ?;");
+            statement.setObject(0, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
