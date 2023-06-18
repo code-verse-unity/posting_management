@@ -95,4 +95,20 @@ public class Place {
         }
         return null;
     }
+    
+    public static void create(Connection connection, String name, String province) {
+        String query = "insert into place(name, province) values(?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(query);
+            
+            st.setString(1, name);
+            st.setString(2, province);
+            
+            st.executeUpdate();
+
+            System.out.println("place inserted");
+        } catch (SQLException ex) {
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
