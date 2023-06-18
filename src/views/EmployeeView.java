@@ -108,6 +108,7 @@ public class EmployeeView extends javax.swing.JPanel {
         searchTextField = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         searchBtn1 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         employeeFormContainer = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -149,6 +150,9 @@ public class EmployeeView extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setPreferredSize(new java.awt.Dimension(1288, 120));
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel1.setText("Liste des employés");
 
         searchBtn.setText("Rechercher");
@@ -165,6 +169,8 @@ public class EmployeeView extends javax.swing.JPanel {
             }
         });
 
+        jLabel15.setText("Indiquer le nom à chercher");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -178,7 +184,8 @@ public class EmployeeView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBtn1)))
+                        .addComponent(searchBtn1))
+                    .addComponent(jLabel15))
                 .addContainerGap(609, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -186,12 +193,14 @@ public class EmployeeView extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn)
                     .addComponent(searchBtn1))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -448,6 +457,8 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jPanel4.add(employeeFormContainer, java.awt.BorderLayout.LINE_END);
 
+        JScrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        JScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         JScrollPane.setPreferredSize(new java.awt.Dimension(600, 406));
 
         employeeTable.setAutoCreateRowSorter(true);
@@ -631,6 +642,7 @@ public class EmployeeView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

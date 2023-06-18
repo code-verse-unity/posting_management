@@ -116,7 +116,7 @@ public class App extends javax.swing.JFrame {
     private void placeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeBtnMouseClicked
         mainContent.removeAll();
      
-        PlaceView placeView = new PlaceView(connection);
+        PlaceView placeView = new PlaceView(connection,this);
         mainContent.add(placeView);
         mainContent.updateUI();
     }//GEN-LAST:event_placeBtnMouseClicked

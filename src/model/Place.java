@@ -57,7 +57,7 @@ public class Place {
     }
     
     public static ArrayList<Place> getAll(Connection connection) {
-        String query = "select * from place";
+        String query = "select * from place order by id";
         try {
             ResultSet result = connection.createStatement().executeQuery(query);
             
@@ -94,5 +94,52 @@ public class Place {
             Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public static void create(Connection connection, String name, String province) {
+        String query = "insert into place(name, province) values(?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(query);
+            
+            st.setString(1, name);
+            st.setString(2, province);
+            
+            st.executeUpdate();
+
+            System.out.println("place inserted");
+        } catch (SQLException ex) {
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void update(Connection connection,Integer id, String name, String province) {
+        String query = "update place set name = ?, province = ? where id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(query);
+
+            st.setString(1, name);
+            st.setString(2, province);
+            st.setInt(3, id);
+
+            st.executeUpdate();
+
+            System.out.println("place updated");
+        } catch (SQLException ex) {
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void destroy(Connection connection, Integer id) {
+        String query = "delete from place where id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(query);
+            st.setInt(1, id);
+
+            st.executeUpdate();
+
+            System.out.println("place destroyed");
+        } catch (SQLException ex) {
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

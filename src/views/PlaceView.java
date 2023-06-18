@@ -6,7 +6,10 @@ package views;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import model.Place;
 
 /**
@@ -15,25 +18,46 @@ import model.Place;
  */
 public class PlaceView extends javax.swing.JPanel {
     ArrayList<Place> places;
+    Connection connection;
+    Place selectedPlace;
+    
+    JFrame parent;
     /**
      * Creates new form PlaceView
      */
-    public PlaceView(Connection connection) {
+    public PlaceView(Connection connection,JFrame parent) {
+        this.connection = connection;
+        this.parent = parent;
         initComponents();
-        this.places =  Place.getAll(connection);
-        
-         DefaultTableModel model = (DefaultTableModel) placeTable.getModel();
-            for (Place place : places) {
-
-                Object[] row = new Object[4];
-                row[0] = place.getId();
-                row[1] = place.getName();
-                row[2] = place.getProvince();
-
-                model.addRow(row);
-            }
+        loadPlaces();
     }
 
+    private void loadPlaces() {
+        if (this.places != null) {
+            this.places.clear();
+        }
+
+        this.places = Place.getAll(connection);
+
+        DefaultTableModel model = (DefaultTableModel) placeTable.getModel();
+
+        model.setRowCount(0);
+
+        for (Place place : places) {
+
+            Object[] row = new Object[4];
+            row[0] = place.getId();
+            row[1] = place.getName();
+            row[2] = place.getProvince();
+
+            model.addRow(row);
+        }
+    }
+    
+    private void resetCreateForm() {
+        placeNameTextField.setText("");
+        provinceComboBox.setSelectedIndex(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,53 +69,214 @@ public class PlaceView extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        placeForm = new javax.swing.JPanel();
+        placeFormContainer = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        deletePlaceBtn = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        placeNameTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        provinceComboBox = new javax.swing.JComboBox<>();
+        createPlaceBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        placeNameToUpdateTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        provinceToUpdateComboBox = new javax.swing.JComboBox<>();
+        updatePlaceBtn = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         placeTable = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(815, 80));
+
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel2.setText("Liste des lieux");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 815, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(884, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        placeForm.setPreferredSize(new java.awt.Dimension(500, 382));
+        placeFormContainer.setPreferredSize(new java.awt.Dimension(500, 382));
+        placeFormContainer.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("form");
+        jLabel1.setText("Supprimer le lieu selectionné");
 
-        javax.swing.GroupLayout placeFormLayout = new javax.swing.GroupLayout(placeForm);
-        placeForm.setLayout(placeFormLayout);
-        placeFormLayout.setHorizontalGroup(
-            placeFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(placeFormLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jLabel1)
-                .addContainerGap(327, Short.MAX_VALUE))
+        deletePlaceBtn.setText("Supprimer");
+        deletePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePlaceBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(deletePlaceBtn))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
-        placeFormLayout.setVerticalGroup(
-            placeFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(placeFormLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deletePlaceBtn)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jPanel2.add(placeForm, java.awt.BorderLayout.LINE_END);
+        placeFormContainer.add(jPanel3, java.awt.BorderLayout.PAGE_END);
+
+        jLabel3.setText("Désignation");
+
+        jLabel4.setText("Province");
+
+        provinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
+
+        createPlaceBtn.setText("Ajouter");
+        createPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createPlaceBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(placeNameTextField)
+                        .addComponent(jLabel4)
+                        .addComponent(provinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(placeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(provinceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(createPlaceBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        jTabbedPane1.addTab("Ajouter un nouveau lieu", jPanel4);
+
+        jLabel5.setText("Désignation");
+
+        jLabel6.setText("Province");
+
+        provinceToUpdateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
+
+        updatePlaceBtn.setText("Sauvegarder les modifications");
+        updatePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePlaceBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5)
+                    .addComponent(placeNameToUpdateTextField)
+                    .addComponent(jLabel6)
+                    .addComponent(provinceToUpdateComboBox, 0, 399, Short.MAX_VALUE)
+                    .addComponent(updatePlaceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(placeNameToUpdateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(provinceToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updatePlaceBtn)
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator2))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+        );
+
+        jTabbedPane1.addTab("Modifier un lieu", jPanel5);
+
+        placeFormContainer.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(placeFormContainer, java.awt.BorderLayout.LINE_END);
 
         placeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,6 +294,11 @@ public class PlaceView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        placeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(placeTable);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -116,13 +306,85 @@ public class PlaceView extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deletePlaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePlaceBtnActionPerformed
+        if (placeTable.getSelectedRows().length == 0) {
+            JOptionPane.showMessageDialog(parent, "Vous devez selectionner au moins une ligne de la table", "Aucune ligne selectionnée", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (placeTable.getSelectedRows().length == 1) {
+                Place.destroy(this.connection, selectedPlace.getId());
+
+                loadPlaces();
+                selectedPlace = null;
+            }
+        }
+    }//GEN-LAST:event_deletePlaceBtnActionPerformed
+
+    private void createPlaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlaceBtnActionPerformed
+        String name = placeNameTextField.getText();
+        String province = provinceComboBox.getSelectedItem().toString();
+        
+        Place.create(connection, name, province);
+        loadPlaces();
+    }//GEN-LAST:event_createPlaceBtnActionPerformed
+
+    private void placeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeTableMouseClicked
+        if (placeTable.getSelectedRows().length == 1) {
+            int row = placeTable.getSelectedRow();
+
+            TableModel jtable = placeTable.getModel();
+
+            Integer id = Integer.parseInt(jtable.getValueAt(row, 0).toString());
+            selectedPlace = Place.getOneById(connection, id);
+
+            placeNameToUpdateTextField.setText(selectedPlace.getName());
+
+            provinceToUpdateComboBox.setSelectedItem(selectedPlace.getProvince());
+
+        }
+    }//GEN-LAST:event_placeTableMouseClicked
+
+    private void updatePlaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePlaceBtnActionPerformed
+        if (placeTable.getSelectedRows().length == 0) {
+            JOptionPane.showMessageDialog(parent, "Vous devez selectionner au moins une ligne de la table", "Aucune ligne selectionnée", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (placeTable.getSelectedRows().length == 1) {
+                String name = placeNameToUpdateTextField.getText();
+                String province = provinceToUpdateComboBox.getSelectedItem().toString();
+                
+                Place.update(this.connection, selectedPlace.getId(), name, province);
+
+                loadPlaces();
+                selectedPlace = null;
+            }
+        }
+    }//GEN-LAST:event_updatePlaceBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createPlaceBtn;
+    private javax.swing.JButton deletePlaceBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel placeForm;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel placeFormContainer;
+    private javax.swing.JTextField placeNameTextField;
+    private javax.swing.JTextField placeNameToUpdateTextField;
     private javax.swing.JTable placeTable;
+    private javax.swing.JComboBox<String> provinceComboBox;
+    private javax.swing.JComboBox<String> provinceToUpdateComboBox;
+    private javax.swing.JButton updatePlaceBtn;
     // End of variables declaration//GEN-END:variables
 }
