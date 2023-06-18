@@ -12,17 +12,18 @@ import java.util.*;
  * @author olivier
  */
 public class Employee {
+
     Integer id;
-    String lastName, firstName,email, civility, job;
+    String lastName, firstName, email, civility, job;
     Place place;
 
     public static String TABLE_NAME = "employee";
 
-    public Employee(){
-        
+    public Employee() {
+
     }
-    
-    public Employee(Integer id,String lastName,String firstName,String email, String civility, String job) {
+
+    public Employee(Integer id, String lastName, String firstName, String email, String civility, String job) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -31,7 +32,7 @@ public class Employee {
         this.job = job;
     }
 
-    public Employee(Integer id,String lastName,String firstName,String email, String civility, String job, Place place) {
+    public Employee(Integer id, String lastName, String firstName, String email, String civility, String job, Place place) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -45,41 +46,69 @@ public class Employee {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getCivility() {
         return civility;
+    }
+
+    public void setCivility(String civility) {
+        this.civility = civility;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getJob() {
         return job;
     }
-    
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
     public Place getPlace() {
         return this.place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public String getFullName() {
         return this.lastName + " " + this.firstName;
     }
-    
+
     public static ArrayList<Employee> getAll(Connection connection) {
         String query = "select * from employee order by id";
         try {
             ResultSet result = connection.createStatement().executeQuery(query);
-            
+
             ArrayList<Employee> employees = new ArrayList<Employee>();
-            while(result.next()){
+            while (result.next()) {
                 employees.add(new Employee(
                         result.getInt("id"),
                         result.getString("last_name"),
@@ -90,20 +119,43 @@ public class Employee {
                         Place.getOneById(connection, result.getInt("place_id"))
                 ));
             }
-            
+
             return employees;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
-    
-    public static ArrayList<Employee> getByName(Connection connection, String name) {
-        
-        String query = "select * from employee where last_name ilike '%"+ name + "%' or first_name ilike '%"+ name +"%' order by id";
-        
+
+    public static Employee getOneById(Connection connection, Integer id) {
+        String query = "select * from employee where id = " + id;
         try {
-            ResultSet result  = connection.createStatement().executeQuery(query);
+            ResultSet result = connection.createStatement().executeQuery(query);
+
+            Employee employee = new Employee();
+            while (result.next()) {
+                employee.setId(result.getInt("id"));
+                employee.setLastName(result.getString("last_name"));
+                employee.setFirstName(result.getString("first_name"));
+                employee.setEmail(result.getString("email"));
+                employee.setCivility(result.getString("civility"));
+                employee.setJob(result.getString("job"));
+                employee.setPlace(Place.getOneById(connection, result.getInt("place_id")));
+            }
+
+            return employee;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<Employee> getByName(Connection connection, String name) {
+
+        String query = "select * from employee where last_name ilike '%" + name + "%' or first_name ilike '%" + name + "%' order by id";
+
+        try {
+            ResultSet result = connection.createStatement().executeQuery(query);
 
             ArrayList<Employee> employees = new ArrayList<Employee>();
             while (result.next()) {
@@ -123,11 +175,10 @@ public class Employee {
         }
         return null;
     }
-    
-    
-    public static void create(Connection connection, String lastName, String firstName, String civility, String email,String job, Integer placeId) {
+
+    public static void create(Connection connection, String lastName, String firstName, String civility, String email, String job, Integer placeId) {
         String sql = "INSERT INTO \"employee\"(last_name, first_name, civility, email, job,place_id) VALUES(?,?,?,?,?,?)";
-        
+
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, lastName);
@@ -136,38 +187,40 @@ public class Employee {
             statement.setString(4, email);
             statement.setString(5, job);
             statement.setInt(6, placeId);
-            
+
             statement.executeUpdate();
-            
+
             System.out.println("Employee added");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-        public static void update(Connection connection,String id, String lastName, String firstName, String civility, String email) {
-        String sql = "UPDATE \"employee\" SET last_name = ? ,  first_name = ?, civility = ? , email = ? WHERE id = ?";
-        
+
+    public static void update(Connection connection, String id, String lastName, String firstName, String civility, String email, String job, Integer placeId) {
+        String sql = "UPDATE \"employee\" SET last_name = ? ,  first_name = ?, civility = ? , email = ?, job = ?, place_id = ? WHERE id = ?";
+
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, lastName);
             statement.setString(2, firstName);
             statement.setString(3, civility);
             statement.setString(4, email);
-            statement.setInt(5, Integer.parseInt(id) );
-            
+            statement.setString(5, job);
+            statement.setInt(6, placeId);
+            statement.setInt(7, Integer.parseInt(id));
+
             statement.executeUpdate();
-            
+
             System.out.println("Employee updated");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public static void destroy(Connection connection, String id) {
-        String sql = "DELETE FROM \"employee\" WHERE id = "+ id;
+        String sql = "DELETE FROM \"employee\" WHERE id = " + id;
 
         try {
             Statement statement = connection.createStatement();
