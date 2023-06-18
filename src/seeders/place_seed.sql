@@ -4,11 +4,11 @@
  */
 /**
  * Author:  olivier
- * Created: Jun 12, 2023
+ * Created: Jun 18, 2023
  */
 
-INSERT INTO "employee"(last_name, first_name, email, civility,job,place_id)
+INSERT INTO "place"(name, province)
     VALUES
-        ('Doe','John', 'john@doe.com', 'Mr','developer',1),
-        ('Smith','Jane', 'jane@smith.com', 'Mme','developer',1)
+        ('Analakely','Antananarivo'),
+         ('67ha','Antananarivo')
 ;

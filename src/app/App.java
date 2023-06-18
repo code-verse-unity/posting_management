@@ -124,7 +124,7 @@ public class App extends javax.swing.JFrame {
     private void postingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingBtnMouseClicked
         mainContent.removeAll();
      
-        PostingView postingView = new PostingView();
+        PostingView postingView = new PostingView(connection, this);
         mainContent.add(postingView);
         mainContent.updateUI();
     }//GEN-LAST:event_postingBtnMouseClicked

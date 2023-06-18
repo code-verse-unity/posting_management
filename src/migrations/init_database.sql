@@ -6,25 +6,23 @@
  * Author:  olivier
  * Created: Jun 11, 2023
  */
-
 create database posting_management_db;
-
-drop  database posting_management_db;
-
-create table "place"(
+drop database posting_management_db;
+CREATE TABLE place (
 	id serial primary key,
-	name varchar(255) not null,
-	province varchar() not null
+	name character varying(255) NOT NULL,
+	province character varying(255) NOT NULL
 );
-
-create table "employee"(
+CREATE TABLE employee (
 	id serial primary key,
-	civility varchar(4) not null,
-	last_name varchar(255) not null,
-	first_name varchar(255) not null,
-	email  varchar(255) not null
+	civility character varying(4) NOT NULL,
+	last_name character varying(255) NOT NULL,
+	first_name character varying(255) NOT NULL,
+	email character varying(255) NOT NULL,
+	job character varying(255) NOT NULL,
+	place_id integer NOT NULL,
+	CONSTRAINT fk_place FOREIGN KEY (place_id) REFERENCES "place"(id) ON DELETE CASCADE
 );
-
 create table posting(
 	id serial primary key,
 	place_id int,
@@ -32,13 +30,7 @@ create table posting(
 	old_place_id int not null,
 	posting_date Date not null,
 	service_date Date not null,
-	CONSTRAINT fk_place
-		foreign key(place_id)
-			references "place"(id),
-	CONSTRAINT fk_employee
-		foreign key(employee_id)
-			references "employee"(id),
-	CONSTRAINT fk_old_place
-		foreign key(old_place_id)
-			references "place"(id)
+	CONSTRAINT fk_place foreign key(place_id) references "place"(id),
+	CONSTRAINT fk_employee foreign key(employee_id) references "employee"(id),
+	CONSTRAINT fk_old_place foreign key(old_place_id) references "place"(id)
 );
