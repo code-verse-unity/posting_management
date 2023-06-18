@@ -6,7 +6,10 @@ package views;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import model.Place;
 
 /**
@@ -16,11 +19,15 @@ import model.Place;
 public class PlaceView extends javax.swing.JPanel {
     ArrayList<Place> places;
     Connection connection;
+    Place selectedPlace;
+    
+    JFrame parent;
     /**
      * Creates new form PlaceView
      */
-    public PlaceView(Connection connection) {
+    public PlaceView(Connection connection,JFrame parent) {
         this.connection = connection;
+        this.parent = parent;
         initComponents();
         loadPlaces();
     }
@@ -67,14 +74,14 @@ public class PlaceView extends javax.swing.JPanel {
         placeFormContainer = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        deletePlaceBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         placeNameTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         provinceComboBox = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        createPlaceBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -82,7 +89,7 @@ public class PlaceView extends javax.swing.JPanel {
         placeNameToUpdateTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         provinceToUpdateComboBox = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        updatePlaceBtn = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         placeTable = new javax.swing.JTable();
@@ -120,10 +127,10 @@ public class PlaceView extends javax.swing.JPanel {
 
         jLabel1.setText("Supprimer le lieu selectionné");
 
-        jButton1.setText("Supprimer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        deletePlaceBtn.setText("Supprimer");
+        deletePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deletePlaceBtnActionPerformed(evt);
             }
         });
 
@@ -135,7 +142,7 @@ public class PlaceView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(deletePlaceBtn))
                 .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -144,7 +151,7 @@ public class PlaceView extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(deletePlaceBtn)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -156,10 +163,10 @@ public class PlaceView extends javax.swing.JPanel {
 
         provinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
 
-        jButton2.setText("Ajouter");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        createPlaceBtn.setText("Ajouter");
+        createPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                createPlaceBtnActionPerformed(evt);
             }
         });
 
@@ -176,7 +183,7 @@ public class PlaceView extends javax.swing.JPanel {
                         .addComponent(placeNameTextField)
                         .addComponent(jLabel4)
                         .addComponent(provinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -191,7 +198,7 @@ public class PlaceView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(provinceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(createPlaceBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -205,7 +212,12 @@ public class PlaceView extends javax.swing.JPanel {
 
         provinceToUpdateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
 
-        jButton3.setText("Sauvegarder les modifications");
+        updatePlaceBtn.setText("Sauvegarder les modifications");
+        updatePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePlaceBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -218,7 +230,7 @@ public class PlaceView extends javax.swing.JPanel {
                     .addComponent(placeNameToUpdateTextField)
                     .addComponent(jLabel6)
                     .addComponent(provinceToUpdateComboBox, 0, 399, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(updatePlaceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -233,7 +245,7 @@ public class PlaceView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(provinceToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(updatePlaceBtn)
                 .addContainerGap(75, Short.MAX_VALUE))
         );
 
@@ -282,6 +294,11 @@ public class PlaceView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        placeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(placeTable);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -289,23 +306,63 @@ public class PlaceView extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void deletePlaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePlaceBtnActionPerformed
+        if (placeTable.getSelectedRows().length == 0) {
+            JOptionPane.showMessageDialog(parent, "Vous devez selectionner au moins une ligne de la table", "Aucune ligne selectionnée", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (placeTable.getSelectedRows().length == 1) {
+                Place.destroy(this.connection, selectedPlace.getId());
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                loadPlaces();
+                selectedPlace = null;
+            }
+        }
+    }//GEN-LAST:event_deletePlaceBtnActionPerformed
+
+    private void createPlaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlaceBtnActionPerformed
         String name = placeNameTextField.getText();
         String province = provinceComboBox.getSelectedItem().toString();
         
         Place.create(connection, name, province);
         loadPlaces();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_createPlaceBtnActionPerformed
+
+    private void placeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeTableMouseClicked
+        if (placeTable.getSelectedRows().length == 1) {
+            int row = placeTable.getSelectedRow();
+
+            TableModel jtable = placeTable.getModel();
+
+            Integer id = Integer.parseInt(jtable.getValueAt(row, 0).toString());
+            selectedPlace = Place.getOneById(connection, id);
+
+            placeNameToUpdateTextField.setText(selectedPlace.getName());
+
+            provinceToUpdateComboBox.setSelectedItem(selectedPlace.getProvince());
+
+        }
+    }//GEN-LAST:event_placeTableMouseClicked
+
+    private void updatePlaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePlaceBtnActionPerformed
+        if (placeTable.getSelectedRows().length == 0) {
+            JOptionPane.showMessageDialog(parent, "Vous devez selectionner au moins une ligne de la table", "Aucune ligne selectionnée", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (placeTable.getSelectedRows().length == 1) {
+                String name = placeNameToUpdateTextField.getText();
+                String province = provinceToUpdateComboBox.getSelectedItem().toString();
+                
+                Place.update(this.connection, selectedPlace.getId(), name, province);
+
+                loadPlaces();
+                selectedPlace = null;
+            }
+        }
+    }//GEN-LAST:event_updatePlaceBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton createPlaceBtn;
+    private javax.swing.JButton deletePlaceBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,5 +385,6 @@ public class PlaceView extends javax.swing.JPanel {
     private javax.swing.JTable placeTable;
     private javax.swing.JComboBox<String> provinceComboBox;
     private javax.swing.JComboBox<String> provinceToUpdateComboBox;
+    private javax.swing.JButton updatePlaceBtn;
     // End of variables declaration//GEN-END:variables
 }

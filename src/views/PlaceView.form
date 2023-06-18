@@ -96,7 +96,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="deletePlaceBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="307" max="32767" attributes="0"/>
                       </Group>
@@ -108,7 +108,7 @@
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="deletePlaceBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="32" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -120,12 +120,12 @@
                     <Property name="text" type="java.lang.String" value="Supprimer le lieu selectionn&#xe9;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="deletePlaceBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Supprimer"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePlaceBtnActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -160,7 +160,7 @@
                                       <Component id="placeNameTextField" max="32767" attributes="0"/>
                                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="provinceComboBox" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jButton2" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
+                                      <Component id="createPlaceBtn" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="95" max="32767" attributes="0"/>
@@ -179,7 +179,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="provinceComboBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="createPlaceBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="209" max="32767" attributes="0"/>
                               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -211,12 +211,12 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="createPlaceBtn">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ajouter"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createPlaceBtnActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -273,7 +273,7 @@
                                       <Component id="placeNameToUpdateTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="provinceToUpdateComboBox" alignment="0" pref="399" max="32767" attributes="0"/>
-                                      <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="updatePlaceBtn" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="95" max="32767" attributes="0"/>
                               </Group>
@@ -291,7 +291,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="provinceToUpdateComboBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updatePlaceBtn" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="75" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -320,10 +320,13 @@
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton3">
+                        <Component class="javax.swing.JButton" name="updatePlaceBtn">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Sauvegarder les modifications"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePlaceBtnActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -379,6 +382,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="placeTableMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
