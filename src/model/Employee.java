@@ -165,7 +165,8 @@ public class Employee {
                         result.getString("first_name"),
                         result.getString("email"),
                         result.getString("civility"),
-                        result.getString("job")
+                        result.getString("job"),
+                        Place.getOneById(connection, result.getInt("place_id"))
                 ));
             }
 

@@ -578,12 +578,14 @@ public class EmployeeView extends javax.swing.JPanel {
         // Add the new rows
         for (Employee employee : employees) {
 
-            Object[] row = new Object[5];
+            Object[] row = new Object[7];
             row[0] = employee.getId();
             row[1] = employee.getFirstName();
             row[2] = employee.getLastName();
             row[3] = employee.getEmail();
             row[4] = employee.getCivility();
+            row[5] = employee.getJob();
+            row[6] = employee.getPlace().getFullName();
 
             model.addRow(row);
         }
