@@ -7,8 +7,8 @@
  * Created: Jun 12, 2023
  */
 
-INSERT INTO "employee"(last_name, first_name, email, civility)
+INSERT INTO "employee"(last_name, first_name, email, civility,job,place_id)
     VALUES
-        ('John', 'Doe', 'john@doe.com', 'Mr'),
-        ('Jane', 'Smith', 'jane@smith.com', 'Mme')
+        ('Doe','John', 'john@doe.com', 'Mr','developer',1),
+        ('Smith','Jane', 'jane@smith.com', 'Mme','developer',1)
 ;

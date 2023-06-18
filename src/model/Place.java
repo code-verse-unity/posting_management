@@ -32,12 +32,24 @@ public class Place {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    } 
+
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getProvince() {
         return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getFullName() {
@@ -59,6 +71,25 @@ public class Place {
             }
             
             return places;
+        } catch (SQLException ex) {
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static Place getOneById(Connection connection, Integer id) {
+        String query = "select * from place where id = "+ id;
+        try {
+            ResultSet result = connection.createStatement().executeQuery(query);
+            
+            Place place = new Place();
+            while(result.next()){
+                place.setId(result.getInt("id"));
+                place.setName(result.getString("name"));
+                place.setProvince( result.getString("province"));
+            }
+            
+            return place;
         } catch (SQLException ex) {
             Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
         }

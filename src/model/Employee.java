@@ -86,7 +86,8 @@ public class Employee {
                         result.getString("first_name"),
                         result.getString("email"),
                         result.getString("civility"),
-                        result.getString("job")
+                        result.getString("job"),
+                        Place.getOneById(connection, result.getInt("place_id"))
                 ));
             }
             
@@ -124,8 +125,8 @@ public class Employee {
     }
     
     
-    public static void create(Connection connection, String lastName, String firstName, String civility, String email) {
-        String sql = "INSERT INTO \"employee\"(last_name, first_name, civility, email) VALUES(?,?,?,?)";
+    public static void create(Connection connection, String lastName, String firstName, String civility, String email,String job, Integer placeId) {
+        String sql = "INSERT INTO \"employee\"(last_name, first_name, civility, email, job,place_id) VALUES(?,?,?,?,?,?)";
         
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -133,6 +134,8 @@ public class Employee {
             statement.setString(2, firstName);
             statement.setString(3, civility);
             statement.setString(4, email);
+            statement.setString(5, job);
+            statement.setInt(6, placeId);
             
             statement.executeUpdate();
             

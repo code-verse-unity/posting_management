@@ -20,7 +20,7 @@ CREATE TABLE employee (
 	first_name character varying(255) NOT NULL,
 	email character varying(255) NOT NULL,
 	job character varying(255) NOT NULL,
-	place_id integer NOT NULL UNIQUE,
+	place_id integer NOT NULL,
 	CONSTRAINT fk_place FOREIGN KEY (place_id) REFERENCES "place"(id) ON DELETE CASCADE
 );
 create table posting(
