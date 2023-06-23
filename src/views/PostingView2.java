@@ -125,17 +125,17 @@ public class PostingView2 extends javax.swing.JPanel {
     }
 
     public void refillEditPostingEmployeeJComboBox() {
-//        DefaultComboBoxModel<Employee> comboBoxModel = (DefaultComboBoxModel<Employee>) postingEmployeeJComboBox.getModel();
-//
-//        comboBoxModel.removeAllElements();
-//
-//        for (Employee employee : this.employees) {
-//            comboBoxModel.addElement(employee);
-//
-//            if (employee.getId() == this.getPostingSelected().getEmployee().getId()) {
-//                comboBoxModel.setSelectedItem(employee);
-//            }
-//        }
+        DefaultComboBoxModel<Employee> comboBoxModel = (DefaultComboBoxModel<Employee>) employeeToUpdateComboBox.getModel();
+
+        comboBoxModel.removeAllElements();
+
+        for (Employee employee : this.employees) {
+            comboBoxModel.addElement(employee);
+
+            if (employee.getId() == this.getPostingSelected().getEmployee().getId()) {
+                comboBoxModel.setSelectedItem(employee);
+            }
+        }
     }
 
     public void refillEditPostingPlaceJComboBox() {
@@ -213,6 +213,14 @@ public class PostingView2 extends javax.swing.JPanel {
         addPostingStartDateJDateChooser = new com.toedter.calendar.JDateChooser();
         addPostingBtn = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
+        addPostingFormJLabel2 = new javax.swing.JLabel();
+        addPostingEmployeeJLabel2 = new javax.swing.JLabel();
+        employeeToUpdateComboBox = new javax.swing.JComboBox<>();
+        addPostingPlaceJLabel2 = new javax.swing.JLabel();
+        placeToUpdateComboBox = new javax.swing.JComboBox<>();
+        addPostingStartDateJLabel2 = new javax.swing.JLabel();
+        startDateToUpdateJDateChooser = new com.toedter.calendar.JDateChooser();
+        updatePostingBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         deletePostingJLabel = new javax.swing.JLabel();
         deletePostingBtn = new javax.swing.JButton();
@@ -384,15 +392,89 @@ public class PostingView2 extends javax.swing.JPanel {
 
         jTabbedPane3.addTab("Ajouter une afféctation", jPanel6);
 
+        addPostingFormJLabel2.setText("Veuiller remplir le formulaire :");
+
+        addPostingEmployeeJLabel2.setText("Employé :");
+
+        employeeToUpdateComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        employeeToUpdateComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Employee) {
+                    Employee employee = (Employee) value;
+                    setText(employee.getId() + ". " + employee.getFullName());
+                }
+                return this;
+            }
+        });
+
+        addPostingPlaceJLabel2.setText("Lieu d'afféctation :");
+
+        placeToUpdateComboBox.setModel(new DefaultComboBoxModel<Place>());
+        placeToUpdateComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Place) {
+                    Place place = (Place) value;
+                    setText(place.getFullName());
+                }
+                return this;
+            }
+        });
+
+        addPostingStartDateJLabel2.setText("Date de prise de service :");
+
+        updatePostingBtn.setText("Enregistrer les modifications");
+        updatePostingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePostingBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(addPostingFormJLabel2)
+                        .addGap(122, 122, 122))
+                    .addComponent(addPostingEmployeeJLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPostingPlaceJLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPostingStartDateJLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(updatePostingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(startDateToUpdateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addPostingFormJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addPostingEmployeeJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(employeeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addPostingPlaceJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(placeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(addPostingStartDateJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(startDateToUpdateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updatePostingBtn)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Mettre à jour l'affectation", jPanel7);
@@ -537,18 +619,27 @@ public class PostingView2 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_postingListTableMouseClicked
 
+    private void updatePostingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePostingBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePostingBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPostingBtn;
     private javax.swing.JLabel addPostingEmployeeJLabel1;
+    private javax.swing.JLabel addPostingEmployeeJLabel2;
     private javax.swing.JLabel addPostingFormJLabel1;
+    private javax.swing.JLabel addPostingFormJLabel2;
     private javax.swing.JLabel addPostingPlaceJLabel1;
+    private javax.swing.JLabel addPostingPlaceJLabel2;
     private com.toedter.calendar.JDateChooser addPostingStartDateJDateChooser;
     private javax.swing.JLabel addPostingStartDateJLabel1;
+    private javax.swing.JLabel addPostingStartDateJLabel2;
     private javax.swing.JButton clearSeachPostingJButton;
     private javax.swing.JButton deletePostingBtn;
     private javax.swing.JLabel deletePostingJLabel;
     private javax.swing.JComboBox<Employee> employeeComboBox;
+    private javax.swing.JComboBox<Employee> employeeToUpdateComboBox;
     private com.toedter.calendar.JDateChooser endDateJDateChooser;
     private javax.swing.JLabel endDateJLabel;
     private javax.swing.JButton generatePDFJButton;
@@ -564,6 +655,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JComboBox<Place> placeComboBox;
+    private javax.swing.JComboBox<Place> placeToUpdateComboBox;
     private javax.swing.JTable postingListTable;
     private javax.swing.JPanel postingTab;
     private javax.swing.JPanel searchContainer;
@@ -571,5 +663,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JLabel searchPostingJLabel;
     private com.toedter.calendar.JDateChooser startDateJDateChooser;
     private javax.swing.JLabel startDateJLabel;
+    private com.toedter.calendar.JDateChooser startDateToUpdateJDateChooser;
+    private javax.swing.JButton updatePostingBtn;
     // End of variables declaration//GEN-END:variables
 }

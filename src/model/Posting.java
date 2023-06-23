@@ -298,10 +298,10 @@ public class Posting {
                             "place_id = ?, " +
                             "service_date = ? " +
                             "WHERE id = ?;");
-            statement.setObject(0, employeeId);
-            statement.setObject(1, placeId);
-            statement.setObject(2, serviceDate);
-            statement.setObject(3, id);
+            statement.setObject(1, employeeId);
+            statement.setObject(2, placeId);
+            statement.setObject(3, serviceDate);
+            statement.setObject(4, id);
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
