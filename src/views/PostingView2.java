@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import model.Employee;
 import model.Place;
@@ -55,23 +56,23 @@ public class PostingView2 extends javax.swing.JPanel {
     }
 
     public void refillPostingListJTable() {
-//        reloadPostings();
-//
-//        DefaultTableModel postingModel = (DefaultTableModel) postingListJTable.getModel();
-//
-//        postingModel.setRowCount(0);
-//
-//        for (Posting posting : this.postings) {
-//            Object[] row = new Object[6];
-//            row[0] = posting.getId();
-//            row[1] = posting.getEmployee().getCivility() + " " + posting.getEmployee().getFullName();
-//            row[2] = posting.getOldPlace().getName() + ", " + posting.getOldPlace().getProvince();
-//            row[3] = posting.getPlace().getName() + ", " + posting.getPlace().getProvince();
-//            row[4] = DateFormatter.format(posting.getPostingDate());
-//            row[5] = DateFormatter.format(posting.getServiceDate());
-//
-//            postingModel.addRow(row);
-//        }
+        reloadPostings();
+
+        DefaultTableModel postingModel = (DefaultTableModel) postingListTable.getModel();
+
+        postingModel.setRowCount(0);
+
+        for (Posting posting : this.postings) {
+            Object[] row = new Object[6];
+            row[0] = posting.getId();
+            row[1] = posting.getEmployee().getCivility() + " " + posting.getEmployee().getFullName();
+            row[2] = posting.getOldPlace().getName() + ", " + posting.getOldPlace().getProvince();
+            row[3] = posting.getPlace().getName() + ", " + posting.getPlace().getProvince();
+            row[4] = DateFormatter.format(posting.getPostingDate());
+            row[5] = DateFormatter.format(posting.getServiceDate());
+
+            postingModel.addRow(row);
+        }
     }
 
     private Integer postingEmployeeIdSelected = 0;
@@ -214,16 +215,16 @@ public class PostingView2 extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         deletePostingJLabel = new javax.swing.JLabel();
-        deletePostingJButton = new javax.swing.JButton();
+        deletePostingBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         generatePDFJLabel = new javax.swing.JLabel();
         generatePDFJButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        postingListTable = new javax.swing.JTable();
         historicTab = new javax.swing.JPanel();
 
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         postingTab.setLayout(new java.awt.BorderLayout());
 
@@ -292,7 +293,7 @@ public class PostingView2 extends javax.swing.JPanel {
         postingTab.add(searchContainer, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 623));
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         addPostingFormJLabel1.setText("Veuiller remplir le formulaire :");
 
@@ -404,7 +405,12 @@ public class PostingView2 extends javax.swing.JPanel {
 
         deletePostingJLabel.setText("Supprimer l'affectation seletionnée :");
 
-        deletePostingJButton.setText("Supprimer");
+        deletePostingBtn.setText("Supprimer");
+        deletePostingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePostingBtnActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -425,7 +431,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(deletePostingJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deletePostingJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(deletePostingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -442,7 +448,7 @@ public class PostingView2 extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(deletePostingJLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deletePostingJButton))
+                        .addComponent(deletePostingBtn))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator1)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -456,20 +462,22 @@ public class PostingView2 extends javax.swing.JPanel {
 
         postingTab.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        postingListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id", "Employée", "Lieu actuel", "Lieu d'affectation", "Date d'affection", "Date de prise de service"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        postingListTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postingListTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(postingListTable);
 
         jPanel5.add(jScrollPane1);
 
@@ -499,9 +507,9 @@ public class PostingView2 extends javax.swing.JPanel {
         Integer oldPlaceId = employee.getPlace().getId();
         Integer newPlaceId = ((Place) placeComboBox.getSelectedItem()).getId();
         Date startDate = addPostingStartDateJDateChooser.getDate();
-        
-        Posting.create(connection, employeeId, oldPlaceId, newPlaceId, startDate);
 
+        Posting.create(connection, employeeId, oldPlaceId, newPlaceId, startDate);
+        refillPostingListJTable();
     }//GEN-LAST:event_addPostingBtnActionPerformed
 
     private void searchPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPostingJButtonActionPerformed
@@ -512,6 +520,23 @@ public class PostingView2 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_generatePDFJButtonActionPerformed
 
+    private void deletePostingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePostingBtnActionPerformed
+        if (this.postingSelected != null) {
+            Posting.destroy(connection, this.postingSelected.getId());
+            refillPostingListJTable();
+        }
+       
+    }//GEN-LAST:event_deletePostingBtnActionPerformed
+
+    private void postingListTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingListTableMouseClicked
+        if (postingListTable.getSelectedRows().length == 1) {
+            int row = postingListTable.getSelectedRow();
+            TableModel jtable = postingListTable.getModel();
+            Integer id = Integer.parseInt(jtable.getValueAt(row, 0).toString());
+            this.postingSelected = Posting.getById(connection, id);
+        }
+    }//GEN-LAST:event_postingListTableMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPostingBtn;
@@ -521,7 +546,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser addPostingStartDateJDateChooser;
     private javax.swing.JLabel addPostingStartDateJLabel1;
     private javax.swing.JButton clearSeachPostingJButton;
-    private javax.swing.JButton deletePostingJButton;
+    private javax.swing.JButton deletePostingBtn;
     private javax.swing.JLabel deletePostingJLabel;
     private javax.swing.JComboBox<Employee> employeeComboBox;
     private com.toedter.calendar.JDateChooser endDateJDateChooser;
@@ -538,8 +563,8 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<Place> placeComboBox;
+    private javax.swing.JTable postingListTable;
     private javax.swing.JPanel postingTab;
     private javax.swing.JPanel searchContainer;
     private javax.swing.JButton searchPostingJButton;

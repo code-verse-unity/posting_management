@@ -314,7 +314,7 @@ public class Posting {
                     "DELETE FROM " +
                             Posting.TABLE_NAME +
                             " WHERE id = ?;");
-            statement.setObject(0, id);
+            statement.setObject(1, id);
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
