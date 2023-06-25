@@ -10,6 +10,7 @@ import views.PlaceView;
 import views.PostingView;
 import java.sql.Connection;
 import utils.Database;
+import views.PostingView2;
 
 /**
  *
@@ -41,7 +42,7 @@ public class App extends javax.swing.JFrame {
         sidebar = new javax.swing.JPanel();
         employeeBtn = new javax.swing.JLabel();
         placeBtn = new javax.swing.JLabel();
-        postingBtn = new javax.swing.JLabel();
+        postingBtn1 = new javax.swing.JLabel();
         mainContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,10 +67,10 @@ public class App extends javax.swing.JFrame {
             }
         });
 
-        postingBtn.setText("Afféctations");
-        postingBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        postingBtn1.setText("Afféctations");
+        postingBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                postingBtnMouseClicked(evt);
+                postingBtn1MouseClicked(evt);
             }
         });
 
@@ -79,7 +80,7 @@ public class App extends javax.swing.JFrame {
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(employeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(placeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-            .addComponent(postingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(postingBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
         sidebarLayout.setVerticalGroup(
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,9 +89,9 @@ public class App extends javax.swing.JFrame {
                 .addComponent(employeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(placeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(postingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(postingBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebar, java.awt.BorderLayout.LINE_START);
@@ -121,13 +122,13 @@ public class App extends javax.swing.JFrame {
         mainContent.updateUI();
     }//GEN-LAST:event_placeBtnMouseClicked
 
-    private void postingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingBtnMouseClicked
-        mainContent.removeAll();
+    private void postingBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingBtn1MouseClicked
+         mainContent.removeAll();
      
-        PostingView postingView = new PostingView(connection, this);
+        PostingView2 postingView = new PostingView2(connection, this);
         mainContent.add(postingView);
         mainContent.updateUI();
-    }//GEN-LAST:event_postingBtnMouseClicked
+    }//GEN-LAST:event_postingBtn1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -172,7 +173,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel employeeBtn;
     private javax.swing.JPanel mainContent;
     private javax.swing.JLabel placeBtn;
-    private javax.swing.JLabel postingBtn;
+    private javax.swing.JLabel postingBtn1;
     private javax.swing.JPanel sidebar;
     // End of variables declaration//GEN-END:variables
 }
