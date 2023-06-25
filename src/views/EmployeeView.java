@@ -109,6 +109,7 @@ public class EmployeeView extends javax.swing.JPanel {
         searchBtn = new javax.swing.JButton();
         searchBtn1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        noPostedEmployeeCheckBox = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         employeeFormContainer = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -150,7 +151,7 @@ public class EmployeeView extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(1288, 120));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1288, 160));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel1.setText("Liste des employés");
@@ -171,6 +172,13 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jLabel15.setText("Indiquer le nom à chercher");
 
+        noPostedEmployeeCheckBox.setText("Afficher les employées non afféctés");
+        noPostedEmployeeCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noPostedEmployeeCheckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -179,13 +187,15 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
+                    .addComponent(jLabel15)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(noPostedEmployeeCheckBox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBtn1))
-                    .addComponent(jLabel15))
+                        .addComponent(searchBtn1)))
                 .addContainerGap(609, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -200,7 +210,9 @@ public class EmployeeView extends javax.swing.JPanel {
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn)
                     .addComponent(searchBtn1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(noPostedEmployeeCheckBox)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -615,6 +627,38 @@ public class EmployeeView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_employeePlaceComboBoxToUpdateActionPerformed
 
+    private void noPostedEmployeeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noPostedEmployeeCheckBoxActionPerformed
+        if (noPostedEmployeeCheckBox.isSelected()) {
+            if (this.employees != null) {
+                this.employees.clear();
+            }
+
+            this.employees = Employee.getNoPostedEmployees(this.connection);
+
+            DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
+
+            // Reset the row table
+            model.setRowCount(0);
+
+            // Add the new rows
+            for (Employee employee : employees) {
+
+                Object[] row = new Object[7];
+                row[0] = employee.getId();
+                row[1] = employee.getFirstName();
+                row[2] = employee.getLastName();
+                row[3] = employee.getEmail();
+                row[4] = employee.getCivility();
+                row[5] = employee.getJob();
+                row[6] = employee.getPlace().getFullName();
+
+                model.addRow(row);
+            }
+        }else{
+            loadEmployee();
+        }
+    }//GEN-LAST:event_noPostedEmployeeCheckBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JScrollPane;
@@ -655,6 +699,7 @@ public class EmployeeView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JCheckBox noPostedEmployeeCheckBox;
     private javax.swing.JButton searchBtn;
     private javax.swing.JButton searchBtn1;
     private javax.swing.JTextField searchTextField;
