@@ -176,6 +176,34 @@ public class Employee {
         }
         return null;
     }
+    
+    public static ArrayList<Employee> getNoPostedEmployees(Connection connection) {
+        String query = "select e.* from " + Employee.TABLE_NAME + " as e "
+                + "    left join " + Posting.TABLE_NAME + " as p "
+                + "    on e.id = p.employee_id "
+                + "    where p.employee_id is null;";
+        try {
+            ResultSet result = connection.createStatement().executeQuery(query);
+
+            ArrayList<Employee> employees = new ArrayList<Employee>();
+            while (result.next()) {
+                employees.add(new Employee(
+                        result.getInt("id"),
+                        result.getString("last_name"),
+                        result.getString("first_name"),
+                        result.getString("email"),
+                        result.getString("civility"),
+                        result.getString("job"),
+                        Place.getOneById(connection, result.getInt("place_id"))
+                ));
+            }
+
+            return employees;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 
     public static void create(Connection connection, String lastName, String firstName, String civility, String email, String job, Integer placeId) {
         String sql = "INSERT INTO \"employee\"(last_name, first_name, civility, email, job,place_id) VALUES(?,?,?,?,?,?)";
