@@ -544,6 +544,7 @@ public class PostingView2 extends javax.swing.JPanel {
 
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
+        postingListJTable.setAutoCreateRowSorter(true);
         postingListJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
