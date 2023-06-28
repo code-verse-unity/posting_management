@@ -159,6 +159,76 @@ public class Posting {
         return postings;
     }
 
+    public static ArrayList<Posting> getBetweenDates(Connection connection, Date startAt, Date endAt) {
+        ArrayList<Posting> postings = new ArrayList<Posting>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT p.id as postingId, " +
+                            "p.service_date as postingServiceDate, " +
+                            "p.posting_date as postingDate, " +
+                            "e.id as employeeId, " +
+                            "e.civility as employeeCivility, " +
+                            "e.first_name as employeeFirstName, " +
+                            "e.last_name as employeeLastName, " +
+                            "e.email as employeeEmail, " +
+                            "e.job as employeeJob, " +
+                            "p1.id as actualPlaceId, " +
+                            "p1.name as actualPlaceName, " +
+                            "p1.province as actualPlaceProvince, " +
+                            "p2.id as postingPlaceId, " +
+                            "p2.name as postingPlaceName, " +
+                            "p2.province as postingPlaceProvince, " +
+                            "p3.id as oldPlaceId, " +
+                            "p3.name as oldPlaceName, " +
+                            "p3.province as oldPlaceProvince " +
+                            "FROM " + Posting.TABLE_NAME + " p " +
+                            "INNER JOIN " + Employee.TABLE_NAME + " e ON p.employee_id = e.id " +
+                            "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
+                            "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
+                            "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
+                            "WHERE p.posting_date BETWEEN ? AND ? " +
+                            "ORDER BY p.posting_date DESC");
+
+            statement.setObject(1, new java.sql.Date((startAt).getTime()));
+            statement.setObject(2, new java.sql.Date((endAt).getTime()));
+
+            ResultSet resultSet = statement.executeQuery();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            while (resultSet.next()) {
+                postings.add(
+                        new Posting(
+                                resultSet.getInt("postingId"),
+                                new Employee(
+                                        resultSet.getInt("employeeId"),
+                                        resultSet.getString("employeeLastName"),
+                                        resultSet.getString("employeeFirstName"),
+                                        resultSet.getString("employeeEmail"),
+                                        resultSet.getString("employeeCivility"),
+                                        resultSet.getString("employeeJob"),
+                                        new Place(
+                                                resultSet.getInt("actualPlaceId"),
+                                                resultSet.getString("actualPlaceName"),
+                                                resultSet.getString("actualPlaceProvince"))),
+                                new Place(
+                                        resultSet.getInt("postingPlaceId"),
+                                        resultSet.getString("postingPlaceName"),
+                                        resultSet.getString("postingPlaceProvince")),
+                                new Place(
+                                        resultSet.getInt("oldPlaceId"),
+                                        resultSet.getString("oldPlaceName"),
+                                        resultSet.getString("oldPlaceProvince")),
+                                dateFormat.parse(resultSet.getString("postingDate")),
+                                dateFormat.parse(resultSet.getString("postingServiceDate"))));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return postings;
+    }
+
     public static ArrayList<Posting> getByEmployeeId(Connection connection, Integer employeeId) {
         ArrayList<Posting> postings = new ArrayList<Posting>();
         try {
