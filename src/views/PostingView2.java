@@ -92,12 +92,12 @@ public class PostingView2 extends javax.swing.JPanel {
     }
 
     public void refillPostingEmployeeJComboBox() {
-        // DefaultComboBoxModel<Employee> comboBoxModel =
-        // (DefaultComboBoxModel<Employee>) postingEmployeeJComboBox.getModel();
-        //
-        // for (Employee employee : this.employees) {
-        // comboBoxModel.addElement(employee);
-        // }
+        DefaultComboBoxModel<Employee> comboBoxModel =
+            (DefaultComboBoxModel<Employee>) postingEmployeeJComboBox.getModel();
+        
+        for (Employee employee : this.employees) {
+            comboBoxModel.addElement(employee);
+        }
     }
 
     private Posting postingSelected = null;
@@ -111,29 +111,27 @@ public class PostingView2 extends javax.swing.JPanel {
     }
 
     public void refillPostingEmployeeListJTable() {
-        // DefaultTableModel postingEmployeeModel = (DefaultTableModel)
-        // postingListJTable.getModel();
-        //
-        // postingEmployeeModel.setRowCount(0);
-        //
-        // ArrayList<Posting> postings = Posting.getByEmployeeId(this.connection,
-        // this.getPostingEmployeeIdSelected());
-        //
-        // for (Posting posting : postings) {
-        // Object[] row = new Object[6];
-        // row[0] = posting.getId();
-        // row[1] = posting.getEmployee().getCivility() + " " +
-        // posting.getEmployee().getLastName() + " "
-        // + posting.getEmployee().getFirstName();
-        // row[2] = posting.getOldPlace().getName() + ", " +
-        // posting.getOldPlace().getProvince();
-        // row[3] = posting.getPlace().getName() + ", " +
-        // posting.getPlace().getProvince();
-        // row[4] = DateFormatter.format(posting.getPostingDate());
-        // row[5] = DateFormatter.format(posting.getServiceDate());
-        //
-        // postingEmployeeModel.addRow(row);
-        // }
+        DefaultTableModel postingEmployeeModel = (DefaultTableModel) postingEmployeeListJTable.getModel();
+        postingEmployeeModel.setRowCount(0);
+
+        ArrayList<Posting> postings = Posting.getByEmployeeId(this.connection,
+        this.getPostingEmployeeIdSelected());
+
+        for (Posting posting : postings) {
+            Object[] row = new Object[6];
+            row[0] = posting.getId();
+            row[1] = posting.getEmployee().getCivility() + " " +
+            posting.getEmployee().getLastName() + " "
+            + posting.getEmployee().getFirstName();
+            row[2] = posting.getOldPlace().getName() + ", " +
+            posting.getOldPlace().getProvince();
+            row[3] = posting.getPlace().getName() + ", " +
+            posting.getPlace().getProvince();
+            row[4] = DateFormatter.format(posting.getPostingDate());
+            row[5] = DateFormatter.format(posting.getServiceDate());
+
+            postingEmployeeModel.addRow(row);
+        }
     }
 
     public void refillEditPostingEmployeeJComboBox() {
@@ -250,6 +248,15 @@ public class PostingView2 extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         postingListJTable = new javax.swing.JTable();
         historicTabjPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        postingEmployeeJLabel = new javax.swing.JLabel();
+        postingEmployeeJComboBox = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        postingEmployeeListJTable = new javax.swing.JTable();
+        postingEmployeeOptionsJPanel = new javax.swing.JPanel();
+        postingEmployeeGeneratePDFJLabel = new javax.swing.JLabel();
+        postingEmployeeGeneratePDFJButton = new javax.swing.JButton();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -298,7 +305,7 @@ public class PostingView2 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(clearSeachPostingJButton))))
                     .addComponent(searchPostingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         searchPostingJPanelLayout.setVerticalGroup(
             searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,7 +397,7 @@ public class PostingView2 extends javax.swing.JPanel {
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(addPostingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(84, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +418,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(addPostingBtn)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(765, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Ajouter une afféctation", jPanel6);
@@ -496,7 +503,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addComponent(startDateToUpdateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updatePostingBtn)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(765, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Mettre à jour l'affectation", jPanel7);
@@ -542,7 +549,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(generatePDFJLabel)
                     .addComponent(generatePDFJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addContainerGap(1060, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,16 +612,120 @@ public class PostingView2 extends javax.swing.JPanel {
 
         postingJTabbedPanel.addTab("Afféctations", postingTabJPanel);
 
-        javax.swing.GroupLayout historicTabjPanelLayout = new javax.swing.GroupLayout(historicTabjPanel);
-        historicTabjPanel.setLayout(historicTabjPanelLayout);
-        historicTabjPanelLayout.setHorizontalGroup(
-            historicTabjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1014, Short.MAX_VALUE)
+        historicTabjPanel.setLayout(new java.awt.BorderLayout());
+
+        postingEmployeeJLabel.setText("Sélectionnner l'employé :");
+
+        postingEmployeeJComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        postingEmployeeJComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Employee) {
+                    Employee employee = (Employee) value;
+                    setText(employee.getId() + ". " + employee.getFullName());
+                }
+                return this;
+            }
+        });
+        postingEmployeeJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postingEmployeeJComboBoxActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(postingEmployeeJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(postingEmployeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(1247, Short.MAX_VALUE))
         );
-        historicTabjPanelLayout.setVerticalGroup(
-            historicTabjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(postingEmployeeJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(postingEmployeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
+
+        historicTabjPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        postingEmployeeListJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Employé", "Lieu actuel", "Lieu d'affectation", "Date d'affectation", "Date de prise de service"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(postingEmployeeListJTable);
+
+        jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        postingEmployeeGeneratePDFJLabel.setText("Génerer l'arrêté de l'affectation selectionnée :");
+
+        postingEmployeeGeneratePDFJButton.setText("Génerer en PDF");
+        postingEmployeeGeneratePDFJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postingEmployeeGeneratePDFJButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout postingEmployeeOptionsJPanelLayout = new javax.swing.GroupLayout(postingEmployeeOptionsJPanel);
+        postingEmployeeOptionsJPanel.setLayout(postingEmployeeOptionsJPanelLayout);
+        postingEmployeeOptionsJPanelLayout.setHorizontalGroup(
+            postingEmployeeOptionsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(postingEmployeeOptionsJPanelLayout.createSequentialGroup()
+                .addGroup(postingEmployeeOptionsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(postingEmployeeOptionsJPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(postingEmployeeGeneratePDFJLabel))
+                    .addGroup(postingEmployeeOptionsJPanelLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(postingEmployeeGeneratePDFJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        postingEmployeeOptionsJPanelLayout.setVerticalGroup(
+            postingEmployeeOptionsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(postingEmployeeOptionsJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(postingEmployeeGeneratePDFJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(postingEmployeeGeneratePDFJButton)
+                .addContainerGap(1078, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(postingEmployeeOptionsJPanel, java.awt.BorderLayout.LINE_END);
+
+        historicTabjPanel.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         postingJTabbedPanel.addTab("Historique d'un employé", historicTabjPanel);
 
@@ -626,6 +737,19 @@ public class PostingView2 extends javax.swing.JPanel {
         endDateJDateChooser.setDate(null);
         this.refillPostingListJTable();
     }//GEN-LAST:event_clearSeachPostingJButtonActionPerformed
+
+    private void postingEmployeeGeneratePDFJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postingEmployeeGeneratePDFJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_postingEmployeeGeneratePDFJButtonActionPerformed
+
+    private void postingEmployeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postingEmployeeJComboBoxActionPerformed
+        // TODO add your handling code here:
+        Employee employee = (Employee) postingEmployeeJComboBox.getSelectedItem();
+        if (employee != null) {
+            this.setPostingEmployeeIdSelected(employee.getId());
+            this.refillPostingEmployeeListJTable();
+        }
+    }//GEN-LAST:event_postingEmployeeJComboBoxActionPerformed
 
     private void addPostingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addPostingBtnActionPerformed
         Employee employee = (Employee) employeeComboBox.getSelectedItem();
@@ -639,7 +763,6 @@ public class PostingView2 extends javax.swing.JPanel {
     }// GEN-LAST:event_addPostingBtnActionPerformed
 
     private void searchPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_searchPostingJButtonActionPerformed
-        // TODO add your handling code here:
         this.refillPostingListJTable();
     }// GEN-LAST:event_searchPostingJButtonActionPerformed
 
@@ -702,14 +825,23 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JPanel historicTabjPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JComboBox<Place> placeComboBox;
     private javax.swing.JComboBox<Place> placeToUpdateComboBox;
+    private javax.swing.JButton postingEmployeeGeneratePDFJButton;
+    private javax.swing.JLabel postingEmployeeGeneratePDFJLabel;
+    private javax.swing.JComboBox<Employee> postingEmployeeJComboBox;
+    private javax.swing.JLabel postingEmployeeJLabel;
+    private javax.swing.JTable postingEmployeeListJTable;
+    private javax.swing.JPanel postingEmployeeOptionsJPanel;
     private javax.swing.JTabbedPane postingJTabbedPanel;
     private javax.swing.JTable postingListJTable;
     private javax.swing.JPanel postingTabJPanel;
