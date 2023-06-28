@@ -159,9 +159,14 @@ public class PostingView2 extends javax.swing.JPanel {
         }
     }
 
+    public void refillStartDateToUpdateJDateChooser() {
+        startDateToUpdateJDateChooser.setDate(this.getPostingSelected().getServiceDate());
+    }
+
     public void refillEditPostingForm() {
         this.refillEditPostingEmployeeJComboBox();
         this.refillEditPostingPlaceJComboBox();
+        this.refillStartDateToUpdateJDateChooser();
     }
 
     public void refillAddPostingEmployeeJComboBox() {
@@ -708,7 +713,17 @@ public class PostingView2 extends javax.swing.JPanel {
     }// GEN-LAST:event_postingListJTableMouseClicked
 
     private void updatePostingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updatePostingBtnActionPerformed
-        // TODO add your handling code here:
+        Employee selectedEmployee = (Employee) employeeToUpdateComboBox.getSelectedItem();
+        Place selectedPlace = (Place) placeToUpdateComboBox.getSelectedItem();
+        Date selectedDate = (Date) startDateToUpdateJDateChooser.getDate();
+
+        if (selectedEmployee != null && selectedPlace != null && selectedDate != null) {
+            Integer employeeId = selectedEmployee.getId();
+            Integer placeId = selectedPlace.getId();
+
+            Posting.update(this.connection, this.getPostingSelected().getId(), employeeId, placeId, selectedDate);
+            this.refillPostingListJTable();
+        }
     }// GEN-LAST:event_updatePostingBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

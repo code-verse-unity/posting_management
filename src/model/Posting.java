@@ -60,21 +60,23 @@ public class Posting {
         return this.serviceDate;
     }
 
-    public static void create(Connection connection, Integer employeeId,Integer oldPlaceId, Integer placeId, Date serviceDate) {
+    public static void create(Connection connection, Integer employeeId, Integer oldPlaceId, Integer placeId,
+            Date serviceDate) {
         try {
             // We can access the oldPlaceId from the comboBox
             // An additional query is not necessary
-            
-//            PreparedStatement statement = connection
-//                    .prepareStatement("SELECT place_id FROM " + Employee.TABLE_NAME + " WHERE id = ?;");
-//            statement.setObject(1, employeeId);
-//            ResultSet resultSet = statement.executeQuery();
-//
-//            Integer oldPlaceId = 0;
-//
-//            while (resultSet.next()) {
-//                oldPlaceId = resultSet.getInt("place_id");
-//            }
+
+            // PreparedStatement statement = connection
+            // .prepareStatement("SELECT place_id FROM " + Employee.TABLE_NAME + " WHERE id
+            // = ?;");
+            // statement.setObject(1, employeeId);
+            // ResultSet resultSet = statement.executeQuery();
+            //
+            // Integer oldPlaceId = 0;
+            //
+            // while (resultSet.next()) {
+            // oldPlaceId = resultSet.getInt("place_id");
+            // }
 
             PreparedStatement statement = connection.prepareStatement("INSERT INTO " + Posting.TABLE_NAME
                     + " (place_id, employee_id, old_place_id, posting_date, service_date) VALUES (?, ?, ?, ?, ?)");
@@ -84,7 +86,7 @@ public class Posting {
             statement.setObject(4, new java.sql.Date((new Date()).getTime()));
             statement.setObject(5, new java.sql.Date((serviceDate).getTime()));
             statement.executeUpdate();
-            
+
             System.out.println("posting created");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -300,7 +302,7 @@ public class Posting {
                             "WHERE id = ?;");
             statement.setObject(1, employeeId);
             statement.setObject(2, placeId);
-            statement.setObject(3, serviceDate);
+            statement.setObject(3, new java.sql.Date((serviceDate).getTime()));
             statement.setObject(4, id);
             statement.executeUpdate();
         } catch (Exception e) {
