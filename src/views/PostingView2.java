@@ -58,7 +58,7 @@ public class PostingView2 extends javax.swing.JPanel {
     public void refillPostingListJTable() {
         reloadPostings();
 
-        DefaultTableModel postingModel = (DefaultTableModel) postingListTable.getModel();
+        DefaultTableModel postingModel = (DefaultTableModel) postingListJTable.getModel();
 
         postingModel.setRowCount(0);
 
@@ -191,9 +191,9 @@ public class PostingView2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        postingTab = new javax.swing.JPanel();
-        searchContainer = new javax.swing.JPanel();
+        postingJTabbedPanel = new javax.swing.JTabbedPane();
+        postingTabJPanel = new javax.swing.JPanel();
+        searchPostingJPanel = new javax.swing.JPanel();
         searchPostingJLabel = new javax.swing.JLabel();
         startDateJLabel = new javax.swing.JLabel();
         startDateJDateChooser = new com.toedter.calendar.JDateChooser();
@@ -223,20 +223,20 @@ public class PostingView2 extends javax.swing.JPanel {
         updatePostingBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         deletePostingJLabel = new javax.swing.JLabel();
-        deletePostingBtn = new javax.swing.JButton();
+        deletePostingJButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         generatePDFJLabel = new javax.swing.JLabel();
         generatePDFJButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        postingListTable = new javax.swing.JTable();
-        historicTab = new javax.swing.JPanel();
+        postingListJTable = new javax.swing.JTable();
+        historicTabjPanel = new javax.swing.JPanel();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
-        postingTab.setLayout(new java.awt.BorderLayout());
+        postingTabJPanel.setLayout(new java.awt.BorderLayout());
 
-        searchContainer.setPreferredSize(new java.awt.Dimension(1586, 120));
+        searchPostingJPanel.setPreferredSize(new java.awt.Dimension(1586, 120));
 
         searchPostingJLabel.setText("Options de recheche :");
 
@@ -253,21 +253,21 @@ public class PostingView2 extends javax.swing.JPanel {
 
         clearSeachPostingJButton.setText("Effacer");
 
-        javax.swing.GroupLayout searchContainerLayout = new javax.swing.GroupLayout(searchContainer);
-        searchContainer.setLayout(searchContainerLayout);
-        searchContainerLayout.setHorizontalGroup(
-            searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchContainerLayout.createSequentialGroup()
+        javax.swing.GroupLayout searchPostingJPanelLayout = new javax.swing.GroupLayout(searchPostingJPanel);
+        searchPostingJPanel.setLayout(searchPostingJPanelLayout);
+        searchPostingJPanelLayout.setHorizontalGroup(
+            searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPostingJPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchContainerLayout.createSequentialGroup()
-                        .addGroup(searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchPostingJPanelLayout.createSequentialGroup()
+                        .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(startDateJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(startDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(endDateJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(searchContainerLayout.createSequentialGroup()
+                            .addGroup(searchPostingJPanelLayout.createSequentialGroup()
                                 .addComponent(endDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(searchPostingJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,29 +276,29 @@ public class PostingView2 extends javax.swing.JPanel {
                     .addComponent(searchPostingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(247, Short.MAX_VALUE))
         );
-        searchContainerLayout.setVerticalGroup(
-            searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchContainerLayout.createSequentialGroup()
+        searchPostingJPanelLayout.setVerticalGroup(
+            searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPostingJPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(searchPostingJLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchContainerLayout.createSequentialGroup()
+                .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchPostingJPanelLayout.createSequentialGroup()
                         .addComponent(startDateJLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(startDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(searchContainerLayout.createSequentialGroup()
+                    .addGroup(searchPostingJPanelLayout.createSequentialGroup()
                         .addComponent(endDateJLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(endDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(searchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(searchPostingJButton)
                                 .addComponent(clearSeachPostingJButton)))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        postingTab.add(searchContainer, java.awt.BorderLayout.PAGE_START);
+        postingTabJPanel.add(searchPostingJPanel, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 623));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
@@ -442,9 +442,7 @@ public class PostingView2 extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(addPostingFormJLabel2)
-                        .addGap(122, 122, 122))
+                    .addComponent(addPostingFormJLabel2)
                     .addComponent(addPostingEmployeeJLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addPostingPlaceJLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,16 +479,16 @@ public class PostingView2 extends javax.swing.JPanel {
 
         jPanel2.add(jTabbedPane3);
 
-        postingTab.add(jPanel2, java.awt.BorderLayout.LINE_END);
+        postingTabJPanel.add(jPanel2, java.awt.BorderLayout.LINE_END);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1586, 70));
 
         deletePostingJLabel.setText("Supprimer l'affectation seletionnée :");
 
-        deletePostingBtn.setText("Supprimer");
-        deletePostingBtn.addActionListener(new java.awt.event.ActionListener() {
+        deletePostingJButton.setText("Supprimer");
+        deletePostingJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePostingBtnActionPerformed(evt);
+                deletePostingJButtonActionPerformed(evt);
             }
         });
 
@@ -513,7 +511,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(deletePostingJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deletePostingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(deletePostingJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -530,7 +528,7 @@ public class PostingView2 extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(deletePostingJLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deletePostingBtn))
+                        .addComponent(deletePostingJButton))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator1)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -542,11 +540,11 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        postingTab.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+        postingTabJPanel.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        postingListTable.setModel(new javax.swing.table.DefaultTableModel(
+        postingListJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -554,33 +552,33 @@ public class PostingView2 extends javax.swing.JPanel {
                 "Id", "Employée", "Lieu actuel", "Lieu d'affectation", "Date d'affection", "Date de prise de service"
             }
         ));
-        postingListTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        postingListJTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                postingListTableMouseClicked(evt);
+                postingListJTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(postingListTable);
+        jScrollPane1.setViewportView(postingListJTable);
 
         jPanel5.add(jScrollPane1);
 
-        postingTab.add(jPanel5, java.awt.BorderLayout.CENTER);
+        postingTabJPanel.add(jPanel5, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane1.addTab("Afféctations", postingTab);
+        postingJTabbedPanel.addTab("Afféctations", postingTabJPanel);
 
-        javax.swing.GroupLayout historicTabLayout = new javax.swing.GroupLayout(historicTab);
-        historicTab.setLayout(historicTabLayout);
-        historicTabLayout.setHorizontalGroup(
-            historicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout historicTabjPanelLayout = new javax.swing.GroupLayout(historicTabjPanel);
+        historicTabjPanel.setLayout(historicTabjPanelLayout);
+        historicTabjPanelLayout.setHorizontalGroup(
+            historicTabjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1014, Short.MAX_VALUE)
         );
-        historicTabLayout.setVerticalGroup(
-            historicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        historicTabjPanelLayout.setVerticalGroup(
+            historicTabjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Historique d'un employé", historicTab);
+        postingJTabbedPanel.addTab("Historique d'un employé", historicTabjPanel);
 
-        add(jTabbedPane1);
+        add(postingJTabbedPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addPostingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPostingBtnActionPerformed
@@ -602,22 +600,22 @@ public class PostingView2 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_generatePDFJButtonActionPerformed
 
-    private void deletePostingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePostingBtnActionPerformed
+    private void deletePostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePostingJButtonActionPerformed
         if (this.postingSelected != null) {
             Posting.destroy(connection, this.postingSelected.getId());
             refillPostingListJTable();
         }
        
-    }//GEN-LAST:event_deletePostingBtnActionPerformed
+    }//GEN-LAST:event_deletePostingJButtonActionPerformed
 
-    private void postingListTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingListTableMouseClicked
-        if (postingListTable.getSelectedRows().length == 1) {
-            int row = postingListTable.getSelectedRow();
-            TableModel jtable = postingListTable.getModel();
+    private void postingListJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingListJTableMouseClicked
+        if (postingListJTable.getSelectedRows().length == 1) {
+            int row = postingListJTable.getSelectedRow();
+            TableModel jtable = postingListJTable.getModel();
             Integer id = Integer.parseInt(jtable.getValueAt(row, 0).toString());
             this.postingSelected = Posting.getById(connection, id);
         }
-    }//GEN-LAST:event_postingListTableMouseClicked
+    }//GEN-LAST:event_postingListJTableMouseClicked
 
     private void updatePostingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePostingBtnActionPerformed
         // TODO add your handling code here:
@@ -636,7 +634,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JLabel addPostingStartDateJLabel1;
     private javax.swing.JLabel addPostingStartDateJLabel2;
     private javax.swing.JButton clearSeachPostingJButton;
-    private javax.swing.JButton deletePostingBtn;
+    private javax.swing.JButton deletePostingJButton;
     private javax.swing.JLabel deletePostingJLabel;
     private javax.swing.JComboBox<Employee> employeeComboBox;
     private javax.swing.JComboBox<Employee> employeeToUpdateComboBox;
@@ -644,7 +642,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JLabel endDateJLabel;
     private javax.swing.JButton generatePDFJButton;
     private javax.swing.JLabel generatePDFJLabel;
-    private javax.swing.JPanel historicTab;
+    private javax.swing.JPanel historicTabjPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
@@ -652,15 +650,15 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JComboBox<Place> placeComboBox;
     private javax.swing.JComboBox<Place> placeToUpdateComboBox;
-    private javax.swing.JTable postingListTable;
-    private javax.swing.JPanel postingTab;
-    private javax.swing.JPanel searchContainer;
+    private javax.swing.JTabbedPane postingJTabbedPanel;
+    private javax.swing.JTable postingListJTable;
+    private javax.swing.JPanel postingTabJPanel;
     private javax.swing.JButton searchPostingJButton;
     private javax.swing.JLabel searchPostingJLabel;
+    private javax.swing.JPanel searchPostingJPanel;
     private com.toedter.calendar.JDateChooser startDateJDateChooser;
     private javax.swing.JLabel startDateJLabel;
     private com.toedter.calendar.JDateChooser startDateToUpdateJDateChooser;
