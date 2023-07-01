@@ -12,6 +12,7 @@ import views.PlaceView;
 import views.PostingView;
 import java.sql.Connection;
 import utils.Database;
+import utils.EmailSender;
 import views.PostingView2;
 
 /**
@@ -20,6 +21,8 @@ import views.PostingView2;
  */
 public class App extends javax.swing.JFrame {
     Connection connection;
+    EmailSender emailSender;
+    Dotenv dotenv;
 
     /**
      * Creates new form NewJFrame
@@ -27,14 +30,19 @@ public class App extends javax.swing.JFrame {
     public App() {
         initComponents();
 
-        Dotenv dotenv = Dotenv.load();
+        dotenv = Dotenv.load();
         String url = dotenv.get("DB_URL");
         String user = dotenv.get("DB_USER");
         String password = dotenv.get("DB_PASSWORD");
 
         Database database = new Database(url, user, password);
-
         connection = database.connect();
+
+        this.emailSender = new EmailSender(
+                dotenv.get("MAIL_HOST"),
+                Integer.parseInt(dotenv.get("MAIL_PORT")),
+                dotenv.get("MAIL_USERNAME"),
+                dotenv.get("MAIL_PASSWORD"));
 
         EmployeeView home = new EmployeeView(connection, this);
         mainContent.add(home);
@@ -138,7 +146,7 @@ public class App extends javax.swing.JFrame {
     private void postingBtn1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_postingBtn1MouseClicked
         mainContent.removeAll();
 
-        PostingView2 postingView = new PostingView2(connection, this);
+        PostingView2 postingView = new PostingView2(connection, this.emailSender, this.dotenv, this);
         mainContent.add(postingView);
         mainContent.updateUI();
     }// GEN-LAST:event_postingBtn1MouseClicked
