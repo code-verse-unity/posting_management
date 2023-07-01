@@ -109,6 +109,16 @@ public class PostingView2 extends javax.swing.JPanel {
         return this.postingSelected;
     }
 
+    private Posting postingEmployeeSelected = null;
+
+    public void setPostingEmployeeSelected(Posting posting) {
+        this.postingEmployeeSelected = posting;
+    }
+
+    public Posting getPostingEmployeeSelected() {
+        return this.postingEmployeeSelected;
+    }
+
     public void refillPostingEmployeeListJTable() {
         DefaultTableModel postingEmployeeModel = (DefaultTableModel) postingEmployeeListJTable.getModel();
         postingEmployeeModel.setRowCount(0);
@@ -685,6 +695,11 @@ public class PostingView2 extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        postingEmployeeListJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postingEmployeeListJTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(postingEmployeeListJTable);
 
         jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -738,17 +753,30 @@ public class PostingView2 extends javax.swing.JPanel {
     }//GEN-LAST:event_clearSeachPostingJButtonActionPerformed
 
     private void postingEmployeeGeneratePDFJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postingEmployeeGeneratePDFJButtonActionPerformed
-        // TODO add your handling code here:
+        Posting posting = this.getPostingEmployeeSelected();
+
+        if (posting != null) {
+            String path = GeneratePDF.generate(posting);
+            OpenFolder.open(path);
+        }
     }//GEN-LAST:event_postingEmployeeGeneratePDFJButtonActionPerformed
 
     private void postingEmployeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postingEmployeeJComboBoxActionPerformed
-        // TODO add your handling code here:
         Employee employee = (Employee) postingEmployeeJComboBox.getSelectedItem();
         if (employee != null) {
             this.setPostingEmployeeIdSelected(employee.getId());
             this.refillPostingEmployeeListJTable();
         }
     }//GEN-LAST:event_postingEmployeeJComboBoxActionPerformed
+
+    private void postingEmployeeListJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postingEmployeeListJTableMouseClicked
+        if (postingEmployeeListJTable.getSelectedRows().length == 1) {
+            int row = postingEmployeeListJTable.getSelectedRow();
+            TableModel jtable = postingEmployeeListJTable.getModel();
+            Integer id = Integer.parseInt(jtable.getValueAt(row, 0).toString());
+            this.setPostingEmployeeSelected(Posting.getById(connection, id));
+        }
+    }//GEN-LAST:event_postingEmployeeListJTableMouseClicked
 
     private void addPostingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addPostingBtnActionPerformed
         Employee employee = (Employee) employeeComboBox.getSelectedItem();
