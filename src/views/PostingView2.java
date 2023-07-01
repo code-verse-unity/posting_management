@@ -20,6 +20,7 @@ import model.Place;
 import model.Posting;
 import utils.DateFormatter;
 import utils.GeneratePDF;
+import utils.OpenFolder;
 
 /**
  *
@@ -768,7 +769,8 @@ public class PostingView2 extends javax.swing.JPanel {
         Posting posting = this.getPostingSelected();
 
         if (posting != null) {
-            GeneratePDF.generate(posting);
+            String path = GeneratePDF.generate(posting);
+            OpenFolder.open(path);
         }
     }// GEN-LAST:event_generatePDFJButtonActionPerformed
 
