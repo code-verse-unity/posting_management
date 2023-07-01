@@ -108,7 +108,7 @@ public class Posting {
                             "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
-                            "ORDER BY p.posting_date DESC");
+                            "ORDER BY p.id DESC");
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -175,7 +175,7 @@ public class Posting {
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "WHERE p.posting_date BETWEEN ? AND ? " +
-                            "ORDER BY p.posting_date DESC");
+                            "ORDER BY p.id DESC");
 
             statement.setObject(1, new java.sql.Date((startAt).getTime()));
             statement.setObject(2, new java.sql.Date((endAt).getTime()));
@@ -245,7 +245,7 @@ public class Posting {
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "WHERE p.employee_id = ? " +
-                            "ORDER BY p.posting_date DESC");
+                            "ORDER BY p.id DESC");
             statement.setObject(1, employeeId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -312,7 +312,7 @@ public class Posting {
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "WHERE p.id = ? " +
-                            "ORDER BY p.posting_date DESC");
+                            "ORDER BY p.id DESC");
             statement.setObject(1, id);
             ResultSet resultSet = statement.executeQuery();
 
