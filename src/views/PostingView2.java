@@ -711,6 +711,9 @@ public class PostingView2 extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(postingEmployeeListJTable);
+        if (postingEmployeeListJTable.getColumnModel().getColumnCount() > 0) {
+            postingEmployeeListJTable.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
