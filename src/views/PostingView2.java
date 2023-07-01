@@ -5,14 +5,11 @@
 package views;
 
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +19,7 @@ import model.Employee;
 import model.Place;
 import model.Posting;
 import utils.DateFormatter;
+import utils.GeneratePDF;
 
 /**
  *
@@ -767,7 +765,11 @@ public class PostingView2 extends javax.swing.JPanel {
     }// GEN-LAST:event_searchPostingJButtonActionPerformed
 
     private void generatePDFJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_generatePDFJButtonActionPerformed
-        // TODO add your handling code here:
+        Posting posting = this.getPostingSelected();
+
+        if (posting != null) {
+            GeneratePDF.generate(posting);
+        }
     }// GEN-LAST:event_generatePDFJButtonActionPerformed
 
     private void deletePostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deletePostingJButtonActionPerformed
