@@ -255,14 +255,14 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPostingFormJLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="206" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="addPostingEmployeeJLabel1" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                                               <Component id="employeeComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
@@ -271,12 +271,12 @@
                                               <Component id="addPostingStartDateJLabel1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                                   <Component id="addPostingBtn" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="addPostingStartDateJDateChooser" alignment="0" pref="305" max="32767" attributes="0"/>
+                                                  <Component id="addPostingStartDateJDateChooser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="84" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -412,21 +412,28 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="addPostingFormJLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addPostingEmployeeJLabel2" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                      <Component id="employeeToUpdateComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
-                                      <Component id="addPostingPlaceJLabel2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <Component id="addPostingStartDateJLabel2" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                      <Component id="updatePostingBtn" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="placeToUpdateComboBox" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="startDateToUpdateJDateChooser" alignment="0" pref="308" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="addPostingEmployeeJLabel2" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <Component id="employeeToUpdateComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
+                                              <Component id="addPostingPlaceJLabel2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="addPostingStartDateJLabel2" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                                              <Component id="updatePostingBtn" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="placeToUpdateComboBox" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="startDateToUpdateJDateChooser" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="addPostingFormJLabel2" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                                  <EmptySpace pref="47" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
