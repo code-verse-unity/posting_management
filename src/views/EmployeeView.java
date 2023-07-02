@@ -308,22 +308,22 @@ public class EmployeeView extends javax.swing.JPanel {
         addEmployeeTabLayout.setHorizontalGroup(
             addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addEmployeeTabLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(65, 65, 65)
                 .addGroup(addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(employeePlaceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11)
-                    .addComponent(employeeJobTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(employeeJobTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2)
                     .addComponent(employeeLastNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(employeeFirstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(employeeEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(employeeFirstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(employeeEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(employeeCivilityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         addEmployeeTabLayout.setVerticalGroup(
             addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +354,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(employeePlaceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(addEmployeeBtn)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ajouter un employé", addEmployeeTab);
@@ -426,24 +426,24 @@ public class EmployeeView extends javax.swing.JPanel {
         updateEmployeeTabLayout.setHorizontalGroup(
             updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updateEmployeeTabLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(62, 62, 62)
                 .addGroup(updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(employeePlaceComboBoxToUpdate, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addComponent(employeeJobTextFieldToUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14)
-                        .addComponent(updateEmployeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(updateEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel10)
                         .addComponent(employeeLastNameTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9)
-                        .addComponent(employeeFirstNameTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                        .addComponent(employeeEmailTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addComponent(employeeFirstNameTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(employeeEmailTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addComponent(jLabel7)
-                        .addComponent(employeeCivilityComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                        .addComponent(employeeCivilityComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         updateEmployeeTabLayout.setVerticalGroup(
             updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,7 +474,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(employeePlaceComboBoxToUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(updateEmployeeBtn)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mettre à jour un employé", updateEmployeeTab);
@@ -512,7 +512,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteEmployeeBtn)
-                .addContainerGap(519, Short.MAX_VALUE))
+                .addContainerGap(530, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Supprimer un employé", deleteEmployeeTab);

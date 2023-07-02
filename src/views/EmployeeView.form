@@ -224,23 +224,23 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="employeePlaceComboBox" max="32767" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                  <Component id="employeeJobTextField" pref="380" max="32767" attributes="0"/>
+                                  <Component id="employeeJobTextField" max="32767" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="employeeLastNameTextField" max="32767" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="employeeFirstNameTextField" pref="380" max="32767" attributes="0"/>
-                                  <Component id="employeeEmailTextField" pref="380" max="32767" attributes="0"/>
+                                  <Component id="employeeFirstNameTextField" max="32767" attributes="0"/>
+                                  <Component id="employeeEmailTextField" max="32767" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <Component id="employeeCivilityComboBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="addEmployeeBtn" max="32767" attributes="0"/>
+                                  <Component id="addEmployeeBtn" min="-2" pref="380" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="125" max="32767" attributes="0"/>
+                              <EmptySpace pref="75" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -273,7 +273,7 @@
                               <Component id="employeePlaceComboBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="addEmployeeBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="30" max="32767" attributes="0"/>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -419,27 +419,27 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="employeePlaceComboBoxToUpdate" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="employeeJobTextFieldToUpdate" alignment="0" min="-2" pref="380" max="-2" attributes="0"/>
                                       <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="updateEmployeeBtn" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="updateEmployeeBtn" alignment="0" min="-2" pref="380" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="employeeLastNameTextFieldToUpdate" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="employeeFirstNameTextFieldToUpdate" alignment="0" pref="380" max="32767" attributes="0"/>
-                                      <Component id="employeeEmailTextFieldToUpdate" alignment="0" pref="380" max="32767" attributes="0"/>
+                                      <Component id="employeeFirstNameTextFieldToUpdate" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="employeeEmailTextFieldToUpdate" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="employeeCivilityComboBox1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="employeeCivilityComboBox1" alignment="0" min="-2" pref="380" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="125" max="32767" attributes="0"/>
+                              <EmptySpace pref="78" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -472,7 +472,7 @@
                               <Component id="employeePlaceComboBoxToUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="updateEmployeeBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -631,7 +631,7 @@
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="deleteEmployeeBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="519" max="32767" attributes="0"/>
+                              <EmptySpace pref="530" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
