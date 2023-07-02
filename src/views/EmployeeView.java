@@ -162,6 +162,7 @@ public class EmployeeView extends javax.swing.JPanel {
         searchBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         searchBtn.setForeground(new java.awt.Color(255, 255, 255));
         searchBtn.setText("Rechercher");
+        searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +174,7 @@ public class EmployeeView extends javax.swing.JPanel {
         searchBtn1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         searchBtn1.setForeground(new java.awt.Color(255, 255, 255));
         searchBtn1.setText("Effacer");
+        searchBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchBtn1.setMargin(new java.awt.Insets(4, 14, 4, 14));
         searchBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,6 +265,7 @@ public class EmployeeView extends javax.swing.JPanel {
 
         employeeCivilityComboBox.setBackground(new java.awt.Color(255, 255, 254));
         employeeCivilityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mlle", "Mme" }));
+        employeeCivilityComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeeCivilityComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         employeeCivilityComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,6 +277,7 @@ public class EmployeeView extends javax.swing.JPanel {
         addEmployeeBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         addEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         addEmployeeBtn.setText("Ajouter");
+        addEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addEmployeeBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         addEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,6 +300,7 @@ public class EmployeeView extends javax.swing.JPanel {
             );
         }
         employeePlaceComboBox.setBackground(new java.awt.Color(255, 255, 254));
+        employeePlaceComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeePlaceComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         employeePlaceComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -354,7 +359,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(employeePlaceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(addEmployeeBtn)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ajouter un employé", addEmployeeTab);
@@ -365,6 +370,7 @@ public class EmployeeView extends javax.swing.JPanel {
 
         employeeCivilityComboBox1.setBackground(new java.awt.Color(255, 255, 254));
         employeeCivilityComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mlle", "Mme" }));
+        employeeCivilityComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeeCivilityComboBox1.setPreferredSize(new java.awt.Dimension(72, 35));
         employeeCivilityComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,6 +399,7 @@ public class EmployeeView extends javax.swing.JPanel {
         updateEmployeeBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         updateEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateEmployeeBtn.setText("Sauvegarder les changements");
+        updateEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateEmployeeBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         updateEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,6 +421,7 @@ public class EmployeeView extends javax.swing.JPanel {
             );
         }
         employeePlaceComboBoxToUpdate.setBackground(new java.awt.Color(255, 255, 254));
+        employeePlaceComboBoxToUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeePlaceComboBoxToUpdate.setPreferredSize(new java.awt.Dimension(72, 35));
         employeePlaceComboBoxToUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -474,7 +482,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(employeePlaceComboBoxToUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(updateEmployeeBtn)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mettre à jour un employé", updateEmployeeTab);
@@ -487,6 +495,7 @@ public class EmployeeView extends javax.swing.JPanel {
         deleteEmployeeBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         deleteEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteEmployeeBtn.setText("Supprimer");
+        deleteEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteEmployeeBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -512,7 +521,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteEmployeeBtn)
-                .addContainerGap(530, Short.MAX_VALUE))
+                .addContainerGap(519, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Supprimer un employé", deleteEmployeeTab);

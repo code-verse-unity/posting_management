@@ -138,6 +138,7 @@ public class PlaceView extends javax.swing.JPanel {
         deletePlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         deletePlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         deletePlaceBtn.setText("Supprimer");
+        deletePlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deletePlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         deletePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,12 +182,14 @@ public class PlaceView extends javax.swing.JPanel {
 
         provinceComboBox.setBackground(new java.awt.Color(255, 255, 254));
         provinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
+        provinceComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         provinceComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
 
         createPlaceBtn.setBackground(new java.awt.Color(0, 51, 255));
         createPlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         createPlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         createPlaceBtn.setText("Ajouter");
+        createPlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createPlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         createPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +214,7 @@ public class PlaceView extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(provinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,12 +248,14 @@ public class PlaceView extends javax.swing.JPanel {
 
         provinceToUpdateComboBox.setBackground(new java.awt.Color(255, 255, 254));
         provinceToUpdateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
+        provinceToUpdateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         provinceToUpdateComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
 
         updatePlaceBtn.setBackground(new java.awt.Color(0, 51, 255));
         updatePlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         updatePlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         updatePlaceBtn.setText("Sauvegarder les modifications");
+        updatePlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updatePlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         updatePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -304,6 +304,7 @@ public class PostingView2 extends javax.swing.JPanel {
         searchPostingJButton.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         searchPostingJButton.setForeground(new java.awt.Color(255, 255, 255));
         searchPostingJButton.setText("Rechercher");
+        searchPostingJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchPostingJButton.setMargin(new java.awt.Insets(5, 14, 5, 14));
         searchPostingJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +316,7 @@ public class PostingView2 extends javax.swing.JPanel {
         clearSeachPostingJButton.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         clearSeachPostingJButton.setForeground(new java.awt.Color(255, 255, 255));
         clearSeachPostingJButton.setText("Effacer");
+        clearSeachPostingJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clearSeachPostingJButton.setMargin(new java.awt.Insets(5, 14, 5, 14));
         clearSeachPostingJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,6 +386,7 @@ public class PostingView2 extends javax.swing.JPanel {
 
         employeeComboBox.setBackground(new java.awt.Color(255, 255, 254));
         employeeComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        employeeComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeeComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         employeeComboBox.setRenderer(new DefaultListCellRenderer() {
             @Override
@@ -402,6 +405,7 @@ public class PostingView2 extends javax.swing.JPanel {
 
         placeComboBox.setBackground(new java.awt.Color(255, 255, 254));
         placeComboBox.setModel(new DefaultComboBoxModel<Place>());
+        placeComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         placeComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         placeComboBox.setRenderer(new DefaultListCellRenderer() {
             @Override
@@ -425,6 +429,7 @@ public class PostingView2 extends javax.swing.JPanel {
         addPostingBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         addPostingBtn.setForeground(new java.awt.Color(255, 255, 255));
         addPostingBtn.setText("Ajouter");
+        addPostingBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addPostingBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         addPostingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -486,6 +491,7 @@ public class PostingView2 extends javax.swing.JPanel {
 
         employeeToUpdateComboBox.setBackground(new java.awt.Color(255, 255, 254));
         employeeToUpdateComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        employeeToUpdateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeeToUpdateComboBox.setOpaque(true);
         employeeToUpdateComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         employeeToUpdateComboBox.setRenderer(new DefaultListCellRenderer() {
@@ -505,6 +511,7 @@ public class PostingView2 extends javax.swing.JPanel {
 
         placeToUpdateComboBox.setBackground(new java.awt.Color(255, 255, 254));
         placeToUpdateComboBox.setModel(new DefaultComboBoxModel<Place>());
+        placeToUpdateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         placeToUpdateComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         placeToUpdateComboBox.setRenderer(new DefaultListCellRenderer() {
             @Override
@@ -528,6 +535,7 @@ public class PostingView2 extends javax.swing.JPanel {
         updatePostingBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         updatePostingBtn.setForeground(new java.awt.Color(255, 255, 255));
         updatePostingBtn.setText("Enregistrer les modifications");
+        updatePostingBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updatePostingBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         updatePostingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -595,6 +603,7 @@ public class PostingView2 extends javax.swing.JPanel {
         deletePostingJButton.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         deletePostingJButton.setForeground(new java.awt.Color(255, 255, 255));
         deletePostingJButton.setText("Supprimer");
+        deletePostingJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deletePostingJButton.setMargin(new java.awt.Insets(5, 14, 5, 14));
         deletePostingJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -612,6 +621,7 @@ public class PostingView2 extends javax.swing.JPanel {
         generatePDFJButton.setForeground(new java.awt.Color(255, 255, 255));
         generatePDFJButton.setText("Génerer en PDF");
         generatePDFJButton.setBorderPainted(false);
+        generatePDFJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         generatePDFJButton.setMargin(new java.awt.Insets(5, 14, 5, 14));
         generatePDFJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
