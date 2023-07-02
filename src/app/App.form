@@ -59,9 +59,9 @@
                   <Component id="employeeBtn" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="placeBtn" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="postingBtn1" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace pref="222" max="32767" attributes="0"/>
+                  <EmptySpace pref="266" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

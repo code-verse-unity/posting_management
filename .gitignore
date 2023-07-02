@@ -25,3 +25,5 @@ replay_pid*
 /build/
 
 !lib/*.jar
+*.env
+.vscode/
