@@ -115,7 +115,7 @@ public class App extends javax.swing.JFrame {
 
         getContentPane().add(sidebar, java.awt.BorderLayout.LINE_START);
 
-        mainContent.setBackground(new java.awt.Color(153, 153, 153));
+        mainContent.setBackground(new java.awt.Color(255, 255, 255));
         mainContent.setLayout(new java.awt.BorderLayout());
         getContentPane().add(mainContent, java.awt.BorderLayout.CENTER);
 
