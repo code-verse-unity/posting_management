@@ -235,8 +235,13 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="employeeLastNameTextField">
                       <Events>
+                        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="employeeLastNameTextFieldInputMethodTextChanged"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeLastNameTextFieldActionPerformed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="employeeLastNameTextFieldPropertyChange"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="employeeLastNameTextField.setInputVerifier(new JInputValidator(employeeLastNameTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(employeeLastNameTextField.getText().length() &lt; 3 &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Too short&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;employeeLastNameTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
                       <Properties>
@@ -244,8 +249,14 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="employeeFirstNameTextField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="employeeFirstNameTextField.setInputVerifier(new JInputValidator(employeeFirstNameTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(employeeFirstNameTextField.getText().length() &lt; 3  &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Trop court&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;employeeFirstNameTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JTextField" name="employeeEmailTextField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="employeeEmailTextField.setInputVerifier(new JInputValidator(employeeEmailTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(!isEmailValid(&quot;add&quot;) &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Email invalide&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;employeeEmailTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
@@ -273,6 +284,7 @@
                     <Component class="javax.swing.JButton" name="addEmployeeBtn">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ajouter"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addEmployeeBtnActionPerformed"/>
@@ -284,6 +296,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="employeeJobTextField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="employeeJobTextField.setInputVerifier(new JInputValidator(employeeJobTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(employeeJobTextField.getText().length() &lt; 3 &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Trop court&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;employeeJobTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel12">
                       <Properties>
