@@ -707,12 +707,17 @@ public class PostingView2 extends javax.swing.JPanel {
 
         postingJTabbedPanel.addTab("Afféctations", postingTabJPanel);
 
-        historicTabjPanel.setBackground(new java.awt.Color(255, 255, 255));
+        historicTabjPanel.setBackground(new java.awt.Color(240, 240, 240));
         historicTabjPanel.setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setBackground(new java.awt.Color(240, 240, 240));
+
+        postingEmployeeJLabel.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         postingEmployeeJLabel.setText("Sélectionnner l'employé :");
 
+        postingEmployeeJComboBox.setBackground(new java.awt.Color(255, 255, 254));
         postingEmployeeJComboBox.setModel(new DefaultComboBoxModel<Employee>());
+        postingEmployeeJComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         postingEmployeeJComboBox.setRenderer(new DefaultListCellRenderer() {
             @Override
             public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index,
@@ -757,8 +762,12 @@ public class PostingView2 extends javax.swing.JPanel {
 
         historicTabjPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
+        jPanel4.setBackground(new java.awt.Color(240, 240, 240));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane2.setBackground(new java.awt.Color(240, 240, 240));
+
+        postingEmployeeListJTable.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         postingEmployeeListJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -782,6 +791,13 @@ public class PostingView2 extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        postingEmployeeListJTable.setGridColor(new java.awt.Color(255, 255, 255));
+        postingEmployeeListJTable.setIntercellSpacing(new java.awt.Dimension(3, 0));
+        postingEmployeeListJTable.setRowHeight(50);
+        postingEmployeeListJTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        postingEmployeeListJTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        postingEmployeeListJTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        postingEmployeeListJTable.setShowVerticalLines(true);
         postingEmployeeListJTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 postingEmployeeListJTableMouseClicked(evt);
@@ -794,9 +810,17 @@ public class PostingView2 extends javax.swing.JPanel {
 
         jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
+        postingEmployeeOptionsJPanel.setBackground(new java.awt.Color(240, 240, 240));
+        postingEmployeeOptionsJPanel.setPreferredSize(new java.awt.Dimension(417, 714));
+
+        postingEmployeeGeneratePDFJLabel.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         postingEmployeeGeneratePDFJLabel.setText("Génerer l'arrêté de l'affectation selectionnée :");
 
+        postingEmployeeGeneratePDFJButton.setBackground(new java.awt.Color(0, 51, 255));
+        postingEmployeeGeneratePDFJButton.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        postingEmployeeGeneratePDFJButton.setForeground(new java.awt.Color(255, 255, 255));
         postingEmployeeGeneratePDFJButton.setText("Génerer en PDF");
+        postingEmployeeGeneratePDFJButton.setMargin(new java.awt.Insets(5, 14, 5, 14));
         postingEmployeeGeneratePDFJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 postingEmployeeGeneratePDFJButtonActionPerformed(evt);
@@ -813,9 +837,9 @@ public class PostingView2 extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(postingEmployeeGeneratePDFJLabel))
                     .addGroup(postingEmployeeOptionsJPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(postingEmployeeGeneratePDFJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(postingEmployeeGeneratePDFJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         postingEmployeeOptionsJPanelLayout.setVerticalGroup(
             postingEmployeeOptionsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -824,7 +848,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addComponent(postingEmployeeGeneratePDFJLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(postingEmployeeGeneratePDFJButton)
-                .addContainerGap(661, Short.MAX_VALUE))
+                .addContainerGap(648, Short.MAX_VALUE))
         );
 
         jPanel4.add(postingEmployeeOptionsJPanel, java.awt.BorderLayout.LINE_END);
