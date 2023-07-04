@@ -123,6 +123,7 @@
                 <Component class="javax.swing.JButton" name="deletePlaceBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Supprimer"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePlaceBtnActionPerformed"/>
@@ -194,6 +195,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="placeNameTextField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="placeNameTextField.setInputVerifier(new JInputValidator(placeNameTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(placeNameTextField.getText().length() &lt; 3 &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Too short&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;placeNameTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
@@ -304,6 +308,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="placeNameToUpdateTextField">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="placeNameToUpdateTextField.setInputVerifier(new JInputValidator(placeNameToUpdateTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(placeNameToUpdateTextField.getText().length() &lt; 3 &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Too short&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;placeNameToUpdateTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        updateReseted = false;&#xa;        enableUpdateSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        updateReseted = false;&#xa;        enableUpdateSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        updateReseted = false;&#xa;        enableUpdateSubmit();&#xa;    }&#xa;});"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel6">
                           <Properties>
@@ -359,7 +366,7 @@
                     <Column editable="false" title="Province" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="placeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){&#xa;    public void valueChanged(ListSelectionEvent event){&#xa;        if(!event.getValueIsAdjusting() &amp;&amp; placeTable.getSelectedRow() != -1){&#xa;            deletePlaceBtn.setEnabled(true);&#xa;        }else{&#xa; deletePlaceBtn.setEnabled(false);&#xa;}&#xa;    }&#xa;});">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>

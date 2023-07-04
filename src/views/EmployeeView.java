@@ -768,6 +768,8 @@ public class EmployeeView extends javax.swing.JPanel {
             public void valueChanged(ListSelectionEvent event){
                 if(!event.getValueIsAdjusting() && employeeTable.getSelectedRow() != -1){
                     deleteEmployeeBtn.setEnabled(true);
+                }else{
+                    deleteEmployeeBtn.setEnabled(false);
                 }
             }
         });

@@ -575,7 +575,7 @@
                     <Column editable="false" title="Lieu de travail" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="employeeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){&#xa;    public void valueChanged(ListSelectionEvent event){&#xa;        if(!event.getValueIsAdjusting() &amp;&amp; employeeTable.getSelectedRow() != -1){&#xa;            deleteEmployeeBtn.setEnabled(true);&#xa;        }&#xa;    }&#xa;});">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="employeeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){&#xa;    public void valueChanged(ListSelectionEvent event){&#xa;        if(!event.getValueIsAdjusting() &amp;&amp; employeeTable.getSelectedRow() != -1){&#xa;            deleteEmployeeBtn.setEnabled(true);&#xa;        }else{&#xa;            deleteEmployeeBtn.setEnabled(false);&#xa;        }&#xa;    }&#xa;});">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="40" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
