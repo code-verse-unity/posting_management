@@ -688,6 +688,7 @@ public class EmployeeView extends javax.swing.JPanel {
         jLabel6.setText("Supprimer l'employé selectioné");
 
         deleteEmployeeBtn.setText("Supprimer");
+        deleteEmployeeBtn.setEnabled(false);
         deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeBtnActionPerformed(evt);
@@ -763,6 +764,13 @@ public class EmployeeView extends javax.swing.JPanel {
             employeeTable.getColumnModel().getColumn(0).setMaxWidth(40);
             employeeTable.getColumnModel().getColumn(4).setPreferredWidth(10);
         }
+        employeeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event){
+                if(!event.getValueIsAdjusting() && employeeTable.getSelectedRow() != -1){
+                    deleteEmployeeBtn.setEnabled(true);
+                }
+            }
+        });
 
         jPanel4.add(JScrollPane, java.awt.BorderLayout.CENTER);
 
