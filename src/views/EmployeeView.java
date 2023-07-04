@@ -18,6 +18,7 @@ import utils.*;
 import com.alexandriasoftware.swing.*;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,8 +33,7 @@ public class EmployeeView extends javax.swing.JPanel {
     Connection connection;
     ArrayList<Employee> employees;
 
-
-    boolean reseted = false;
+    boolean reseted = false, updateReseted = false;
 
     /**
      * Creates new form EmployeeView
@@ -99,8 +99,17 @@ public class EmployeeView extends javax.swing.JPanel {
         employeeFirstNameTextField.setText("");
         employeeEmailTextField.setText("");
         employeeJobTextField.setText("");
-        
+
         reseted = true;
+    }
+
+    private void resetUpdateForm() {
+        employeeLastNameTextFieldToUpdate.setText("");
+        employeeFirstNameTextFieldToUpdate.setText("");
+        employeeEmailTextFieldToUpdate.setText("");
+        employeeJobTextFieldToUpdate.setText("");
+
+        updateReseted = true;
     }
 
     private void enableSubmit() {
@@ -108,23 +117,31 @@ public class EmployeeView extends javax.swing.JPanel {
         boolean isFirstnameValid = employeeFirstNameTextField.getText() != "" && employeeFirstNameTextField.getText().length() > 2;
         boolean isPostValid = employeeJobTextField.getText() != "" && employeeJobTextField.getText().length() > 2;
 
-        if (isLastnameValid && isFirstnameValid && isPostValid && isEmailValid("add")) {
+        if (isLastnameValid && isFirstnameValid && isPostValid && isEmailValid(employeeEmailTextField)) {
             addEmployeeBtn.setEnabled(true);
         } else {
             addEmployeeBtn.setEnabled(false);
         }
     }
 
-    boolean isEmailValid(String type) {
-        if (type == "add") {
-            String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(employeeEmailTextField.getText());
+    private void enableUpdateSubmit() {
+        boolean isLastnameValid = employeeLastNameTextFieldToUpdate.getText() != "" && employeeLastNameTextFieldToUpdate.getText().length() > 2;
+        boolean isFirstnameValid = employeeFirstNameTextFieldToUpdate.getText() != "" && employeeFirstNameTextFieldToUpdate.getText().length() > 2;
+        boolean isPostValid = employeeJobTextFieldToUpdate.getText() != "" && employeeJobTextFieldToUpdate.getText().length() > 2;
 
-            return matcher.matches();
+        if (isLastnameValid && isFirstnameValid && isPostValid && isEmailValid(employeeEmailTextFieldToUpdate)) {
+            updateEmployeeBtn.setEnabled(true);
         } else {
-            return true;
+            updateEmployeeBtn.setEnabled(false);
         }
+    }
+
+    boolean isEmailValid(JTextField emailInput) {
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(emailInput.getText());
+
+        return matcher.matches();
     }
 
     /**
@@ -230,7 +247,7 @@ public class EmployeeView extends javax.swing.JPanel {
                         .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchBtn1)))
-                .addContainerGap(609, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +349,7 @@ public class EmployeeView extends javax.swing.JPanel {
         employeeEmailTextField.setInputVerifier(new JInputValidator(employeeEmailTextField, true,true) {
             @Override
             protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
-                if(!isEmailValid("add") && !reseted){
+                if(!isEmailValid(employeeEmailTextField) && !reseted){
                     return new Validation(Validation.Type.DANGER, "Email invalide", preferences);
                 }
                 return new Validation(Validation.Type.NONE, "", preferences);
@@ -478,7 +495,55 @@ public class EmployeeView extends javax.swing.JPanel {
             }
         });
 
+        employeeEmailTextFieldToUpdate.setInputVerifier(new JInputValidator(employeeEmailTextFieldToUpdate, true,true) {
+            @Override
+            protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
+                if(!isEmailValid(employeeEmailTextFieldToUpdate) && !updateReseted){
+                    return new Validation(Validation.Type.DANGER, "Email invalide", preferences);
+                }
+                return new Validation(Validation.Type.NONE, "", preferences);
+            }
+        });
+        employeeEmailTextFieldToUpdate.getDocument().addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void removeUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void insertUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+        });
+
         jLabel8.setText("Email*");
+
+        employeeFirstNameTextFieldToUpdate.setInputVerifier(new JInputValidator(employeeFirstNameTextFieldToUpdate, true,true) {
+            @Override
+            protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
+                if(employeeFirstNameTextFieldToUpdate.getText().length() < 3  && !updateReseted){
+                    return new Validation(Validation.Type.DANGER, "Trop court", preferences);
+                }
+                return new Validation(Validation.Type.NONE, "", preferences);
+            }
+        });
+        employeeFirstNameTextFieldToUpdate.getDocument().addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void removeUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void insertUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+        });
 
         jLabel9.setText("Prénom(s)*");
 
@@ -487,10 +552,34 @@ public class EmployeeView extends javax.swing.JPanel {
                 employeeLastNameTextFieldToUpdateActionPerformed(evt);
             }
         });
+        employeeLastNameTextFieldToUpdate.setInputVerifier(new JInputValidator(employeeLastNameTextFieldToUpdate, true,true) {
+            @Override
+            protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
+                if(employeeLastNameTextFieldToUpdate.getText().length() < 3 && !updateReseted){
+                    return new Validation(Validation.Type.DANGER, "Too short", preferences);
+                }
+                return new Validation(Validation.Type.NONE, "", preferences);
+            }
+        });
+        employeeLastNameTextFieldToUpdate.getDocument().addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableSubmit();
+            }
+            public void removeUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableSubmit();
+            }
+            public void insertUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableSubmit();
+            }
+        });
 
         jLabel10.setText("Nom");
 
         updateEmployeeBtn.setText("Sauvegarder les changements");
+        updateEmployeeBtn.setEnabled(false);
         updateEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEmployeeBtnActionPerformed(evt);
@@ -498,6 +587,30 @@ public class EmployeeView extends javax.swing.JPanel {
         });
 
         jLabel13.setText("Poste");
+
+        employeeJobTextFieldToUpdate.setInputVerifier(new JInputValidator(employeeJobTextFieldToUpdate, true,true) {
+            @Override
+            protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
+                if(employeeJobTextFieldToUpdate.getText().length() < 3 && !updateReseted){
+                    return new Validation(Validation.Type.DANGER, "Trop court", preferences);
+                }
+                return new Validation(Validation.Type.NONE, "", preferences);
+            }
+        });
+        employeeJobTextFieldToUpdate.getDocument().addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void removeUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void insertUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+        });
 
         jLabel14.setText("Lieux");
 
