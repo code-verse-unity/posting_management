@@ -25,6 +25,12 @@ import utils.EmailSender;
 import utils.GeneratePDF;
 import utils.OpenFolder;
 
+import com.alexandriasoftware.swing.*;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JTextField;
+import java.beans.*;
+
 /**
  *
  * @author olivier
@@ -38,6 +44,8 @@ public class PostingView2 extends javax.swing.JPanel {
     private ArrayList<Place> places;
     private ArrayList<Posting> postings;
     private Dotenv dotenv;
+    
+    boolean reseted = false;
 
     /**
      * Creates new form PostingView2
@@ -213,6 +221,16 @@ public class PostingView2 extends javax.swing.JPanel {
         this.refillAddPostingEmployeeJComboBox();
         this.refillAddPostingPlaceJComboBox();
     }
+    
+    private void enableSearch() {
+        boolean startDateValid = startDateJDateChooser.getDate() != null && endDateJDateChooser.getDate() != null && startDateJDateChooser.getDate().before(endDateJDateChooser.getDate()) ;
+        
+        if(startDateValid){
+            searchPostingJButton.setEnabled(true);
+        }else{
+            searchPostingJButton.setEnabled(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -235,6 +253,8 @@ public class PostingView2 extends javax.swing.JPanel {
         endDateJDateChooser = new com.toedter.calendar.JDateChooser();
         searchPostingJButton = new javax.swing.JButton();
         clearSeachPostingJButton = new javax.swing.JButton();
+        startDateError = new javax.swing.JLabel();
+        endDateError = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -279,15 +299,55 @@ public class PostingView2 extends javax.swing.JPanel {
 
         postingTabJPanel.setLayout(new java.awt.BorderLayout());
 
-        searchPostingJPanel.setPreferredSize(new java.awt.Dimension(1586, 120));
+        searchPostingJPanel.setPreferredSize(new java.awt.Dimension(1586, 130));
 
         searchPostingJLabel.setText("Options de recheche :");
 
         startDateJLabel.setText("Date de début :");
 
+        startDateJDateChooser.addPropertyChangeListener("date", new PropertyChangeListener(){
+
+            @Override
+            public void propertyChange(PropertyChangeEvent event){
+
+                if(startDateJDateChooser.getDate().toString() == "" && !reseted){
+                    startDateError.setText("Date de début requis");
+                }else if(endDateJDateChooser.getDate() != null && startDateJDateChooser.getDate().after(endDateJDateChooser.getDate()) && !reseted){
+                    startDateError.setText("Date de début ne peut pas être après la date de fin de recherche");
+                }else{
+                    startDateError.setText("");
+                }
+
+                reseted = false;
+                enableSearch();
+            }
+
+        });
+
         endDateJLabel.setText("Date de fin :");
 
+        endDateJDateChooser.addPropertyChangeListener("date", new PropertyChangeListener(){
+
+            @Override
+            public void propertyChange(PropertyChangeEvent event){
+
+                if(endDateJDateChooser.getDate() == null && !reseted){
+                    endDateError.setText("Date de fin requis");
+                }else if(startDateJDateChooser.getDate() != null && startDateJDateChooser.getDate().after(endDateJDateChooser.getDate()) && !reseted){
+                    startDateError.setText("Date de début ne peut pas être après la date de fin de recherche");
+                }else{
+                    endDateError.setText("");
+                    startDateError.setText("");
+                }
+
+                reseted = false;
+                enableSearch();
+            }
+
+        });
+
         searchPostingJButton.setText("Rechercher");
+        searchPostingJButton.setEnabled(false);
         searchPostingJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchPostingJButtonActionPerformed(evt);
@@ -301,6 +361,9 @@ public class PostingView2 extends javax.swing.JPanel {
             }
         });
 
+        startDateError.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
+        startDateError.setForeground(new java.awt.Color(153, 0, 0));
+
         javax.swing.GroupLayout searchPostingJPanelLayout = new javax.swing.GroupLayout(searchPostingJPanel);
         searchPostingJPanel.setLayout(searchPostingJPanelLayout);
         searchPostingJPanelLayout.setHorizontalGroup(
@@ -308,21 +371,24 @@ public class PostingView2 extends javax.swing.JPanel {
             .addGroup(searchPostingJPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchPostingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(searchPostingJPanelLayout.createSequentialGroup()
-                        .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(startDateJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(startDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(startDateError, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(startDateJLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startDateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(endDateJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(searchPostingJPanelLayout.createSequentialGroup()
-                                .addComponent(endDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(endDateError, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(endDateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addComponent(searchPostingJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(clearSeachPostingJButton))))
-                    .addComponent(searchPostingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(130, Short.MAX_VALUE))
+                                .addComponent(clearSeachPostingJButton)))))
+                .addContainerGap(819, Short.MAX_VALUE))
         );
         searchPostingJPanelLayout.setVerticalGroup(
             searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +409,11 @@ public class PostingView2 extends javax.swing.JPanel {
                             .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(searchPostingJButton)
                                 .addComponent(clearSeachPostingJButton)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchPostingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startDateError)
+                    .addComponent(endDateError))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         postingTabJPanel.add(searchPostingJPanel, java.awt.BorderLayout.PAGE_START);
@@ -435,7 +505,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(addPostingBtn)
-                .addContainerGap(765, Short.MAX_VALUE))
+                .addContainerGap(751, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Ajouter une afféctation", jPanel6);
@@ -520,7 +590,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addComponent(startDateToUpdateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updatePostingBtn)
-                .addContainerGap(765, Short.MAX_VALUE))
+                .addContainerGap(751, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Mettre à jour l'affectation", jPanel7);
@@ -568,7 +638,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(generatePDFJLabel)
                     .addComponent(generatePDFJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(1054, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,7 +750,7 @@ public class PostingView2 extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(postingEmployeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(558, Short.MAX_VALUE))
+                .addContainerGap(1247, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,6 +846,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private void clearSeachPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_clearSeachPostingJButtonActionPerformed
         startDateJDateChooser.setDate(null);
         endDateJDateChooser.setDate(null);
+        reseted = true;
         this.refillPostingListJTable();
     }// GEN-LAST:event_clearSeachPostingJButtonActionPerformed
 
@@ -916,6 +987,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JLabel deletePostingJLabel;
     private javax.swing.JComboBox<Employee> employeeComboBox;
     private javax.swing.JComboBox<Employee> employeeToUpdateComboBox;
+    private javax.swing.JLabel endDateError;
     private com.toedter.calendar.JDateChooser endDateJDateChooser;
     private javax.swing.JLabel endDateJLabel;
     private javax.swing.JButton generatePDFJButton;
@@ -946,6 +1018,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private javax.swing.JButton searchPostingJButton;
     private javax.swing.JLabel searchPostingJLabel;
     private javax.swing.JPanel searchPostingJPanel;
+    private javax.swing.JLabel startDateError;
     private com.toedter.calendar.JDateChooser startDateJDateChooser;
     private javax.swing.JLabel startDateJLabel;
     private com.toedter.calendar.JDateChooser startDateToUpdateJDateChooser;
