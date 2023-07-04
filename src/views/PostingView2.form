@@ -467,6 +467,7 @@
                 <Component class="javax.swing.JButton" name="deletePostingJButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Supprimer"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePostingJButtonActionPerformed"/>
@@ -484,7 +485,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="generatePDFJButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="G&#xe9;nerer en PDF"/>
+                    <Property name="text" type="java.lang.String" value="Exporter en PDF"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatePDFJButtonActionPerformed"/>
@@ -524,7 +526,7 @@
                             <Column editable="false" title="Date de prise de service" type="java.lang.String"/>
                           </Table>
                         </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="postingListJTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){&#xa;    public void valueChanged(ListSelectionEvent event){&#xa;        if(!event.getValueIsAdjusting() &amp;&amp; postingListJTable.getSelectedRow() != -1){&#xa;            deletePostingJButton.setEnabled(true);&#xa;            generatePDFJButton.setEnabled(true);&#xa;        }else{&#xa;            deletePostingJButton.setEnabled(false);&#xa;            generatePDFJButton.setEnabled(false);&#xa;        }&#xa;    }&#xa;});">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="50" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
@@ -763,7 +765,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="postingEmployeeGeneratePDFJButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="G&#xe9;nerer en PDF"/>
+                        <Property name="text" type="java.lang.String" value="Exporter en PDF"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postingEmployeeGeneratePDFJButtonActionPerformed"/>

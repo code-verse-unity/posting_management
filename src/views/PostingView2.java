@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.event.*;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import model.Employee;
@@ -533,6 +534,7 @@ public class PostingView2 extends javax.swing.JPanel {
         deletePostingJLabel.setText("Supprimer l'affectation seletionnée :");
 
         deletePostingJButton.setText("Supprimer");
+        deletePostingJButton.setEnabled(false);
         deletePostingJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletePostingJButtonActionPerformed(evt);
@@ -543,7 +545,8 @@ public class PostingView2 extends javax.swing.JPanel {
 
         generatePDFJLabel.setText("Génerer l'arrêté d'affectation :");
 
-        generatePDFJButton.setText("Génerer en PDF");
+        generatePDFJButton.setText("Exporter en PDF");
+        generatePDFJButton.setEnabled(false);
         generatePDFJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generatePDFJButtonActionPerformed(evt);
@@ -624,6 +627,17 @@ public class PostingView2 extends javax.swing.JPanel {
         if (postingListJTable.getColumnModel().getColumnCount() > 0) {
             postingListJTable.getColumnModel().getColumn(0).setMaxWidth(50);
         }
+        postingListJTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event){
+                if(!event.getValueIsAdjusting() && postingListJTable.getSelectedRow() != -1){
+                    deletePostingJButton.setEnabled(true);
+                    generatePDFJButton.setEnabled(true);
+                }else{
+                    deletePostingJButton.setEnabled(false);
+                    generatePDFJButton.setEnabled(false);
+                }
+            }
+        });
 
         jPanel5.add(jScrollPane1);
 
@@ -719,7 +733,7 @@ public class PostingView2 extends javax.swing.JPanel {
 
         postingEmployeeGeneratePDFJLabel.setText("Génerer l'arrêté de l'affectation selectionnée :");
 
-        postingEmployeeGeneratePDFJButton.setText("Génerer en PDF");
+        postingEmployeeGeneratePDFJButton.setText("Exporter en PDF");
         postingEmployeeGeneratePDFJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 postingEmployeeGeneratePDFJButtonActionPerformed(evt);
