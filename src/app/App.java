@@ -74,7 +74,7 @@ public class App extends javax.swing.JFrame {
 
         employeeBtn.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         employeeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        employeeBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        employeeBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         employeeBtn.setText("Employées");
         employeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -85,7 +85,7 @@ public class App extends javax.swing.JFrame {
 
         placeBtn.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         placeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        placeBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        placeBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         placeBtn.setText("Lieux");
         placeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         placeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +96,7 @@ public class App extends javax.swing.JFrame {
 
         postingBtn1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         postingBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        postingBtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        postingBtn1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         postingBtn1.setText("Afféctations");
         postingBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         postingBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
