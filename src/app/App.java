@@ -69,24 +69,36 @@ public class App extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new java.awt.BorderLayout(8, 0));
 
-        sidebar.setBackground(new java.awt.Color(153, 153, 153));
+        sidebar.setBackground(new java.awt.Color(0, 102, 255));
         sidebar.setPreferredSize(new java.awt.Dimension(150, 639));
 
+        employeeBtn.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        employeeBtn.setForeground(new java.awt.Color(255, 255, 255));
+        employeeBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         employeeBtn.setText("Employées");
+        employeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         employeeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 employeeBtnMouseClicked(evt);
             }
         });
 
+        placeBtn.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        placeBtn.setForeground(new java.awt.Color(255, 255, 255));
+        placeBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         placeBtn.setText("Lieux");
+        placeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         placeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 placeBtnMouseClicked(evt);
             }
         });
 
+        postingBtn1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        postingBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        postingBtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         postingBtn1.setText("Afféctations");
+        postingBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         postingBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 postingBtn1MouseClicked(evt);
@@ -115,7 +127,7 @@ public class App extends javax.swing.JFrame {
 
         getContentPane().add(sidebar, java.awt.BorderLayout.LINE_START);
 
-        mainContent.setBackground(new java.awt.Color(153, 153, 153));
+        mainContent.setBackground(new java.awt.Color(255, 255, 255));
         mainContent.setLayout(new java.awt.BorderLayout());
         getContentPane().add(mainContent, java.awt.BorderLayout.CENTER);
 

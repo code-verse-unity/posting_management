@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -11,7 +16,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,-5,0,0,6,50"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,86,0,0,6,50"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
@@ -20,10 +25,23 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="postingJTabbedPanel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f0" green="f0" red="f0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="13" style="1"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="postingTabJPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Aff&#xe9;ctations">
@@ -36,6 +54,9 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="searchPostingJPanel">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[1586, 130]"/>
                 </Property>
@@ -116,6 +137,9 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="searchPostingJLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Options de recheche :"/>
                   </Properties>
                 </Component>
@@ -128,6 +152,14 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="startDateJDateChooser.addPropertyChangeListener(&quot;date&quot;, new PropertyChangeListener(){&#xa;&#xa;    @Override&#xa;    public void propertyChange(PropertyChangeEvent event){&#xa;        &#xa;&#xa;        if(startDateJDateChooser.getDate().toString() == &quot;&quot; &amp;&amp; !reseted){&#xa;            startDateError.setText(&quot;Date de d&#xe9;but requis&quot;);&#xa;        }else if(endDateJDateChooser.getDate() != null &amp;&amp; startDateJDateChooser.getDate().after(endDateJDateChooser.getDate()) &amp;&amp; !reseted){&#xa;            startDateError.setText(&quot;Date de d&#xe9;but ne peut pas &#xea;tre apr&#xe8;s la date de fin de recherche&quot;);&#xa;        }else{&#xa;            startDateError.setText(&quot;&quot;);&#xa;        }&#xa;&#xa;        reseted = false;&#xa;        enableSearch();&#xa;    }&#xa;&#xa;});"/>
                   </AuxValues>
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[94, 35]"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="endDateJLabel">
                   <Properties>
@@ -138,11 +170,34 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="endDateJDateChooser.addPropertyChangeListener(&quot;date&quot;, new PropertyChangeListener(){&#xa;&#xa;    @Override&#xa;    public void propertyChange(PropertyChangeEvent event){&#xa;        &#xa;&#xa;        if(endDateJDateChooser.getDate() == null &amp;&amp; !reseted){&#xa;            endDateError.setText(&quot;Date de fin requis&quot;);&#xa;        }else if(startDateJDateChooser.getDate() != null &amp;&amp; startDateJDateChooser.getDate().after(endDateJDateChooser.getDate()) &amp;&amp; !reseted){&#xa;            startDateError.setText(&quot;Date de d&#xe9;but ne peut pas &#xea;tre apr&#xe8;s la date de fin de recherche&quot;);&#xa;        }else{&#xa;            endDateError.setText(&quot;&quot;);&#xa;            startDateError.setText(&quot;&quot;);&#xa;        }&#xa;&#xa;        reseted = false;&#xa;        enableSearch();&#xa;    }&#xa;&#xa;});"/>
                   </AuxValues>
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[94, 35]"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="searchPostingJButton">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="33" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Rechercher"/>
                     <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                      <Insets value="[5, 14, 5, 14]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchPostingJButtonActionPerformed"/>
@@ -150,7 +205,22 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="clearSeachPostingJButton">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="99" red="66" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Effacer"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                      <Insets value="[5, 14, 5, 14]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearSeachPostingJButtonActionPerformed"/>
@@ -172,6 +242,9 @@
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[400, 623]"/>
                 </Property>
@@ -188,10 +261,23 @@
               </Layout>
               <SubComponents>
                 <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
+                  </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                   <SubComponents>
                     <Container class="javax.swing.JPanel" name="jPanel6">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                        </Property>
+                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Ajouter une aff&#xe9;ctation">
@@ -203,14 +289,14 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPostingFormJLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="206" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="addPostingEmployeeJLabel1" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                                               <Component id="employeeComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
@@ -219,12 +305,12 @@
                                               <Component id="addPostingStartDateJLabel1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                                   <Component id="addPostingBtn" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="addPostingStartDateJDateChooser" alignment="0" pref="305" max="32767" attributes="0"/>
+                                                  <Component id="addPostingStartDateJDateChooser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="84" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -247,7 +333,7 @@
                                   <Component id="addPostingStartDateJDateChooser" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="addPostingBtn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="751" max="32767" attributes="0"/>
+                                  <EmptySpace pref="303" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -265,8 +351,17 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="employeeComboBox">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultComboBoxModel&lt;Employee&gt;()" type="code"/>
+                            </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[72, 35]"/>
                             </Property>
                             <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
@@ -283,8 +378,17 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="placeComboBox">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultComboBoxModel&lt;Place&gt;()" type="code"/>
+                            </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[72, 35]"/>
                             </Property>
                             <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Place) {&#xa;                    Place place = (Place) value;&#xa;                    setText(place.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
@@ -300,10 +404,33 @@
                           </Properties>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="addPostingStartDateJDateChooser">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[94, 35]"/>
+                            </Property>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="addPostingBtn">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="33" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="sansserif" size="13" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Ajouter"/>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                              <Insets value="[5, 14, 5, 14]"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPostingBtnActionPerformed"/>
@@ -312,6 +439,11 @@
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel7">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                        </Property>
+                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Mettre &#xe0; jour l&apos;affectation">
@@ -323,21 +455,28 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="addPostingFormJLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addPostingEmployeeJLabel2" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                      <Component id="employeeToUpdateComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
-                                      <Component id="addPostingPlaceJLabel2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <Component id="placeToUpdateComboBox" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
-                                      <Component id="addPostingStartDateJLabel2" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="updatePostingBtn" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="startDateToUpdateJDateChooser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="addPostingEmployeeJLabel2" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <Component id="employeeToUpdateComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
+                                              <Component id="addPostingPlaceJLabel2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="addPostingStartDateJLabel2" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                                              <Component id="updatePostingBtn" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="placeToUpdateComboBox" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="startDateToUpdateJDateChooser" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="addPostingFormJLabel2" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                                  <EmptySpace pref="47" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -360,7 +499,7 @@
                                   <Component id="startDateToUpdateJDateChooser" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="updatePostingBtn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="751" max="32767" attributes="0"/>
+                                  <EmptySpace pref="303" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -378,8 +517,18 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="employeeToUpdateComboBox">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultComboBoxModel&lt;Employee&gt;()" type="code"/>
+                            </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="opaque" type="boolean" value="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[72, 35]"/>
                             </Property>
                             <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
@@ -396,8 +545,17 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="placeToUpdateComboBox">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultComboBoxModel&lt;Place&gt;()" type="code"/>
+                            </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[72, 35]"/>
                             </Property>
                             <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Place) {&#xa;                    Place place = (Place) value;&#xa;                    setText(place.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
@@ -413,10 +571,33 @@
                           </Properties>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="startDateToUpdateJDateChooser">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[94, 35]"/>
+                            </Property>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="updatePostingBtn">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="33" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="sansserif" size="13" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Enregistrer les modifications"/>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                              <Insets value="[5, 14, 5, 14]"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePostingBtnActionPerformed"/>
@@ -430,8 +611,11 @@
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[1586, 70]"/>
+                  <Dimension value="[1586, 80]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -456,7 +640,7 @@
                               <Component id="generatePDFJLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="generatePDFJButton" min="-2" pref="221" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="1054" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -489,13 +673,31 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="deletePostingJLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Supprimer l&apos;affectation seletionn&#xe9;e :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="deletePostingJButton">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Supprimer"/>
                     <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                      <Insets value="[5, 14, 5, 14]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePostingJButtonActionPerformed"/>
@@ -508,13 +710,32 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="generatePDFJLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="G&#xe9;nerer l&apos;arr&#xea;t&#xe9; d&apos;affectation :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="generatePDFJButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Exporter en PDF"/>
                     <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="33" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="G&#xe9;nerer en PDF"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                      <Insets value="[5, 14, 5, 14]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatePDFJButtonActionPerformed"/>
@@ -523,6 +744,11 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="Center"/>
@@ -535,6 +761,11 @@
               </Layout>
               <SubComponents>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -544,6 +775,9 @@
                     <Component class="javax.swing.JTable" name="postingListJTable">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="14" style="0"/>
+                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="0">
                             <Column editable="false" title="Id" type="java.lang.Integer"/>
@@ -588,6 +822,21 @@
                             </Column>
                           </TableColumnModel>
                         </Property>
+                        <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="intercellSpacing" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[3, 0]"/>
+                        </Property>
+                        <Property name="rowHeight" type="int" value="50"/>
+                        <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="66" red="66" type="rgb"/>
+                        </Property>
+                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="selectionMode" type="int" value="0"/>
+                        <Property name="showVerticalLines" type="boolean" value="true"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
@@ -603,6 +852,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="historicTabjPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Historique d&apos;un employ&#xe9;">
@@ -614,6 +868,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel3">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="First"/>
@@ -653,13 +912,22 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="postingEmployeeJLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#xe9;lectionnner l&apos;employ&#xe9; :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="postingEmployeeJComboBox">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="fe" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new DefaultComboBoxModel&lt;Employee&gt;()" type="code"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[72, 35]"/>
                     </Property>
                     <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
@@ -675,6 +943,11 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="Center"/>
@@ -684,6 +957,11 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="Center"/>
@@ -694,6 +972,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="postingEmployeeListJTable">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="14" style="0"/>
+                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="0">
                             <Column editable="false" title="Id" type="java.lang.String"/>
@@ -738,6 +1019,21 @@
                             </Column>
                           </TableColumnModel>
                         </Property>
+                        <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="intercellSpacing" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[3, 0]"/>
+                        </Property>
+                        <Property name="rowHeight" type="int" value="50"/>
+                        <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="66" red="66" type="rgb"/>
+                        </Property>
+                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="selectionMode" type="int" value="0"/>
+                        <Property name="showVerticalLines" type="boolean" value="true"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
@@ -749,6 +1045,14 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="postingEmployeeOptionsJPanel">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[417, 714]"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="After"/>
@@ -765,11 +1069,11 @@
                                       <Component id="postingEmployeeGeneratePDFJLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="postingEmployeeGeneratePDFJButton" min="-2" pref="437" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="postingEmployeeGeneratePDFJButton" min="-2" pref="332" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="44" max="32767" attributes="0"/>
+                              <EmptySpace pref="43" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -780,7 +1084,7 @@
                               <Component id="postingEmployeeGeneratePDFJLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="postingEmployeeGeneratePDFJButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="1078" max="32767" attributes="0"/>
+                              <EmptySpace pref="648" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -788,12 +1092,27 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="postingEmployeeGeneratePDFJLabel">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="13" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="G&#xe9;nerer l&apos;arr&#xea;t&#xe9; de l&apos;affectation selectionn&#xe9;e :"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="postingEmployeeGeneratePDFJButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Exporter en PDF"/>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="33" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="13" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="G&#xe9;nerer en PDF"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[5, 14, 5, 14]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postingEmployeeGeneratePDFJButtonActionPerformed"/>

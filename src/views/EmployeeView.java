@@ -193,28 +193,40 @@ public class EmployeeView extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         employeePlaceComboBoxToUpdate = new javax.swing.JComboBox<>();
         deleteEmployeeTab = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         deleteEmployeeBtn = new javax.swing.JButton();
         JScrollPane = new javax.swing.JScrollPane();
         employeeTable = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(240, 240, 240));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setBackground(new java.awt.Color(240, 240, 240));
         jPanel3.setPreferredSize(new java.awt.Dimension(1288, 160));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel1.setText("Liste des employés");
 
+        searchTextField.setPreferredSize(new java.awt.Dimension(64, 35));
+
+        searchBtn.setBackground(new java.awt.Color(0, 51, 255));
+        searchBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        searchBtn.setForeground(new java.awt.Color(255, 255, 255));
         searchBtn.setText("Rechercher");
+        searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
             }
         });
 
+        searchBtn1.setBackground(new java.awt.Color(102, 153, 255));
+        searchBtn1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        searchBtn1.setForeground(new java.awt.Color(255, 255, 255));
         searchBtn1.setText("Effacer");
+        searchBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBtn1.setMargin(new java.awt.Insets(4, 14, 4, 14));
         searchBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtn1ActionPerformed(evt);
@@ -223,6 +235,7 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jLabel15.setText("Indiquer le nom à chercher");
 
+        noPostedEmployeeCheckBox.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         noPostedEmployeeCheckBox.setText("Afficher les employées non afféctés");
         noPostedEmployeeCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,13 +254,14 @@ public class EmployeeView extends javax.swing.JPanel {
                     .addComponent(jLabel15)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(noPostedEmployeeCheckBox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBtn)
+                            .addComponent(noPostedEmployeeCheckBox)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchBtn1)))
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,18 +277,22 @@ public class EmployeeView extends javax.swing.JPanel {
                     .addComponent(searchBtn1))
                 .addGap(18, 18, 18)
                 .addComponent(noPostedEmployeeCheckBox)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel4.setBackground(new java.awt.Color(240, 240, 240));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        employeeFormContainer.setPreferredSize(new java.awt.Dimension(500, 477));
+        employeeFormContainer.setBackground(new java.awt.Color(240, 240, 240));
+        employeeFormContainer.setPreferredSize(new java.awt.Dimension(520, 477));
+        employeeFormContainer.setLayout(new java.awt.BorderLayout());
 
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(500, 700));
+        jTabbedPane1.setBackground(new java.awt.Color(240, 240, 240));
+        jTabbedPane1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
 
+        addEmployeeTab.setBackground(new java.awt.Color(240, 240, 240));
         addEmployeeTab.setPreferredSize(new java.awt.Dimension(500, 600));
 
         jLabel2.setText("Nom");
@@ -309,6 +327,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 employeeLastNameTextFieldInputMethodTextChanged(evt);
             }
         });
+        employeeLastNameTextField.setPreferredSize(new java.awt.Dimension(64, 35));
         employeeLastNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeLastNameTextFieldActionPerformed(evt);
@@ -369,20 +388,31 @@ public class EmployeeView extends javax.swing.JPanel {
                 enableSubmit();
             }
         });
+        employeeFirstNameTextField.setPreferredSize(new java.awt.Dimension(64, 35));
+
+        employeeEmailTextField.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel4.setText("Email*");
 
         jLabel5.setText("Civilité*");
 
+        employeeCivilityComboBox.setBackground(new java.awt.Color(255, 255, 254));
         employeeCivilityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mlle", "Mme" }));
+        employeeCivilityComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        employeeCivilityComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         employeeCivilityComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeCivilityComboBoxActionPerformed(evt);
             }
         });
 
+        addEmployeeBtn.setBackground(new java.awt.Color(0, 51, 255));
+        addEmployeeBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        addEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         addEmployeeBtn.setText("Ajouter");
         addEmployeeBtn.setEnabled(false);
+        addEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addEmployeeBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         addEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEmployeeBtnActionPerformed(evt);
@@ -414,6 +444,8 @@ public class EmployeeView extends javax.swing.JPanel {
                 enableSubmit();
             }
         });
+        employeeJobTextField.setMinimumSize(new java.awt.Dimension(64, 35));
+        employeeJobTextField.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel12.setText("Lieux");
 
@@ -424,6 +456,9 @@ public class EmployeeView extends javax.swing.JPanel {
                 new utils.ComboItem(place.getFullName(),place.getId().toString())
             );
         }
+        employeePlaceComboBox.setBackground(new java.awt.Color(255, 255, 254));
+        employeePlaceComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        employeePlaceComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
         employeePlaceComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeePlaceComboBoxActionPerformed(evt);
@@ -435,22 +470,22 @@ public class EmployeeView extends javax.swing.JPanel {
         addEmployeeTabLayout.setHorizontalGroup(
             addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addEmployeeTabLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(65, 65, 65)
                 .addGroup(addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(employeePlaceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11)
-                    .addComponent(employeeJobTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(employeeJobTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(employeeLastNameTextField)
+                    .addComponent(employeeLastNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(employeeFirstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(employeeEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(employeeFirstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(employeeEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(employeeCivilityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         addEmployeeTabLayout.setVerticalGroup(
             addEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,14 +516,19 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(employeePlaceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(addEmployeeBtn)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ajouter un employé", addEmployeeTab);
 
+        updateEmployeeTab.setBackground(new java.awt.Color(240, 240, 240));
+
         jLabel7.setText("Civilité*");
 
+        employeeCivilityComboBox1.setBackground(new java.awt.Color(255, 255, 254));
         employeeCivilityComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mlle", "Mme" }));
+        employeeCivilityComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        employeeCivilityComboBox1.setPreferredSize(new java.awt.Dimension(72, 35));
         employeeCivilityComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeCivilityComboBox1ActionPerformed(evt);
@@ -544,9 +584,15 @@ public class EmployeeView extends javax.swing.JPanel {
                 enableUpdateSubmit();
             }
         });
+        employeeEmailTextFieldToUpdate.setPreferredSize(new java.awt.Dimension(64, 35));
+
+        jLabel8.setText("Email*");
+
+        employeeFirstNameTextFieldToUpdate.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel9.setText("Prénom(s)*");
 
+        employeeLastNameTextFieldToUpdate.setPreferredSize(new java.awt.Dimension(64, 35));
         employeeLastNameTextFieldToUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeLastNameTextFieldToUpdateActionPerformed(evt);
@@ -578,8 +624,13 @@ public class EmployeeView extends javax.swing.JPanel {
 
         jLabel10.setText("Nom");
 
+        updateEmployeeBtn.setBackground(new java.awt.Color(0, 51, 255));
+        updateEmployeeBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        updateEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateEmployeeBtn.setText("Sauvegarder les changements");
         updateEmployeeBtn.setEnabled(false);
+        updateEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateEmployeeBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         updateEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEmployeeBtnActionPerformed(evt);
@@ -611,6 +662,7 @@ public class EmployeeView extends javax.swing.JPanel {
                 enableUpdateSubmit();
             }
         });
+        employeeJobTextFieldToUpdate.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel14.setText("Lieux");
 
@@ -621,6 +673,9 @@ public class EmployeeView extends javax.swing.JPanel {
                 new utils.ComboItem(place.getFullName(),place.getId().toString())
             );
         }
+        employeePlaceComboBoxToUpdate.setBackground(new java.awt.Color(255, 255, 254));
+        employeePlaceComboBoxToUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        employeePlaceComboBoxToUpdate.setPreferredSize(new java.awt.Dimension(72, 35));
         employeePlaceComboBoxToUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeePlaceComboBoxToUpdateActionPerformed(evt);
@@ -632,24 +687,24 @@ public class EmployeeView extends javax.swing.JPanel {
         updateEmployeeTabLayout.setHorizontalGroup(
             updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updateEmployeeTabLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(62, 62, 62)
                 .addGroup(updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(employeePlaceComboBoxToUpdate, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addComponent(employeeJobTextFieldToUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14)
-                        .addComponent(updateEmployeeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(updateEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel10)
-                        .addComponent(employeeLastNameTextFieldToUpdate)
+                        .addComponent(employeeLastNameTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9)
-                        .addComponent(employeeFirstNameTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                        .addComponent(employeeEmailTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addComponent(employeeFirstNameTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(employeeEmailTextFieldToUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addComponent(jLabel7)
-                        .addComponent(employeeCivilityComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                        .addComponent(employeeCivilityComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         updateEmployeeTabLayout.setVerticalGroup(
             updateEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,15 +735,22 @@ public class EmployeeView extends javax.swing.JPanel {
                 .addComponent(employeePlaceComboBoxToUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(updateEmployeeBtn)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mettre à jour un employé", updateEmployeeTab);
 
+        deleteEmployeeTab.setBackground(new java.awt.Color(240, 240, 240));
+
         jLabel6.setText("Supprimer l'employé selectioné");
 
+        deleteEmployeeBtn.setBackground(new java.awt.Color(255, 0, 51));
+        deleteEmployeeBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        deleteEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteEmployeeBtn.setText("Supprimer");
         deleteEmployeeBtn.setEnabled(false);
+        deleteEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteEmployeeBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeBtnActionPerformed(evt);
@@ -700,36 +762,34 @@ public class EmployeeView extends javax.swing.JPanel {
         deleteEmployeeTabLayout.setHorizontalGroup(
             deleteEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteEmployeeTabLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(32, 32, 32)
                 .addGroup(deleteEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         deleteEmployeeTabLayout.setVerticalGroup(
             deleteEmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteEmployeeTabLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteEmployeeBtn)
-                .addContainerGap(490, Short.MAX_VALUE))
+                .addContainerGap(519, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Supprimer un employé", deleteEmployeeTab);
 
-        employeeFormContainer.add(jTabbedPane1);
+        employeeFormContainer.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.add(employeeFormContainer, java.awt.BorderLayout.LINE_END);
 
-        JScrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        JScrollPane.setBackground(new java.awt.Color(240, 240, 240));
         JScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         JScrollPane.setPreferredSize(new java.awt.Dimension(600, 406));
 
         employeeTable.setAutoCreateRowSorter(true);
+        employeeTable.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         employeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -753,6 +813,13 @@ public class EmployeeView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        employeeTable.setGridColor(new java.awt.Color(255, 255, 255));
+        employeeTable.setIntercellSpacing(new java.awt.Dimension(3, 0));
+        employeeTable.setRowHeight(50);
+        employeeTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        employeeTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        employeeTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        employeeTable.setShowVerticalLines(true);
         employeeTable.getTableHeader().setReorderingAllowed(false);
         employeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -762,7 +829,7 @@ public class EmployeeView extends javax.swing.JPanel {
         JScrollPane.setViewportView(employeeTable);
         if (employeeTable.getColumnModel().getColumnCount() > 0) {
             employeeTable.getColumnModel().getColumn(0).setMaxWidth(40);
-            employeeTable.getColumnModel().getColumn(4).setPreferredWidth(10);
+            employeeTable.getColumnModel().getColumn(4).setMaxWidth(60);
         }
         employeeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event){
@@ -971,7 +1038,6 @@ public class EmployeeView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JCheckBox noPostedEmployeeCheckBox;
     private javax.swing.JButton searchBtn;
