@@ -46,7 +46,7 @@ public class PostingView2 extends javax.swing.JPanel {
     private ArrayList<Posting> postings;
     private Dotenv dotenv;
     
-    boolean reseted = false;
+    boolean reseted = false,addReseted = false,updateReseted = false;
     private static final long MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
 
     /**
@@ -518,18 +518,27 @@ public class PostingView2 extends javax.swing.JPanel {
 
             @Override
             public void propertyChange(PropertyChangeEvent event){
-
-                if(addPostingStartDateJDateChooser.getDate() == null){
+                System.out.println(addReseted);
+                if(addPostingStartDateJDateChooser.getDate() == null && !addReseted){
                     addPostingDateError.setText("Date de prise de service requis");
-                }else if(addPostingStartDateJDateChooser.getDate() != null && addPostingStartDateJDateChooser.getDate().before(new Date(new Date().getTime() - MILLIS_IN_A_DAY)) ){
+                }else if(addPostingStartDateJDateChooser.getDate() != null && addPostingStartDateJDateChooser.getDate().before(new Date(new Date().getTime() - MILLIS_IN_A_DAY)) && !addReseted){
                     addPostingDateError.setText("Date passé invalide");
                 }else{
                     addPostingDateError.setText("");
                 }
 
+                addReseted = false;
+
                 enableAddPosting();
             }
 
+        });
+        addPostingStartDateJDateChooser.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                addPostingStartDateJDateChooserInputMethodTextChanged(evt);
+            }
         });
 
         addPostingBtn.setBackground(new java.awt.Color(0, 51, 255));
@@ -558,9 +567,8 @@ public class PostingView2 extends javax.swing.JPanel {
                     .addComponent(addPostingPlaceJLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(placeComboBox, 0, 308, Short.MAX_VALUE)
                     .addComponent(addPostingStartDateJLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(addPostingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addPostingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addPostingFormJLabel1)
                     .addComponent(addPostingDateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -642,11 +650,12 @@ public class PostingView2 extends javax.swing.JPanel {
             @Override
             public void propertyChange(PropertyChangeEvent event){
 
-                if(addPostingStartDateJDateChooser.getDate() == null){
+                if(startDateToUpdateJDateChooser.getDate() == null && updateReseted){
                     updatePostingDateError.setText("Date de prise de service requis");
                 }else{
                     updatePostingDateError.setText("");
                 }
+                updateReseted = false;
 
                 enableUpdatePosting();
             }
@@ -1009,6 +1018,10 @@ public class PostingView2 extends javax.swing.JPanel {
         add(postingJTabbedPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addPostingStartDateJDateChooserInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_addPostingStartDateJDateChooserInputMethodTextChanged
+        System.out.println("test");
+    }//GEN-LAST:event_addPostingStartDateJDateChooserInputMethodTextChanged
+
     private void clearSeachPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_clearSeachPostingJButtonActionPerformed
         startDateJDateChooser.setDate(null);
         endDateJDateChooser.setDate(null);
@@ -1089,15 +1102,26 @@ public class PostingView2 extends javax.swing.JPanel {
                 "</div>" +
                 "  </body>" +
                 "</html>";
+        
 
-        this.emailSender.sendEmail(
-                this.dotenv.get("MAIL_USERNAME_SENDER"),
-                employee.getEmail(),
-                subject,
-                body,
-                contentType);
+        resetAddPosting();
+
+//        this.emailSender.sendEmail(
+//                this.dotenv.get("MAIL_USERNAME_SENDER"),
+//                employee.getEmail(),
+//                subject,
+//                body,
+//                contentType);
+//        
+
     }// GEN-LAST:event_addPostingBtnActionPerformed
 
+    private void resetAddPosting() {
+        addReseted = true;
+        addPostingStartDateJDateChooser.setDate(null);
+        addReseted = false;
+    }
+    
     private void searchPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_searchPostingJButtonActionPerformed
         this.refillPostingListJTable();
     }// GEN-LAST:event_searchPostingJButtonActionPerformed
@@ -1141,8 +1165,18 @@ public class PostingView2 extends javax.swing.JPanel {
             Posting.update(this.connection, this.getPostingSelected().getId(), employeeId, placeId, selectedDate);
             this.refillPostingListJTable();
         }
+        
+        resetUpdateForm();
     }// GEN-LAST:event_updatePostingBtnActionPerformed
 
+    private void resetUpdateForm() {
+        employeeToUpdateComboBox.setSelectedItem(null);
+        placeToUpdateComboBox.setSelectedItem(null);
+        startDateToUpdateJDateChooser.setDate(null);
+        
+        updateReseted = true;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPostingBtn;
     private javax.swing.JLabel addPostingDateError;

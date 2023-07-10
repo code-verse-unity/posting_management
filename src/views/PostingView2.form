@@ -296,10 +296,8 @@
                                       <Component id="addPostingPlaceJLabel1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                       <Component id="placeComboBox" alignment="0" pref="308" max="32767" attributes="0"/>
                                       <Component id="addPostingStartDateJLabel1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="addPostingBtn" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="addPostingStartDateJDateChooser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="addPostingBtn" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="addPostingStartDateJDateChooser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                       <Component id="addPostingFormJLabel1" min="-2" max="-2" attributes="0"/>
                                       <Component id="addPostingDateError" max="-2" attributes="0"/>
                                       <Component id="employeeComboBox" alignment="0" max="32767" attributes="0"/>
@@ -400,8 +398,11 @@
                           </Properties>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="addPostingStartDateJDateChooser">
+                          <Events>
+                            <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="addPostingStartDateJDateChooserInputMethodTextChanged"/>
+                          </Events>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="addPostingStartDateJDateChooser.addPropertyChangeListener(&quot;date&quot;, new PropertyChangeListener(){&#xa;&#xa;    @Override&#xa;    public void propertyChange(PropertyChangeEvent event){&#xa;        &#xa;&#xa;        if(addPostingStartDateJDateChooser.getDate() == null){&#xa;            addPostingDateError.setText(&quot;Date de prise de service requis&quot;);&#xa;        }else if(addPostingStartDateJDateChooser.getDate() != null &amp;&amp; addPostingStartDateJDateChooser.getDate().before(new Date(new Date().getTime() - MILLIS_IN_A_DAY)) ){&#xa;            addPostingDateError.setText(&quot;Date pass&#xe9; invalide&quot;);&#xa;        }else{&#xa;            addPostingDateError.setText(&quot;&quot;);&#xa;        }&#xa;&#xa;        enableAddPosting();&#xa;    }&#xa;&#xa;});"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="addPostingStartDateJDateChooser.addPropertyChangeListener(&quot;date&quot;, new PropertyChangeListener(){&#xa;&#xa;    @Override&#xa;    public void propertyChange(PropertyChangeEvent event){&#xa;       System.out.println(addReseted);&#xa;        if(addPostingStartDateJDateChooser.getDate() == null &amp;&amp; !addReseted){&#xa;            addPostingDateError.setText(&quot;Date de prise de service requis&quot;);&#xa;        }else if(addPostingStartDateJDateChooser.getDate() != null &amp;&amp; addPostingStartDateJDateChooser.getDate().before(new Date(new Date().getTime() - MILLIS_IN_A_DAY)) &amp;&amp; !addReseted){&#xa;            addPostingDateError.setText(&quot;Date pass&#xe9; invalide&quot;);&#xa;        }else{&#xa;            addPostingDateError.setText(&quot;&quot;);&#xa;        }&#xa;&#xa;        addReseted = false;&#xa;&#xa;        enableAddPosting();&#xa;    }&#xa;&#xa;});"/>
                           </AuxValues>
                         </Component>
                         <Component class="javax.swing.JButton" name="addPostingBtn">
@@ -567,7 +568,7 @@
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="startDateToUpdateJDateChooser">
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="startDateToUpdateJDateChooser.addPropertyChangeListener(&quot;date&quot;, new PropertyChangeListener(){&#xa;&#xa;    @Override&#xa;    public void propertyChange(PropertyChangeEvent event){&#xa;        &#xa;&#xa;        if(addPostingStartDateJDateChooser.getDate() == null){&#xa;            updatePostingDateError.setText(&quot;Date de prise de service requis&quot;);&#xa;        }else{&#xa;            updatePostingDateError.setText(&quot;&quot;);&#xa;        }&#xa;&#xa;        enableUpdatePosting();&#xa;    }&#xa;&#xa;});"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="startDateToUpdateJDateChooser.addPropertyChangeListener(&quot;date&quot;, new PropertyChangeListener(){&#xa;&#xa;    @Override&#xa;    public void propertyChange(PropertyChangeEvent event){&#xa;        &#xa;&#xa;        if(startDateToUpdateJDateChooser.getDate() == null &amp;&amp; updateReseted){&#xa;            updatePostingDateError.setText(&quot;Date de prise de service requis&quot;);&#xa;        }else{&#xa;            updatePostingDateError.setText(&quot;&quot;);&#xa;        }&#xa;        updateReseted = false;&#xa;&#xa;        enableUpdatePosting();&#xa;    }&#xa;&#xa;});"/>
                           </AuxValues>
                         </Component>
                         <Component class="javax.swing.JButton" name="updatePostingBtn">
