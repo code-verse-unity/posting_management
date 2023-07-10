@@ -16,7 +16,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,32,0,0,5,8"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-23,0,0,5,8"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -27,7 +27,7 @@
           <Color blue="f0" green="f0" red="f0" type="rgb"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1288, 160]"/>
+          <Dimension value="[1288, 140]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -57,7 +57,7 @@
                           <Component id="searchBtn1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="464" max="32767" attributes="0"/>
+                  <EmptySpace pref="609" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -76,7 +76,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="noPostedEmployeeCheckBox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -246,7 +246,7 @@
                                   <Component id="addEmployeeBtn" min="-2" pref="380" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
+                              <EmptySpace pref="108" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -255,31 +255,31 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeLastNameTextField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeFirstNameTextField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeEmailTextField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="employeeCivilityComboBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeJobTextField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeePlaceComboBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="addEmployeeBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="30" max="32767" attributes="0"/>
+                              <EmptySpace pref="146" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -297,8 +297,13 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="employeeLastNameTextFieldInputMethodTextChanged"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeLastNameTextFieldActionPerformed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="employeeLastNameTextFieldPropertyChange"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="employeeLastNameTextField.setInputVerifier(new JInputValidator(employeeLastNameTextField, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(employeeLastNameTextField.getText().length() &lt; 3 &amp;&amp; !reseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Too short&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;employeeLastNameTextField.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        reseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
                       <Properties>
@@ -463,31 +468,31 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeLastNameTextFieldToUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeFirstNameTextFieldToUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeEmailTextFieldToUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="employeeCivilityComboBox1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeeJobTextFieldToUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="employeePlaceComboBoxToUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="updateEmployeeBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace pref="141" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -553,6 +558,9 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeLastNameTextFieldToUpdateActionPerformed"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="employeeLastNameTextFieldToUpdate.setInputVerifier(new JInputValidator(employeeLastNameTextFieldToUpdate, true,true) {&#xa;    @Override&#xa;    protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){&#xa;        if(employeeLastNameTextFieldToUpdate.getText().length() &lt; 3 &amp;&amp; !updateReseted){&#xa;            return new Validation(Validation.Type.DANGER, &quot;Too short&quot;, preferences);&#xa;        }&#xa;        return new Validation(Validation.Type.NONE, &quot;&quot;, preferences);&#xa;    }&#xa;});&#xa;employeeLastNameTextFieldToUpdate.getDocument().addDocumentListener(new DocumentListener(){&#xa;    public void changedUpdate(DocumentEvent e){&#xa;        updateReseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void removeUpdate(DocumentEvent e){&#xa;        updateReseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;    public void insertUpdate(DocumentEvent e){&#xa;        updateReseted = false;&#xa;        enableSubmit();&#xa;    }&#xa;});"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
@@ -739,7 +747,7 @@
                     <Column editable="false" title="Lieu de travail" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="employeeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){&#xa;    public void valueChanged(ListSelectionEvent event){&#xa;        if(!event.getValueIsAdjusting() &amp;&amp; employeeTable.getSelectedRow() != -1){&#xa;            deleteEmployeeBtn.setEnabled(true);&#xa;        }else{&#xa;            deleteEmployeeBtn.setEnabled(false);&#xa;        }&#xa;    }&#xa;});">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="40" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>

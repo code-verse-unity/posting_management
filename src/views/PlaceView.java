@@ -10,7 +10,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.text.StyledEditorKit;
 import model.Place;
+import com.alexandriasoftware.swing.*;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JTextField;
+import javax.swing.event.*;
 
 /**
  *
@@ -20,6 +26,8 @@ public class PlaceView extends javax.swing.JPanel {
     ArrayList<Place> places;
     Connection connection;
     Place selectedPlace;
+    
+    boolean reseted = false, updateReseted = false;
     
     JFrame parent;
     /**
@@ -138,6 +146,7 @@ public class PlaceView extends javax.swing.JPanel {
         deletePlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         deletePlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         deletePlaceBtn.setText("Supprimer");
+        deletePlaceBtn.setEnabled(false);
         deletePlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deletePlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         deletePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +185,29 @@ public class PlaceView extends javax.swing.JPanel {
 
         jLabel3.setText("Désignation");
 
+        placeNameTextField.setInputVerifier(new JInputValidator(placeNameTextField, true,true) {
+            @Override
+            protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
+                if(placeNameTextField.getText().length() < 3 && !reseted){
+                    return new Validation(Validation.Type.DANGER, "Too short", preferences);
+                }
+                return new Validation(Validation.Type.NONE, "", preferences);
+            }
+        });
+        placeNameTextField.getDocument().addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e){
+                reseted = false;
+                enableSubmit();
+            }
+            public void removeUpdate(DocumentEvent e){
+                reseted = false;
+                enableSubmit();
+            }
+            public void insertUpdate(DocumentEvent e){
+                reseted = false;
+                enableSubmit();
+            }
+        });
         placeNameTextField.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel4.setText("Province");
@@ -242,6 +274,29 @@ public class PlaceView extends javax.swing.JPanel {
 
         jLabel5.setText("Désignation");
 
+        placeNameToUpdateTextField.setInputVerifier(new JInputValidator(placeNameToUpdateTextField, true,true) {
+            @Override
+            protected Validation getValidation(JComponent input, JInputValidatorPreferences preferences){
+                if(placeNameToUpdateTextField.getText().length() < 3 && !reseted){
+                    return new Validation(Validation.Type.DANGER, "Too short", preferences);
+                }
+                return new Validation(Validation.Type.NONE, "", preferences);
+            }
+        });
+        placeNameToUpdateTextField.getDocument().addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void removeUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+            public void insertUpdate(DocumentEvent e){
+                updateReseted = false;
+                enableUpdateSubmit();
+            }
+        });
         placeNameToUpdateTextField.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel6.setText("Province");
@@ -356,6 +411,15 @@ public class PlaceView extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(placeTable);
+        placeTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event){
+                if(!event.getValueIsAdjusting() && placeTable.getSelectedRow() != -1){
+                    deletePlaceBtn.setEnabled(true);
+                }else{
+                    deletePlaceBtn.setEnabled(false);
+                }
+            }
+        });
         if (placeTable.getColumnModel().getColumnCount() > 0) {
             placeTable.getColumnModel().getColumn(0).setMaxWidth(50);
         }
@@ -417,7 +481,26 @@ public class PlaceView extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_updatePlaceBtnActionPerformed
+    
+    private void enableSubmit() {
+        boolean isPlaceNameValid = placeNameTextField.getText() != "" && placeNameTextField.getText().length() > 2;
 
+        if (isPlaceNameValid) {
+            createPlaceBtn.setEnabled(true);
+        } else {
+            createPlaceBtn.setEnabled(false);
+        }
+    }
+    
+    private void enableUpdateSubmit() {
+        boolean isPlaceNameValid = placeNameToUpdateTextField.getText() != "" && placeNameToUpdateTextField.getText().length() > 2;
+
+        if (isPlaceNameValid) {
+            updatePlaceBtn.setEnabled(true);
+        } else {
+            updatePlaceBtn.setEnabled(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createPlaceBtn;

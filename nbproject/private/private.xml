@@ -6,9 +6,7 @@
             <file>file:/home/olivier/NetBeansProjects/posting_management/src/app/App.java</file>
             <file>file:/home/olivier/NetBeansProjects/posting_management/src/views/PostingView2.java</file>
             <file>file:/home/olivier/NetBeansProjects/posting_management/src/views/EmployeeView.java</file>
-            <file>file:/home/olivier/NetBeansProjects/posting_management/src/model/Posting.java</file>
-            <file>file:/home/olivier/NetBeansProjects/posting_management/src/migrations/init_database.sql</file>
-            <file>file:/home/olivier/NetBeansProjects/posting_management/src/views/PostingView.java</file>
+            <file>file:/home/olivier/NetBeansProjects/posting_management/src/utils/OpenFolder.java</file>
         </group>
     </open-files>
 </project-private>
