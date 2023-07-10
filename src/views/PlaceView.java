@@ -102,8 +102,10 @@ public class PlaceView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         placeTable = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(240, 240, 240));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setBackground(new java.awt.Color(240, 240, 240));
         jPanel1.setPreferredSize(new java.awt.Dimension(815, 80));
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -128,15 +130,25 @@ public class PlaceView extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
+        jPanel2.setBackground(new java.awt.Color(240, 240, 240));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        placeFormContainer.setBackground(new java.awt.Color(240, 240, 240));
         placeFormContainer.setPreferredSize(new java.awt.Dimension(500, 382));
         placeFormContainer.setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setBackground(new java.awt.Color(240, 240, 240));
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         jLabel1.setText("Supprimer le lieu selectionné");
 
+        deletePlaceBtn.setBackground(new java.awt.Color(255, 0, 51));
+        deletePlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        deletePlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         deletePlaceBtn.setText("Supprimer");
         deletePlaceBtn.setEnabled(false);
+        deletePlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deletePlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         deletePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletePlaceBtnActionPerformed(evt);
@@ -151,8 +163,8 @@ public class PlaceView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(deletePlaceBtn))
-                .addContainerGap(307, Short.MAX_VALUE))
+                    .addComponent(deletePlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,6 +177,11 @@ public class PlaceView extends javax.swing.JPanel {
         );
 
         placeFormContainer.add(jPanel3, java.awt.BorderLayout.PAGE_END);
+
+        jTabbedPane1.setBackground(new java.awt.Color(240, 240, 240));
+        jTabbedPane1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+
+        jPanel4.setBackground(new java.awt.Color(240, 240, 240));
 
         jLabel3.setText("Désignation");
 
@@ -191,12 +208,21 @@ public class PlaceView extends javax.swing.JPanel {
                 enableSubmit();
             }
         });
+        placeNameTextField.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel4.setText("Province");
 
+        provinceComboBox.setBackground(new java.awt.Color(255, 255, 254));
         provinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
+        provinceComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        provinceComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
 
+        createPlaceBtn.setBackground(new java.awt.Color(0, 51, 255));
+        createPlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        createPlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         createPlaceBtn.setText("Ajouter");
+        createPlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        createPlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         createPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createPlaceBtnActionPerformed(evt);
@@ -208,16 +234,19 @@ public class PlaceView extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3)
-                        .addComponent(placeNameTextField)
-                        .addComponent(jLabel4)
-                        .addComponent(provinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(placeNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(provinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,12 +261,16 @@ public class PlaceView extends javax.swing.JPanel {
                 .addComponent(provinceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(createPlaceBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
 
         jTabbedPane1.addTab("Ajouter un nouveau lieu", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(240, 240, 240));
+
+        jPanel6.setBackground(new java.awt.Color(240, 240, 240));
 
         jLabel5.setText("Désignation");
 
@@ -264,12 +297,21 @@ public class PlaceView extends javax.swing.JPanel {
                 enableUpdateSubmit();
             }
         });
+        placeNameToUpdateTextField.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel6.setText("Province");
 
+        provinceToUpdateComboBox.setBackground(new java.awt.Color(255, 255, 254));
         provinceToUpdateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Antananarivo", "Fianarantsoa", "Antsiranana","Mahajanga","Toamasina","Toliara" }));
+        provinceToUpdateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        provinceToUpdateComboBox.setPreferredSize(new java.awt.Dimension(72, 35));
 
+        updatePlaceBtn.setBackground(new java.awt.Color(0, 51, 255));
+        updatePlaceBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        updatePlaceBtn.setForeground(new java.awt.Color(255, 255, 255));
         updatePlaceBtn.setText("Sauvegarder les modifications");
+        updatePlaceBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updatePlaceBtn.setMargin(new java.awt.Insets(5, 14, 5, 14));
         updatePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatePlaceBtnActionPerformed(evt);
@@ -281,19 +323,19 @@ public class PlaceView extends javax.swing.JPanel {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(46, 46, 46)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5)
-                    .addComponent(placeNameToUpdateTextField)
+                    .addComponent(placeNameToUpdateTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6)
-                    .addComponent(provinceToUpdateComboBox, 0, 399, Short.MAX_VALUE)
-                    .addComponent(updatePlaceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                    .addComponent(provinceToUpdateComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updatePlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(placeNameToUpdateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,7 +345,7 @@ public class PlaceView extends javax.swing.JPanel {
                 .addComponent(provinceToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updatePlaceBtn)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -324,7 +366,7 @@ public class PlaceView extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
@@ -335,6 +377,10 @@ public class PlaceView extends javax.swing.JPanel {
 
         jPanel2.add(placeFormContainer, java.awt.BorderLayout.LINE_END);
 
+        jScrollPane1.setBackground(new java.awt.Color(240, 240, 240));
+
+        placeTable.setAutoCreateRowSorter(true);
+        placeTable.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         placeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -351,6 +397,14 @@ public class PlaceView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        placeTable.setFocusable(false);
+        placeTable.setGridColor(new java.awt.Color(255, 255, 255));
+        placeTable.setIntercellSpacing(new java.awt.Dimension(3, 0));
+        placeTable.setRowHeight(50);
+        placeTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        placeTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        placeTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        placeTable.setShowVerticalLines(true);
         placeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 placeTableMouseClicked(evt);
@@ -366,6 +420,9 @@ public class PlaceView extends javax.swing.JPanel {
                 }
             }
         });
+        if (placeTable.getColumnModel().getColumnCount() > 0) {
+            placeTable.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
