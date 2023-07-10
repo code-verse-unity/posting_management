@@ -88,8 +88,8 @@ public class PostingView2 extends javax.swing.JPanel {
             Object[] row = new Object[6];
             row[0] = posting.getId();
             row[1] = posting.getEmployee().getCivility() + " " + posting.getEmployee().getFullName();
-            row[2] = posting.getOldPlace().getName() + ", " + posting.getOldPlace().getProvince();
-            row[3] = posting.getPlace().getName() + ", " + posting.getPlace().getProvince();
+            row[2] = posting.getOldPlace().getFullName();
+            row[3] = posting.getPlace().getFullName();
             row[4] = DateFormatter.format(posting.getPostingDate());
             row[5] = DateFormatter.format(posting.getServiceDate());
 
@@ -149,10 +149,8 @@ public class PostingView2 extends javax.swing.JPanel {
             row[1] = posting.getEmployee().getCivility() + " " +
                     posting.getEmployee().getLastName() + " "
                     + posting.getEmployee().getFirstName();
-            row[2] = posting.getOldPlace().getName() + ", " +
-                    posting.getOldPlace().getProvince();
-            row[3] = posting.getPlace().getName() + ", " +
-                    posting.getPlace().getProvince();
+            row[2] = posting.getOldPlace().getFullName();
+            row[3] = posting.getPlace().getFullName();
             row[4] = DateFormatter.format(posting.getPostingDate());
             row[5] = DateFormatter.format(posting.getServiceDate());
 
@@ -1013,7 +1011,13 @@ public class PostingView2 extends javax.swing.JPanel {
     private void addPostingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addPostingBtnActionPerformed
         Employee employee = (Employee) employeeComboBox.getSelectedItem();
         Integer employeeId = employee.getId();
-        Integer oldPlaceId = employee.getPlace().getId();
+        Place oldPlace = employee.getPlace();
+        Integer oldPlaceId = null;
+        
+        if (oldPlace != null) {
+            oldPlaceId = oldPlace.getId();
+        }
+
         Integer newPlaceId = ((Place) placeComboBox.getSelectedItem()).getId();
         Date startDate = addPostingStartDateJDateChooser.getDate();
 
@@ -1038,8 +1042,8 @@ public class PostingView2 extends javax.swing.JPanel {
                 "    <p style=\"font-size: large;\">" +
                 posting.getEmployee().getCivility() + " <b>" +
                 posting.getEmployee().getFullName() + "</b>, qui occupe le poste de " +
-                posting.getEmployee().getJob() + " à " +
-                posting.getOldPlace().getFullName() + ", est affecté à <b>" +
+                posting.getEmployee().getJob() + posting.getOldPlace() != null ? " à " +
+                posting.getOldPlace().getFullName() : "" +  ", est affecté à <b>" +
                 posting.getPlace().getFullName() + "</b> pour compter de prise de service le <b>" +
                 DateFormatter.format(posting.getPostingDate(), "dd/MM/yyyy") + "</b>." +
                 "    </p>" +

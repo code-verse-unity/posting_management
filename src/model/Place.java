@@ -53,7 +53,7 @@ public class Place {
     }
 
     public String getFullName() {
-        return this.name + ", " + this.province;
+        return (this.name != null && this.province != null) ? this.name + ", " + this.province : "Non spécifié";
     }
     
     public static ArrayList<Place> getAll(Connection connection) {
@@ -130,9 +130,15 @@ public class Place {
     }
     
     public static void destroy(Connection connection, Integer id) {
-        String query = "delete from place where id = ?";
         try {
+            String query = "Update " + Employee.TABLE_NAME + " SET place_id = null WHERE place_id = ?;";
             PreparedStatement st = connection.prepareStatement(query);
+            st.setInt(1, id);
+            st.executeUpdate();
+
+            query = "delete from place where id = ?";
+                    
+            st = connection.prepareStatement(query);
             st.setInt(1, id);
 
             st.executeUpdate();

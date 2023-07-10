@@ -105,9 +105,9 @@ public class Posting {
                             "p3.province as oldPlaceProvince " +
                             "FROM " + Posting.TABLE_NAME + " p " +
                             "INNER JOIN " + Employee.TABLE_NAME + " e ON p.employee_id = e.id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "ORDER BY p.id DESC");
 
             ResultSet resultSet = statement.executeQuery();
@@ -171,9 +171,9 @@ public class Posting {
                             "p3.province as oldPlaceProvince " +
                             "FROM " + Posting.TABLE_NAME + " p " +
                             "INNER JOIN " + Employee.TABLE_NAME + " e ON p.employee_id = e.id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "WHERE p.posting_date BETWEEN ? AND ? " +
                             "ORDER BY p.id DESC");
 
@@ -241,9 +241,9 @@ public class Posting {
                             "p3.province as oldPlaceProvince " +
                             "FROM " + Posting.TABLE_NAME + " p " +
                             "INNER JOIN " + Employee.TABLE_NAME + " e ON p.employee_id = e.id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "WHERE p.employee_id = ? " +
                             "ORDER BY p.id DESC");
             statement.setObject(1, employeeId);
@@ -308,9 +308,9 @@ public class Posting {
                             "p3.province as oldPlaceProvince " +
                             "FROM " + Posting.TABLE_NAME + " p " +
                             "INNER JOIN " + Employee.TABLE_NAME + " e ON p.employee_id = e.id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "WHERE p.id = ? " +
                             "ORDER BY p.id DESC");
             statement.setObject(1, id);
@@ -373,9 +373,9 @@ public class Posting {
                             "p3.province as oldPlaceProvince " +
                             "FROM " + Posting.TABLE_NAME + " p " +
                             "INNER JOIN " + Employee.TABLE_NAME + " e ON p.employee_id = e.id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p1 ON p1.id = e.place_id " +
                             "INNER JOIN " + Place.TABLE_NAME + " p2 ON p2.id = p.place_id " +
-                            "INNER JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
+                            "LEFT JOIN " + Place.TABLE_NAME + " p3 ON p3.id = p.old_place_id " +
                             "ORDER BY p.id DESC LIMIT 1");
 
             ResultSet resultSet = statement.executeQuery();
