@@ -191,7 +191,7 @@ public class PostingView2 extends javax.swing.JPanel {
     public void refillStartDateToUpdateJDateChooser() {
         startDateToUpdateJDateChooser.setDate(this.getPostingSelected().getServiceDate());
     }
-
+// tets
     public void refillEditPostingForm() {
         this.refillEditPostingEmployeeJComboBox();
         this.refillEditPostingPlaceJComboBox();
