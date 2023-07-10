@@ -197,6 +197,7 @@ public class PostingView2 extends javax.swing.JPanel {
         this.refillStartDateToUpdateJDateChooser();
     }
 
+    // some change
     public void refillAddPostingEmployeeJComboBox() {
         DefaultComboBoxModel<Employee> comboBoxModel = (DefaultComboBoxModel<Employee>) employeeComboBox.getModel();
 
