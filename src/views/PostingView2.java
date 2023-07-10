@@ -551,25 +551,25 @@ public class PostingView2 extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addPostingEmployeeJLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addPostingPlaceJLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placeComboBox, 0, 308, Short.MAX_VALUE)
                     .addComponent(addPostingStartDateJLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(addPostingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+                        .addComponent(addPostingStartDateJDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(addPostingFormJLabel1)
-                    .addComponent(addPostingDateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(addPostingDateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(addPostingFormJLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addPostingEmployeeJLabel1)
@@ -587,7 +587,7 @@ public class PostingView2 extends javax.swing.JPanel {
                 .addComponent(addPostingDateError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(addPostingBtn)
-                .addContainerGap(741, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Ajouter une afféctation", jPanel6);
@@ -595,10 +595,8 @@ public class PostingView2 extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(240, 240, 240));
 
         addPostingFormJLabel2.setText("Veuiller remplir le formulaire :");
-        jPanel7.add(addPostingFormJLabel2);
 
         addPostingEmployeeJLabel2.setText("Employé :");
-        jPanel7.add(addPostingEmployeeJLabel2);
 
         employeeToUpdateComboBox.setBackground(new java.awt.Color(255, 255, 254));
         employeeToUpdateComboBox.setModel(new DefaultComboBoxModel<Employee>());
@@ -617,10 +615,8 @@ public class PostingView2 extends javax.swing.JPanel {
                 return this;
             }
         });
-        jPanel7.add(employeeToUpdateComboBox);
 
         addPostingPlaceJLabel2.setText("Lieu d'afféctation :");
-        jPanel7.add(addPostingPlaceJLabel2);
 
         placeToUpdateComboBox.setBackground(new java.awt.Color(255, 255, 254));
         placeToUpdateComboBox.setModel(new DefaultComboBoxModel<Place>());
@@ -638,10 +634,8 @@ public class PostingView2 extends javax.swing.JPanel {
                 return this;
             }
         });
-        jPanel7.add(placeToUpdateComboBox);
 
         addPostingStartDateJLabel2.setText("Date de prise de service :");
-        jPanel7.add(addPostingStartDateJLabel2);
 
         startDateToUpdateJDateChooser.addPropertyChangeListener("date", new PropertyChangeListener(){
 
@@ -658,7 +652,6 @@ public class PostingView2 extends javax.swing.JPanel {
             }
 
         });
-        jPanel7.add(startDateToUpdateJDateChooser);
 
         updatePostingBtn.setBackground(new java.awt.Color(0, 51, 255));
         updatePostingBtn.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -670,10 +663,51 @@ public class PostingView2 extends javax.swing.JPanel {
                 updatePostingBtnActionPerformed(evt);
             }
         });
-        jPanel7.add(updatePostingBtn);
 
         updatePostingDateError.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel7.add(updatePostingDateError);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updatePostingDateError, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(addPostingStartDateJLabel2)
+                        .addComponent(addPostingEmployeeJLabel2)
+                        .addComponent(addPostingFormJLabel2)
+                        .addComponent(employeeToUpdateComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addPostingPlaceJLabel2)
+                        .addComponent(placeToUpdateComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(startDateToUpdateJDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePostingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
+                .addGap(726, 726, 726))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(addPostingFormJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addPostingEmployeeJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(employeeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addPostingPlaceJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(placeToUpdateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addPostingStartDateJLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(startDateToUpdateJDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updatePostingDateError, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updatePostingBtn)
+                .addContainerGap())
+        );
 
         jTabbedPane3.addTab("Mettre à jour l'affectation", jPanel7);
 

@@ -289,29 +289,29 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="addPostingEmployeeJLabel1" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                      <Component id="employeeComboBox" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
                                       <Component id="addPostingPlaceJLabel1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <Component id="placeComboBox" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
+                                      <Component id="placeComboBox" alignment="0" pref="308" max="32767" attributes="0"/>
                                       <Component id="addPostingStartDateJLabel1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="addPostingBtn" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="addPostingStartDateJDateChooser" alignment="0" pref="305" max="32767" attributes="0"/>
+                                          <Component id="addPostingStartDateJDateChooser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="addPostingFormJLabel1" min="-2" max="-2" attributes="0"/>
                                       <Component id="addPostingDateError" max="-2" attributes="0"/>
+                                      <Component id="employeeComboBox" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="addPostingFormJLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="addPostingEmployeeJLabel1" min="-2" max="-2" attributes="0"/>
@@ -329,7 +329,7 @@
                                   <Component id="addPostingDateError" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="addPostingBtn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="741" max="32767" attributes="0"/>
+                                  <EmptySpace pref="286" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -450,6 +450,55 @@
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="updatePostingDateError" min="-2" pref="315" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="addPostingStartDateJLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPostingEmployeeJLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPostingFormJLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="employeeToUpdateComboBox" max="32767" attributes="0"/>
+                                          <Component id="addPostingPlaceJLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="placeToUpdateComboBox" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="startDateToUpdateJDateChooser" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="updatePostingBtn" pref="307" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="726" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="addPostingFormJLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="addPostingEmployeeJLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="employeeToUpdateComboBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="addPostingPlaceJLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="placeToUpdateComboBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="addPostingStartDateJLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="startDateToUpdateJDateChooser" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="updatePostingDateError" min="-2" pref="21" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="updatePostingBtn" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="addPostingFormJLabel2">
                           <Properties>
