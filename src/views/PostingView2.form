@@ -361,6 +361,9 @@
                               <Connection code="new DefaultListCellRenderer() {&#xa;            @Override&#xa;            public java.awt.Component getListCellRendererComponent(JList&lt;?&gt; list, Object value, int index,&#xa;                boolean isSelected, boolean cellHasFocus) {&#xa;                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);&#xa;                if (value instanceof Employee) {&#xa;                    Employee employee = (Employee) value;&#xa;                    setText(employee.getId() + &quot;. &quot; + employee.getFullName());&#xa;                }&#xa;                return this;&#xa;            }&#xa;        }" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeComboBoxActionPerformed"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Employee&gt;"/>
                           </AuxValues>

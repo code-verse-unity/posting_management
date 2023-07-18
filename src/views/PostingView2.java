@@ -210,11 +210,18 @@ public class PostingView2 extends javax.swing.JPanel {
 
     public void refillAddPostingPlaceJComboBox() {
         DefaultComboBoxModel<Place> comboBoxModel = (DefaultComboBoxModel<Place>) placeComboBox.getModel();
-
+        
         comboBoxModel.removeAllElements();
 
+        Employee selectedEmployee = (Employee) employeeComboBox.getSelectedItem();
+        Place employeePlace = selectedEmployee.getPlace();
+
         for (Place place : this.places) {
-            comboBoxModel.addElement(place);
+            if (selectedEmployee != null && employeePlace != null && place.getId() != employeePlace.getId()) {
+                comboBoxModel.addElement(place);
+            } else {
+                continue;
+            }
         }
     }
 
@@ -490,6 +497,11 @@ public class PostingView2 extends javax.swing.JPanel {
                     setText(employee.getId() + ". " + employee.getFullName());
                 }
                 return this;
+            }
+        });
+        employeeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeComboBoxActionPerformed(evt);
             }
         });
 
@@ -1022,6 +1034,11 @@ public class PostingView2 extends javax.swing.JPanel {
         System.out.println("test");
     }//GEN-LAST:event_addPostingStartDateJDateChooserInputMethodTextChanged
 
+    private void employeeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeComboBoxActionPerformed
+        // TODO add your handling code here:
+        this.refillAddPostingPlaceJComboBox();
+    }//GEN-LAST:event_employeeComboBoxActionPerformed
+
     private void clearSeachPostingJButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_clearSeachPostingJButtonActionPerformed
         startDateJDateChooser.setDate(null);
         endDateJDateChooser.setDate(null);
@@ -1089,8 +1106,8 @@ public class PostingView2 extends javax.swing.JPanel {
                 "    <p style=\"font-size: large;\">" +
                 posting.getEmployee().getCivility() + " <b>" +
                 posting.getEmployee().getFullName() + "</b>, qui occupe le poste de " +
-                posting.getEmployee().getJob() + posting.getOldPlace() != null ? " à " +
-                posting.getOldPlace().getFullName() : "" +  ", est affecté à <b>" +
+                posting.getEmployee().getJob() + ( posting.getOldPlace() != null ? " à " +
+                posting.getOldPlace().getFullName() : "" )+ ", est affecté à <b>" +
                 posting.getPlace().getFullName() + "</b> pour compter de prise de service le <b>" +
                 DateFormatter.format(posting.getPostingDate(), "dd/MM/yyyy") + "</b>." +
                 "    </p>" +
@@ -1106,13 +1123,13 @@ public class PostingView2 extends javax.swing.JPanel {
 
         resetAddPosting();
 
-//        this.emailSender.sendEmail(
-//                this.dotenv.get("MAIL_USERNAME_SENDER"),
-//                employee.getEmail(),
-//                subject,
-//                body,
-//                contentType);
-//        
+       this.emailSender.sendEmail(
+               this.dotenv.get("MAIL_USERNAME_SENDER"),
+               employee.getEmail(),
+               subject,
+               body,
+               contentType);
+       
 
     }// GEN-LAST:event_addPostingBtnActionPerformed
 
