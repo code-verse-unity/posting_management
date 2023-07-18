@@ -210,8 +210,6 @@ public class PostingView2 extends javax.swing.JPanel {
 
     public void refillAddPostingPlaceJComboBox() {
         DefaultComboBoxModel<Place> comboBoxModel = (DefaultComboBoxModel<Place>) placeComboBox.getModel();
-
-        Place selectedPlace = (Place) placeComboBox.getSelectedItem();
         
         comboBoxModel.removeAllElements();
 
@@ -225,10 +223,6 @@ public class PostingView2 extends javax.swing.JPanel {
                 continue;
             }
         }
-
-        // if (selectedPlace != null) {
-        //     comboBoxModel.setSelectedItem(selectedPlace);
-        // }
     }
 
     public void refillAddPostingForm() {
