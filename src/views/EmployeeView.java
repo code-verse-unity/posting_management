@@ -62,8 +62,8 @@ public class EmployeeView extends javax.swing.JPanel {
 
             Object[] row = new Object[7];
             row[0] = employee.getId();
-            row[1] = employee.getFirstName();
-            row[2] = employee.getLastName();
+            row[1] = employee.getLastName();
+            row[2] = employee.getFirstName();
             row[3] = employee.getEmail();
             row[4] = employee.getCivility();
             row[5] = employee.getJob();

@@ -23,7 +23,8 @@ import java.io.IOException;
 public class GeneratePDF {
     public static String generate(Posting posting) {
         String outputPath = "outputs/pdf/affectation_" + posting.getId() + "_"
-                + DateFormatter.format(posting.getPostingDate(), "dd-MM-yyyy") + ".pdf";
+                + DateFormatter.format(posting.getPostingDate(), "yyyy-MM-dd") + "_"
+                + posting.getEmployee().getFullName().replaceAll(" ", "_") + ".pdf";
 
         try {
             File file = new File(outputPath);
@@ -52,15 +53,22 @@ public class GeneratePDF {
             Paragraph content = new Paragraph(
                     posting.getEmployee().getCivility() + " " +
                             posting.getEmployee().getFullName() + ", qui occupe le poste de " +
-                            posting.getEmployee().getJob() + " à " +
-                            posting.getOldPlace().getFullName() + ", est affecté à " +
+                            posting.getEmployee().getJob() +
+                            (posting.getOldPlace().getId() != 0 ? (" à " + posting.getOldPlace().getFullName()) : " ")
+                            + ", est affecté à " +
                             posting.getPlace().getFullName() + " pour compter de prise de service le " +
                             DateFormatter.format(posting.getPostingDate(), "dd/MM/yyyy") + ".");
 
             content.setPaddingTop(150);
 
+            Paragraph footer = new Paragraph(
+                    "Le présent communiqué sera enregistré et communiqué partout ou besoin sera.");
+
+            content.setPaddingTop(150);
+
             document.add(header);
             document.add(content);
+            document.add(footer);
 
             document.close();
 
